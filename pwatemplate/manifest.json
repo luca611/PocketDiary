@@ -1,0 +1,17 @@
+{
+    "name": "pocket diary",
+    "short_name": "P. diary",
+    "id": "pocketDiary",
+    "description": "Empty PWA Template",
+    "icons": [
+        {
+            "src": "pwaicon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        }
+    ],
+    "start_url": "index.html",
+    "scope": "/poketdiary/",
+    "display": "standalone"
+}

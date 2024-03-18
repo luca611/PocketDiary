@@ -1,0 +1,695 @@
+html,body {
+    height: 100%;
+    
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden
+}
+
+.slide{
+    width: 100%;
+    height: 100%;
+}
+
+::selection {
+    background:burlywood;
+  }
+
+@font-face {
+    font-family: 'itim';
+    src: url(resources/Itim-Regular.ttf);
+    font-weight: normal;
+}
+
+.sfondo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 100%;
+}
+
+.login{
+    font-family: "itim";
+    text-align: center;
+    z-index: 2;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    border-radius: 1rem;
+    height: auto;
+    width: 50%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.appContainer{
+    background-color: rgb(255, 255, 255);
+    font-family: "itim";
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    border-radius: 1rem;
+    height: 90vh;
+    width: 80%;
+    min-height: 35em;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.barraLaterale{
+    align-self: self-start;
+    position: absolute;
+    height: 100%;
+    width: 4rem;
+    border-radius: 1rem;
+    margin-left: 0;
+}
+
+.blackScreen{
+	position: absolute; 
+	background-color: rgba(0,0,0,0.41); 
+	height: 100%;
+	width: 100%;
+	z-index: 99;
+	border-radius: 1rem;
+}
+
+.popUPadd{
+	display: flex;
+	flex-direction: column;
+	top: 30%;
+	left: 30%;
+	position: absolute;
+	width: 40%;
+	height: auto; 
+	background-color: white;
+	border-radius: 1rem;
+	grid-template-rows: 50%;
+	padding: 1rem;
+}
+
+.defButton{
+	font-family: "itim";
+	padding: 1rem;
+	border-radius: 1rem;
+	margin-bottom: 0.3rem;
+	border: none;
+	transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.defButton:hover{
+	transform: scale(0.99);
+	filter: brightness(80%);
+}
+.setDesc{
+	min-height: 5rem;
+	border-color: rgba(163,163,163,0.40);
+	border-radius: 1rem;margin-bottom: 0.5rem;
+}
+.setData{
+	padding: 0.5rem; 
+	border-top:none;
+	border-left: none;
+	border-right: none;
+	
+}
+
+.inLabel {
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.upcomingEvents{
+    background-color: #CCE1D4;
+    top: 10rem; 
+    bottom: 5rem;
+    left: 5rem;
+    border-radius: 1rem;
+    height: auto;
+    margin-right: 2rem;
+    width: 50%;
+    margin-top: 10rem;
+    margin-left: 5rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow-y: auto;
+}
+.upcomingEvents > :last-child {
+    margin-bottom: 1rem; 
+}
+
+.utilsDesktop{
+    top: 10rem; 
+    bottom: 5rem;
+    border-radius: 1rem;
+    height: auto;
+    width: 50%;
+    margin-top: 10rem;
+    margin-bottom: 3rem;
+    margin-right: 2rem;
+}
+
+.selection{
+    padding-top: 2rem;
+    font-family: "itim";
+    text-align: center;
+    z-index: 2;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    border-radius: 1rem;
+    height: auto;
+    width: 80%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.opzioni{
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.scelta{
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border-radius: 90rem;
+    transition: ease-in 0.3s;
+    border: solid white 0.3rem
+}
+
+.scelta:hover{
+    border: solid burlywood 0.3rem;
+}
+
+
+.bottScelta{
+    background-color: white;
+    border: 0px;
+    transition: transform 0.3s;
+}
+
+.themeSelection{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.apri{
+    position: absolute;
+    top: 2rem;
+    left: 1rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 90rem;
+    border: solid white 0.2rem;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.imgRapido{
+    width: 2rem;
+    fill: white;
+    margin-right: 0.3rem;
+}
+
+.rapido{
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    background: none;
+    border: 0px;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.azioniRapideMobile{
+    display: none;
+}
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    height: 50%;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgb(204, 204, 204);
+    border-radius: 10px;
+  }
+  
+.rapido:hover{
+    filter: brightness(80%);
+    transform: rotate(20deg);
+}
+
+.welcomingMessage{
+    position: absolute;
+    top: 2rem;
+    left: 7rem;
+}
+.settings{
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.65rem;
+}
+
+.apri:hover{
+    filter: brightness(80%);
+    transform: rotate(20deg);
+}
+
+.mainApp{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.hidden{
+    display: none;
+}
+.tema{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    columns: 3;
+}
+
+.poketD{
+    color: burlywood;
+}
+
+.scelta{
+    max-width: 20rem;
+    width: 50%;
+    height: auto;
+}
+
+.imgWelcome{
+    margin-top: 3rem;
+    max-width: 12rem;
+    width: 50%; 
+    height: auto; 
+}
+
+.separatoreLogin{
+    width: 40%;
+    color: burlywood;
+}
+
+.separatoreTemi{
+    width: 60%;
+    color: burlywood;
+}
+
+.nome{
+    text-align: center;
+    width: 20vh;
+    height: 3rem;
+    border-radius: 1rem;
+    border: solid burlywood 0.2rem;
+    margin-bottom: 3rem;
+}
+
+
+.continue{
+    font-family: "itim";
+    font-weight: bold;
+    border-radius: 1rem;
+    border: 0px;
+    width: 15vh;
+    min-width: 9rem;
+    height: 3rem;
+    transition: transform 0.3s;
+    margin-bottom: 3rem
+
+}
+
+.iconeRidotte{
+    margin-top:8rem;
+}
+
+.tip{
+    color:  dimgrey;
+}
+
+.continue:hover{
+    filter: brightness(80%);
+    color: white;
+    transform: scale(1.5);
+}
+
+.rapidoMob{
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    font-family: "itim";
+    color: white;
+    text-align: center;
+    border-radius: 9rem;
+    min-width: 8rem;
+    padding: 0.5rem;
+    border: none;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.events{
+    margin-top: 1rem;
+    background-color: white;
+    width: 90%;
+    height: auto;
+    border-radius: 1rem;
+    min-height: 5rem;
+}
+
+.rapidoMob:hover{
+    filter: brightness(80%);
+    transform: scale(0.9);
+}
+.popUP{
+    display: flex;
+    flex-direction: column;
+    top: 20%;
+    left: 30%;
+    position: absolute;
+    width: 40%;
+    height: auto; 
+    background-color: white;
+    border-radius: 1rem;
+    grid-template-rows: 50%;
+    padding: 1rem;
+}
+.blackScreen{
+	position: absolute; 
+	background-color: rgba(0,0,0,0.41); 
+	height: 100%;
+	width: 100%;
+	z-index: 99;
+    
+	border-radius: 1rem;
+}
+.inLabel {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.descContainer{
+    display: flex;
+    overflow-y:auto;
+    border-radius: 1rem;
+    min-width: 90%;
+    min-height: 20rem;
+    max-height: 20rem;
+    padding: 1rem;
+}
+
+.esciBarra{
+    width: 100%;
+    height: 100%;
+}
+
+.exit{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 40%;
+    border-radius: 1rem;
+}
+
+.noElements{
+    z-index: 4;
+    height: 100%;
+    width: 100%;
+    padding-top: 30vh;
+    font-family: "itim";
+    text-align: center;
+}
+
+.addEvent{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    padding: 1rem;
+    border-radius: 9rem;
+    border: none;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.addEvent:hover{
+    filter: brightness(80%);
+    transform: rotate(20deg) scale(1.1);
+}
+
+.selected{
+    border:solid rgb(222, 135, 135) 0.3rem;
+}
+
+.selected_m{
+   border: none;
+}
+
+@media (max-width: 60em) {
+
+    .html{
+        background-color: white;
+    }
+    .sfondo {
+        display: none; 
+        
+    }
+	
+	.blackScreen{
+		border-radius: 0;
+	}
+	.popUPadd{
+		width: 90%;
+		left: 2.5%;
+	}
+    body {
+        background-color: white;
+    }
+    
+    .welcome{
+        width: 100%;
+    }
+
+    .login{
+        width: 100%;
+    }
+
+    .appContainer{
+        margin-top: 0;
+        margin-bottom: 0;
+        object-fit: fill;
+        position: relative;;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .blackScreen{
+        position: fixed;
+    }
+
+    .bottScelta{
+        background-color: rgb(192, 192, 192);
+        border: solid white 0.3rem;
+        border-radius: 2rem;
+    }
+
+    .popUP{
+        width: 80%;
+        left: 5%;
+    }
+
+    .bottScelta:hover{
+        border: solid burlywood 0.3rem;
+    }
+
+    .mainApp{
+        margin: 0;
+        padding: 0;
+    }
+
+    .scelta:hover{
+        border: solid rgb(255, 255, 255) 0.3rem;
+    }
+
+    .barraLaterale{
+        width: 0;
+    }
+    
+    .iconeRidotte{
+        display: none;
+    }
+
+    .azioniRapideMobile{
+        position: absolute;
+        top: 8rem;
+        left: 1rem;
+        display: flex;
+        overflow-x: auto;
+        max-width: 90%;
+        padding-bottom: 0.2rem;
+    }
+	
+	.defButton{
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+        font-size: large;
+	}
+
+    .azioniRapideMobile > :last-child {
+        margin-right: 0.5rem; 
+    }
+    .utilsDesktop{
+        display: none;
+    }
+
+    .upcomingEvents{
+        position: absolute;
+        margin: 0;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        top: 15rem;
+        width: auto;
+        height: 70%;
+        left: 2vh;
+        right: 2vh;
+    }
+
+    .addEvent{
+        top: 12rem;
+        left: 1rem;
+        right: unset;
+    }
+    .selected{
+        border: solid white 0.3rem;
+    }
+
+    .selected_m{
+        border:solid rgb(222, 135, 135) 0.3rem;
+    }
+}
+
+
+
+.homepage{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+}
+
+.blue{
+    color: #568A9A;
+}
+
+.green{
+    color: #569A65;
+}
+
+.yellow{
+    color: #BBB536;
+}
+
+.bBlue{
+    background-color: #568A9A;
+}
+
+.bGreen{
+    background-color: #569A65;
+}
+
+.bYellow{
+    background-color: #BBB536;
+}
+
+.bBlueD{
+    background-color: #36697E;
+}
+
+.bGreenD{
+    background-color: #367E42;
+}
+
+.bYellowD{
+    background-color: #928C22;
+}
+
+
+
+.calendario{
+    height: 49%;
+    padding: 1rem;
+    width: 100%;
+    margin-bottom: 0.6rem;
+    background-color: #eaf49c;
+    border-radius: 1rem;
+}
+
+.motivational{
+    display: flex;
+    justify-content: center;
+    height: 50%;
+    width: 100%;
+    background-color: #CCE1D4;
+    border-radius: 1rem;
+}
+
+.motivationalImg{
+    position: relative;
+    width: 49%;
+    height: auto;
+}
+
+
+

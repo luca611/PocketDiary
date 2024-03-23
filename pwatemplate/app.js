@@ -28,13 +28,13 @@ xhr.open("GET", "pwaversion.txt?t=" + Date.now());
 xhr.send();
 
 //Your code here
-let name; //nome dell'utente
-let theme = "green"; //tema scelto, preimpostato a verde
-let events = []; //elenco degli eventi
+let name;               //nome dell'utente
+let theme = "bGreen";   //tema scelto, preimpostato a verde, chiamato come la classe del css per comodità
+let events = [];        //elenco degli eventi
 
 function Event(name, date, desc) {
   this.name = name;
-  this.date = new Date(date);
+  this.date = new Date(date);   //nel formato MM:GG:AA hh:mm:ss
   this.desc = desc;
 }
 
@@ -46,8 +46,8 @@ Event.prototype = {
   getDesc: function () {
     return desc;
   },
+  //funzione per tornare quanto manca all'evento
   dateDiff: function () {
-    //funzione per tornare quanto manca all'evento
     let diff = new Date(this.date - Date.now());
     return diff.getUTCFullYear() - 1970;
   },
@@ -64,10 +64,9 @@ function welcome() {
   }
   document.getElementById("displayUsername").innerText = name;
   save();
-  toSlide("themes");
 }
 
-function theme_choose(idB, idI) {
+function theme_choose(idB) {
   document.getElementById("greenB").classList.remove("selected_m");
   document.getElementById("greenI").classList.remove("selected");
   document.getElementById("blueB").classList.remove("selected_m");
@@ -77,28 +76,89 @@ function theme_choose(idB, idI) {
   theme = idB.slice(0, -1);
   //console.log(theme)
   if (theme === undefined) {
-    theme = "green";
+    theme = "bGreen";
   }
-  document.getElementById(idB).classList.add("selected_m");
-  document.getElementById(idI).classList.add("selected");
+  if (idB == "bGreenB") {
+    document.getElementById("greenB").classList.add("selected_m");
+    document.getElementById("greenI").classList.add("selected");
+  }
+  if (idB == "bBlueB") {
+    document.getElementById("blueI").classList.add("selected_m");
+    document.getElementById("blueI").classList.add("selected");
+  }
+  if (idB == "bYellowB") {
+    document.getElementById("yellowB").classList.add("selected_m");
+    document.getElementById("yellowI").classList.add("selected");
+  }
   save();
+  set_theme();
 }
 
+/*
+  funzione per cambiare il tema dell'app
+  prende tutti gli elementi con le classi css dei 3 colori principali
+  e li cambia
+*/
+function set_theme() {
+  document.getElementById("displayUsername").classList.add(theme.slice(1, theme.length).toLowerCase());
+  //classi bx
+  document.querySelectorAll(".bYellow").forEach(function (e) {
+    e.classList.remove("bYellow");
+    e.classList.add(theme);
+  });
+  document.querySelectorAll(".bBlue").forEach(function (e) {
+    e.classList.remove("bBlue");
+    e.classList.add(theme);
+  });
+  document.querySelectorAll(".bGreen").forEach(function (e) {
+    e.classList.remove("bGreen");
+    e.classList.add(theme);
+  });
+  //classi x
+  /*document.querySelectorAll(".yellow").forEach(function (e) {
+    e.classList.remove("yellow");
+    e.classList.add(theme);
+  });
+  document.querySelectorAll(".blue").forEach(function (e) {
+    e.classList.remove("blue");
+    e.classList.add(theme);
+  });
+  document.querySelectorAll(".green").forEach(function (e) {
+    e.classList.remove("green");
+    e.classList.add(theme);
+  });*/
+  //classi bxD
+  document.querySelectorAll(".bYellowD").forEach(function (e) {
+    e.classList.remove("bYellowD");
+    e.classList.add(theme + "D");
+  });
+  document.querySelectorAll(".bBlueD").forEach(function (e) {
+    e.classList.remove("bBlueD");
+    e.classList.add(theme + "D");
+  });
+  document.querySelectorAll(".bGreenD").forEach(function (e) {
+    e.classList.remove("bGreenD");
+    e.classList.add(theme + "D");
+  });
+}
+/*
+  funzione eseguita la clic del +
+*/
 function eventCreation() {
-  //funzione eseguita al clic del +
-}
-
-function toEventSlide(id) {
-  document.querySelectorAll("div.slide").forEach(function (e) {
+  document.querySelectorAll("div.homepage").forEach(function (e) {
     e.querySelectorAll("*").forEach(function (e2) {
       e2.tabIndex = "-1";
     });
+  });  
+  document.getElementById("blackscreen").querySelectorAll("*").forEach(function (e) {
+    e.tabIndex = "";
   });
-  let d = document.getElementById(id);
-  d.classList.remove("hidden");
-  d.querySelectorAll("*").forEach(function (e2) {
-    e2.tabIndex = "";
-  });
+  document.getElementById("blackscreen").classList.remove("hidden");
+  document.getElementById("createEvent").classList.remove("hidden");
+}
+
+function apriChiudiBarra() {
+  //document.getElementById("barraLaterale").classList.toggle("chiusa");
 }
 
 function loadFromStorage() {
@@ -132,5 +192,3 @@ function toSlide(id) {
     e2.tabIndex = "";
   });
 }
-
-//prova modifica

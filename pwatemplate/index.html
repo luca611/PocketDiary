@@ -1,135 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>pocket diary</title>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-        <script src="app.js" type="text/javascript"></script>
-        <link rel="manifest" href="manifest.json" />
-        <link rel="icon" type="image/png" href="favicon.png" />
-        <meta name="viewport" content="width=device-width" />
-    </head>
-    <body>
-        <img src="resources/bg.png" alt="Background image" class="sfondo">
-        <div class="welcome slide hidden" id="start"><!--welcome-->
-            <div class="login">
-                <img src="resources/boyWaving.jpg" alt="boy waving his hand" class="imgWelcome">
-                <h1>Welcome to your<br><b class="poketD">pocket diary</b></h1>
-                <hr class="separatoreLogin">
-                <br>
-                <h2>how should we call you?</h2>
-                <input type="text" class="nome" id="input_nome"><br>
-                <button onclick="welcome()" class="continue bGreen">continue</button>
-            </div>
+
+<head>
+    <meta charset="utf-8" />
+    <title>pocket diary</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="app.js" type="text/javascript"></script>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+</head>
+
+<body>
+    <img src="resources/bg.png" alt="Background image" class="sfondo">
+    <div class="welcome slide hidden" id="start"><!--welcome-->
+        <div class="login">
+            <img src="resources/boyWaving.jpg" alt="boy waving his hand" class="imgWelcome">
+            <h1>Welcome to your<br><b class="poketD">pocket diary</b></h1>
+            <hr class="separatoreLogin">
+            <br>
+            <h2>how should we call you?</h2>
+            <input type="text" class="nome" id="input_nome"><br>
+            <button onclick="welcome(), toSlide('themes')" class="continue bGreen">continue</button>
         </div>
-        <div class="hidden themeSelection slide" id="themes"><!--themeSelection-->
-            <div class="selection">
-                <h1>Select your <b class="blue">th</b><b class="green">e</b><b class="yellow">me</b></h1><br>
-                <hr class="separatoreTemi">
-                <br>
-                <div class="opzioni">
-                    <button class="bottScelta" id="blueB" onclick="theme_choose('blueB','blueI')"><img src="resources/blue.webp" alt="" class="scelta" id="blueI"></button>
-                    <button class="bottScelta selected_m" id="greenB" onclick="theme_choose('greenB','greenI')"><img src="resources/green.webp" alt="" class="scelta selected" id="greenI"></button>
-                    <button class="bottScelta" id="yellowB" onclick="theme_choose('yellowB','yellowI')"><img src="resources/yellow.webp" alt="" class="scelta" id="yellowI"></button>
-                </div>
-                <br>
-                <p class="tip">You will still be able to change it in the app</p>
-                <button onclick="toSlide('home')" class="continue bGreen">continue</button>
+    </div>
+    <div class="hidden themeSelection slide" id="themes"><!--themeSelection-->
+        <div class="selection">
+            <h1>Select your <b class="blue">th</b><b class="green">e</b><b class="yellow">me</b></h1><br>
+            <hr class="separatoreTemi">
+            <br>
+            <div class="opzioni">
+                <button class="bottScelta" id="blueB" onclick="theme_choose('bBlueB')"><img src="resources/blue.webp"
+                        alt="" class="scelta" id="blueI"></button>
+                <button class="bottScelta selected_m" id="greenB" onclick="theme_choose('bGreenB')"><img
+                        src="resources/green.webp" alt="" class="scelta selected" id="greenI"></button>
+                <button class="bottScelta" id="yellowB" onclick="theme_choose('bYellowB')"><img
+                        src="resources/yellow.webp" alt="" class="scelta" id="yellowI"></button>
             </div>
+            <br>
+            <p class="tip">You will still be able to change it later</p>
+            <button onclick="toSlide('home')" class="continue bGreen">continue</button>
         </div>
+    </div>
 
 
-        <div class="mainApp hidden slide" id="home"><!--mainApp-->
-            <div class="appContainer">
-                <div class="esciBarra hidden">
-                    <button onclick="" class="exit"></button>
+    <div class="mainApp hidden slide" id="home"><!--mainApp-->
+        <div class="appContainer">
+            <div class="esciBarra hidden">
+                <button onclick="" class="exit"></button>
+            </div>
+            <div class="barraLaterale bGreen">
+                <div class="iconeRidotte">
+                    <button class="rapido" onclick=""><img src="resources/school.svg" alt="" class="imgRapido"></button>
+                    <button class="rapido" onclick=""><img src="resources/clock.svg" alt="" class="imgRapido"></button>
+                    <button class="rapido" onclick=""><img src="resources/calendar.svg" alt=""
+                            class="imgRapido"></button>
+                    <button class="rapido" onclick=""><img src="resources/test.svg" alt="" class="imgRapido"></button>
+                    <button class="rapido , settings" onclick=""><img src="resources/settings.svg" alt=""
+                            class="imgRapido"></button>
                 </div>
-                <div class="barraLaterale , bGreen">
-                    <div class="iconeRidotte">
-                        <button class="rapido" onclick=""><img src="resources/school.svg" alt="" class="imgRapido"></button>
-                        <button class="rapido" onclick=""><img src="resources/clock.svg" alt="" class="imgRapido"></button>
-                        <button class="rapido" onclick=""><img src="resources/calendar.svg" alt="" class="imgRapido"></button>
-                        <button class="rapido" onclick=""><img src="resources/test.svg" alt="" class="imgRapido"></button>
-                        <button class="rapido , settings" onclick=""><img src="resources/settings.svg" alt="" class="imgRapido"></button>
+            </div>
+            <div class="homepage">
+                <div class="blackScreen hidden" id="blackscreen">
+                    <div class="popUP hidden" id="createEvent">
+                        <div class="inLabel bGreen" id="eventName">{event name}</div>
+                        <div class="inLabel bGreen">Date</div><input type="date" class="setData">
+                        <div class="inLabel bGreen" id="Description">Description</div>
+                        <input type="text" class="setDesc">
+                        <button class="defButton bGreen">Cancel</button><button
+                            class="defButton bGreen">Confirm</button>
                     </div>
-                </div>
-                <div class="homepage">
-                    <div class="blackScreen slide" id="blackscreen">
-						<div class="popUP slide hidden" id="createEvent">
-							<div class="inLabel bGreen" id="eventName">{event name}</div>
-							<div class="inLabel bGreen">Date</div><input type="date" class="setData">
-							<div class="inLabel bGreen" id="desctiption">Description</div>
-							<input type="text" class="setDesc">
-							<button class="defButton bGreen">Cancel</button><button class="defButton bGreen">Confirm</button>
-						</div>
-                        <div class="popUP hidden">
-                            <div class="inLabel bGreen" id="eventName">{event name}</div>
-                            <div class="descContainer bGreen">{descrizione}
-                                Հայերեն Shqip لعربية Български Català 中文简体 Hrski Česky Dansk Nederlands English Eesti Filipino Suomi Français ქართული Deutsch Ελληνικά ‫עברית हिन्दी Magyar Indonesia Italiano Latviski Lietuviškai македонски Melayu Norsk Polski Português Româna Pyccкий Српски Slovenčina Slovenščina Español Svenska ไทย Türkçe Українська Tiếng Việt
-                                Lorem Ipsum
-                                "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
-                                "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
-                                
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus fermentum ultricies. Proin dignissim magna eget ex tincidunt sodales. Nam nec lectus ac libero tristique hendrerit placerat ut metus. Vestibulum tempus sodales dolor, eget tristique urna scelerisque eget. Quisque eros metus, vulputate pretium lectus eu, suscipit gravida dui. Nullam pulvinar porttitor convallis. Fusce tempus posuere sem, sit amet feugiat turpis porta fermentum. Vestibulum ornare laoreet dapibus. Curabitur sollicitudin blandit lectus in dapibus. Nulla interdum in neque vel elementum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis eu bibendum orci, sit amet auctor nulla.
-                                
-                                Ut tortor odio, dignissim quis leo eget, ultricies ornare eros. Nunc egestas velit ac rhoncus commodo. Aliquam erat volutpat. Cras iaculis tellus porta nibh suscipit gravida. Praesent sit amet fermentum quam. Cras auctor fermentum mi eget tincidunt. Etiam egestas ex nec porta hendrerit. Nulla auctor mi justo, nec aliquet erat gravida eget. Suspendisse id ipsum at enim bibendum pretium et sed lorem. Quisque finibus eros nisi, sit amet volutpat arcu euismod sit amet. Donec vitae nunc sit amet felis malesuada accumsan. Quisque sit amet aliquam arcu, pretium egestas ipsum. Suspendisse placerat eu purus quis feugiat. Aenean vehicula pulvinar sapien, id dignissim dui rhoncus eu. Nullam neque dolor, porta et tortor non, bibendum cursus risus.
-                                
-                                Sed pulvinar sodales leo, quis venenatis turpis blandit id. Praesent consectetur posuere ipsum. Pellentesque dapibus maximus eros, ut cursus velit. Etiam in elementum lorem. Fusce gravida enim at pulvinar pellentesque. Integer at ipsum urna. Integer ut pretium lacus, ac efficitur felis. Donec porttitor, ante sed sollicitudin fringilla, ante justo tempor nunc, sit amet efficitur libero libero in augue. Duis eleifend porta eros, vel aliquam mi commodo non.
-                                
-                                In vel tempus dui, a eleifend tortor. Etiam dignissim ultricies nisl, a tincidunt nisl pellentesque nec. Donec quis convallis turpis, nec feugiat elit. Donec sed ligula consectetur, cursus quam at, posuere odio. Nulla vestibulum, turpis ac viverra iaculis, odio metus maximus leo, id varius neque sem id mauris. Duis ligula lectus, ornare id egestas ut, tristique a sapien. Duis sodales nec metus et molestie. Duis tincidunt, turpis non facilisis porttitor, libero enim facilisis diam, ut venenatis ante eros quis ante. Nunc at libero nisi. Duis nulla ante, rutrum vitae dolor id, faucibus bibendum dui. Integer condimentum sed velit quis ultrices. Vivamus sit amet vestibulum elit. Mauris et mattis arcu.
-                                
-                                Pellentesque at rutrum felis. Nulla varius nulla id nisi viverra eleifend. Pellentesque risus urna, laoreet ac elit congue, dictum facilisis arcu. Quisque quam orci, vehicula ut sagittis sed, iaculis vel odio. Phasellus eu interdum nibh, non ornare mauris. Praesent lectus est, feugiat vitae tortor non, mollis rutrum lectus. Aenean posuere lorem ac rhoncus placerat. Etiam nec ligula et nisi egestas consectetur suscipit vel leo. Morbi eget mollis enim. Donec egestas facilisis bibendum. Sed a turpis dui. Nullam imperdiet placerat feugiat. Donec eu nunc sit amet diam aliquet vulputate ut sed diam. Nulla facilisi.
-                                Generated 5 paragraphs, 479 words, 3209 bytes of Lorem Ipsum
-                                help@lipsum.com
-                                Privacy Policy ·
-                                Freestar
-                            </div>
+                    <div class="popUP hidden" id="eventView">
+                        <div class="inLabel bGreen hidden" id="eventName">{event name}</div>
+                        <div class="descContainer bGreen hidden" id="eventDesc">{descrizione}
+                            Հայերեն Shqip لعربية Български Català 中文简体 Hrski Česky Dansk Nederlands English Eesti
+                            Filipino Suomi Français ქართული Deutsch Ελληνικά ‫עברית हिन्दी Magyar Indonesia Italiano
+                            Latviski Lietuviškai македонски Melayu Norsk Polski Português Româna Pyccкий Српски
+                            Slovenčina Slovenščina Español Svenska ไทย Türkçe Українська Tiếng Việt
+                            Lorem Ipsum
+                            "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+                            velit..."
+                            "There is no one who loves pain itself, who seeks after it and wants to have it, simply
+                            because it is pain..."
+
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus fermentum
+                            ultricies. Proin dignissim magna eget ex tincidunt sodales. Nam nec lectus ac libero
+                            tristique hendrerit placerat ut metus. Vestibulum tempus sodales dolor, eget tristique urna
+                            scelerisque eget. Quisque eros metus, vulputate pretium lectus eu, suscipit gravida dui.
+                            Nullam pulvinar porttitor convallis. Fusce tempus posuere sem, sit amet feugiat turpis porta
+                            fermentum. Vestibulum ornare laoreet dapibus. Curabitur sollicitudin blandit lectus in
+                            dapibus. Nulla interdum in neque vel elementum. Interdum et malesuada fames ac ante ipsum
+                            primis in faucibus. Duis eu bibendum orci, sit amet auctor nulla.
+
+                            Ut tortor odio, dignissim quis leo eget, ultricies ornare eros. Nunc egestas velit ac
+                            rhoncus commodo. Aliquam erat volutpat. Cras iaculis tellus porta nibh suscipit gravida.
+                            Praesent sit amet fermentum quam. Cras auctor fermentum mi eget tincidunt. Etiam egestas ex
+                            nec porta hendrerit. Nulla auctor mi justo, nec aliquet erat gravida eget. Suspendisse id
+                            ipsum at enim bibendum pretium et sed lorem. Quisque finibus eros nisi, sit amet volutpat
+                            arcu euismod sit amet. Donec vitae nunc sit amet felis malesuada accumsan. Quisque sit amet
+                            aliquam arcu, pretium egestas ipsum. Suspendisse placerat eu purus quis feugiat. Aenean
+                            vehicula pulvinar sapien, id dignissim dui rhoncus eu. Nullam neque dolor, porta et tortor
+                            non, bibendum cursus risus.
+
+                            Sed pulvinar sodales leo, quis venenatis turpis blandit id. Praesent consectetur posuere
+                            ipsum. Pellentesque dapibus maximus eros, ut cursus velit. Etiam in elementum lorem. Fusce
+                            gravida enim at pulvinar pellentesque. Integer at ipsum urna. Integer ut pretium lacus, ac
+                            efficitur felis. Donec porttitor, ante sed sollicitudin fringilla, ante justo tempor nunc,
+                            sit amet efficitur libero libero in augue. Duis eleifend porta eros, vel aliquam mi commodo
+                            non.
+
+                            In vel tempus dui, a eleifend tortor. Etiam dignissim ultricies nisl, a tincidunt nisl
+                            pellentesque nec. Donec quis convallis turpis, nec feugiat elit. Donec sed ligula
+                            consectetur, cursus quam at, posuere odio. Nulla vestibulum, turpis ac viverra iaculis, odio
+                            metus maximus leo, id varius neque sem id mauris. Duis ligula lectus, ornare id egestas ut,
+                            tristique a sapien. Duis sodales nec metus et molestie. Duis tincidunt, turpis non facilisis
+                            porttitor, libero enim facilisis diam, ut venenatis ante eros quis ante. Nunc at libero
+                            nisi. Duis nulla ante, rutrum vitae dolor id, faucibus bibendum dui. Integer condimentum sed
+                            velit quis ultrices. Vivamus sit amet vestibulum elit. Mauris et mattis arcu.
+
+                            Pellentesque at rutrum felis. Nulla varius nulla id nisi viverra eleifend. Pellentesque
+                            risus urna, laoreet ac elit congue, dictum facilisis arcu. Quisque quam orci, vehicula ut
+                            sagittis sed, iaculis vel odio. Phasellus eu interdum nibh, non ornare mauris. Praesent
+                            lectus est, feugiat vitae tortor non, mollis rutrum lectus. Aenean posuere lorem ac rhoncus
+                            placerat. Etiam nec ligula et nisi egestas consectetur suscipit vel leo. Morbi eget mollis
+                            enim. Donec egestas facilisis bibendum. Sed a turpis dui. Nullam imperdiet placerat feugiat.
+                            Donec eu nunc sit amet diam aliquet vulputate ut sed diam. Nulla facilisi.
+                            Generated 5 paragraphs, 479 words, 3209 bytes of Lorem Ipsum
+                            help@lipsum.com
+                            Privacy Policy ·
+                            Freestar
                         </div>
-					</div>
-					<h1 class="welcomingMessage">Welcome <b class="green" id="displayUsername">{username}</b></h1>
-                    <div class="azioniRapideMobile">
-                        <button class="rapidoMob , bGreen" onclick=""><img src="resources/clock.svg" alt="" class="imgRapido"> Schedule</button>
-                        <button class="rapidoMob , bGreen" onclick=""><img src="resources/calendar.svg" alt="" class="imgRapido"> Calendar</button>
-                        <button class="rapidoMob , bGreen" onclick=""><img src="resources/test.svg" alt="" class="imgRapido"> Grades</button>
-                    </div>
-                    
-                    <button onclick="toEventSlide('blackScreen') ,toEventSlide('createEvent')" class="addEvent bGreen">➕</button>
-                    
-                    <div class="upcomingEvents">
-                        
-
-                    </div>
-                    <div class="utilsDesktop">
-                        <div class="calendario" id="calendar"><!---->
-                            
-                        </div>
-                        <div class="motivational">
-                            <img src="resources/books.svg" alt=""class="motivationalImg"> 
-                        </div>
                     </div>
                 </div>
-                <div class="pulsanteBarra">
-                    <button class="apri , bGreen">
-                        <img src="resources/sideBar.svg" alt="" >
-                    </button>
+                <h1 class="welcomingMessage">Welcome <b class="" id="displayUsername">{username}</b></h1>
+                <div class="azioniRapideMobile">
+                    <button class="rapidoMob , bGreen" onclick=""><img src="resources/clock.svg" alt=""
+                            class="imgRapido"> Schedule</button>
+                    <button class="rapidoMob , bGreen" onclick=""><img src="resources/calendar.svg" alt=""
+                            class="imgRapido"> Calendar</button>
+                    <button class="rapidoMob , bGreen" onclick=""><img src="resources/test.svg" alt=""
+                            class="imgRapido"> Grades</button>
                 </div>
 
-                <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
+                <button onclick="eventCreation()"
+                    class="addEvent bGreen">➕</button>
+
+                <div class="upcomingEvents bGreen">
+
+                </div>
+                <div class="utilsDesktop">
+                    <div class="calendario bGreen" id="calendar"><!---->
+
+                    </div>
+                    <div class="motivational bGreen">
+                        <img src="resources/books.svg" alt="" class="motivationalImg bGreen">
+                    </div>
+                </div>
+            </div>
+            <div class="pulsanteBarra">
+                <button class="apri , bGreen" onclick="toSlide('barraLaterale')">
+                    <img src="resources/sideBar.svg" alt="">
+                </button>
+            </div>
+
+            <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
                     var calendarEl = document.getElementById('calendar');
                     var calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth'
+                        initialView: 'dayGridMonth'
                     });
                     calendar.render();
-                    });
-                </script>
-                <script type="text/javascript">
-                    loadFromStorage();
-                </script>
-            </div>
+                });
+            </script>
+            <script type="text/javascript">
+                loadFromStorage();
+            </script>
+            <script type="text/javascript">
+                set_theme();
+            </script>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
-
-

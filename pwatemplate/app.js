@@ -199,6 +199,25 @@ function cancelEvent() {
 }
 
 /*
+  funzione per generare la lista degli eventi nella home
+*/
+function regenerateEventList() {
+  if (events.length > 0) {
+    let elenco = document.getElementById("upcomingEvents");
+    elenco.innerHTML = "";
+    for (let i = 0; i < events.length; i++) {
+      let d = document.createElement("div");
+      let b=document.createElement("p");
+      b.innerText=events[i].name;
+      b.classList.add("white");
+      d.classList.add("appContainer");
+      d.appendChild(b);
+      elenco.appendChild(d);
+    }
+  }
+}
+
+/*
   modifica alcune classi di alcuni elementi per far apparire la barra laterale
 */
 function openSideBar() {

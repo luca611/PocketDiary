@@ -56,6 +56,10 @@ Event.prototype = {
   },
 };
 
+/*
+  funzione eseguita alla'apertura dell'app la prima volta
+  rileva il nome scelto (>= di 3 caratteri), lo scrive nella homepage e lo salva
+*/
 function welcome() {
   name = document.getElementById("input_nome").value;
   //console.log(name);
@@ -66,6 +70,10 @@ function welcome() {
   save();
 }
 
+/*
+  fa l'animazione della selezione dei pulsanti del tema
+  rileva e imposta il tema dell'app
+*/
 function theme_choose(idB) {
   document.getElementById("greenB").classList.remove("selected_m");
   document.getElementById("greenI").classList.remove("selected");
@@ -159,6 +167,9 @@ function openEventCreation() {
   document.getElementById("eventView").style.zIndex = "-2"; //non è il modo piu' etico che ci sia ma fa il suo lavoro per ora
 }
 
+/*
+  aggiunge un nuovo evento all'elenco prendendo i valori inseriti nel popUp
+*/
 function confirmEvent() {
   let e = new Event("", document.getElementById("inputDate").value, document.getElementById("inputDesc").value);
   //console.log(e);
@@ -186,6 +197,9 @@ function cancelEvent() {
   document.getElementById("createEvent").classList.add("hidden");
 }
 
+/*
+  modifica alcune classi di alcuni elementi per far apparire la barra laterale
+*/
 function openSideBar() {
   document.getElementById("barraChiusa").classList.remove("barraLaterale");
   document.getElementById("barraChiusa").classList.add("aperta");
@@ -195,6 +209,9 @@ function openSideBar() {
   document.getElementById("barraAperta").classList.remove("hidden");
 }
 
+/*
+  carica il nome utente, il tema scelto e gli eventi salvati dal localstorage
+*/
 function loadFromStorage() {
   try {
     name = JSON.parse(localStorage.name);
@@ -217,12 +234,18 @@ function loadFromStorage() {
   toSlide("home");
 }
 
+/*
+  salva nome, tema ed eventi nel localstorage
+*/
 function save() {
   localStorage.name = JSON.stringify(name);
   localStorage.theme = JSON.stringify(theme);
   localStorage.events = JSON.stringify(events);
 }
 
+/*
+  cambia la slide visualizzata a schermo rendendo intabbabile le altre
+*/
 function toSlide(id) {
   document.querySelectorAll("div.slide").forEach(function (e) {
     e.classList.add("hidden");

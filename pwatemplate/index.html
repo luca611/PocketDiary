@@ -46,11 +46,13 @@
 
     <div class="mainApp hidden slide" id="home"><!--mainApp-->
         <div class="appContainer">
+            <div class="hidden" id="scuro"> <!-- AGGIUNTO PER FAR DIVENTARE TUTTO SCURO ECCETTO LA BARRA APERTA, SCONSIGLIO DI MODIFICARE QUELLO DEI POPUP CON QUESTO, sostituire "hidden" con "scuro"-->
+            </div>
             <div class="esciBarra hidden">
                 <button onclick="" class="exit"></button>
             </div>
-            <div class="barraLaterale bGreen">
-                <div class="iconeRidotte">
+            <div class="barraLaterale bGreen "> <!--SOSTITUIRE BARRALATERALE CON "aperta" PER VEDERE LA BARRA APERTA-->
+                <div class="iconeRidotte"> <!--METTERE QUESTO A "hidden" QUANDO APERTA-->
                     <button class="rapido" onclick=""><img src="resources/school.svg" alt="" class="imgRapido"></button>
                     <button class="rapido" onclick=""><img src="resources/clock.svg" alt="" class="imgRapido"></button>
                     <button class="rapido" onclick=""><img src="resources/calendar.svg" alt=""
@@ -58,6 +60,17 @@
                     <button class="rapido" onclick=""><img src="resources/test.svg" alt="" class="imgRapido"></button>
                     <button class="rapido , settings" onclick=""><img src="resources/settings.svg" alt=""
                             class="imgRapido"></button>
+                </div>
+
+                <div class="barraContenuto  , hidden">
+                    <h2 class="white">My pocket diary</h2>
+                    <button class="elemntoBarra" onclick=""><img src="resources/school.svg" alt="" class="imgRapido"><b class="white">Home</b> </button><br><hr class="separaOpzioni">
+                    <button class="elemntoBarra" onclick=""><img src="resources/clock.svg" alt="" class="imgRapido"> <b class="white">Schedule</b></button><br><hr class="separaOpzioni">
+                    <button class="elemntoBarra" onclick=""><img src="resources/calendar.svg" alt=""
+                            class="imgRapido"> <b class="white">Calendar</b></button><br><hr class="separaOpzioni">
+                    <button class="elemntoBarra" onclick=""><img src="resources/test.svg" alt="" class="imgRapido"> <b class="white">Marks</b></button><br><hr class="separaOpzioni">
+                    <button class="elemntoBarra , settingsContenuto" onclick=""><img src="resources/settings.svg" alt=""
+                            class="imgRapido"> <b class="white">Settings</b></button><br>
                 </div>
             </div>
             <div class="homepage">

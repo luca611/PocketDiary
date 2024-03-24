@@ -67,6 +67,20 @@ html,body {
     align-items: center;
 }
 
+.white{
+    color: white;
+    font-family: "itim";
+}
+
+.aperta{
+    z-index: 99;
+    width: 30%;
+    align-self: self-start;
+    position: absolute;
+    height: 100%;
+    border-radius: 1rem;
+    margin-left: 0;
+}
 .barraLaterale{
     align-self: self-start;
     position: absolute;
@@ -241,6 +255,33 @@ html,body {
     transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
 }
 
+.elemntoBarra {
+    width: 90%;
+    height: 50px;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.3rem;
+    background-color: transparent;
+    
+    display: flex;
+    margin-bottom: -1rem;
+    margin-top: 0.3rem;
+    align-items: center;
+    justify-content: left;
+    font-size: 1rem;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.elemntoBarra:hover {
+    transition: background-color 0.3s; 
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.separaOpzioni{
+    width: 80%;
+    border: solid  rgba(184, 184, 184, 0.17) 0.1rem;
+}
 .imgRapido{
     width: 2rem;
     fill: white;
@@ -283,11 +324,17 @@ html,body {
     top: 2rem;
     left: 7rem;
 }
+.settingsContenuto{
+    position: absolute;
+    bottom: 2rem;
+}
+
 .settings{
     position: absolute;
     bottom: 0.5rem;
     left: 0.65rem;
 }
+
 
 .apri:hover{
     filter: brightness(80%);
@@ -307,6 +354,16 @@ html,body {
 
 .hidden{
     display: none;
+    z-index: -6;
+}
+
+.scuro{
+    z-index: 98;
+    border-radius: 1rem;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.33);
 }
 .tema{
     width: 100%;
@@ -531,6 +588,16 @@ html,body {
     
     .blackScreen{
         position: fixed;
+    }
+
+    .aperta{
+        z-index: 99;
+        width: 60%;
+        align-self: self-start;
+        position: absolute;
+        height: 100%;
+        border-radius: 1rem;
+        margin-left: 0;
     }
 
     .bottScelta{

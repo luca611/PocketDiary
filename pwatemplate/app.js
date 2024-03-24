@@ -155,6 +155,7 @@ function eventCreation() {
   });
   document.getElementById("blackscreen").classList.remove("hidden");
   document.getElementById("createEvent").classList.remove("hidden");
+  document.getElementById("eventView").style.zIndex = "-2"; //non è il modo piu' etico che ci sia ma fa il suo lavoro per ora
 }
 
 function apriChiudiBarra() {

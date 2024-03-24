@@ -143,8 +143,9 @@ function set_theme() {
 }
 /*
   funzione eseguita la clic del +
+  mette il popup in sovraimpressione alla homepage
 */
-function eventCreation() {
+function openEventCreation() {
   document.querySelectorAll("div.homepage").forEach(function (e) {
     e.querySelectorAll("*").forEach(function (e2) {
       e2.tabIndex = "-1";
@@ -156,6 +157,24 @@ function eventCreation() {
   document.getElementById("blackscreen").classList.remove("hidden");
   document.getElementById("createEvent").classList.remove("hidden");
   document.getElementById("eventView").style.zIndex = "-2"; //non è il modo piu' etico che ci sia ma fa il suo lavoro per ora
+
+}
+
+/*
+  fa sparire il popup e torna alla home normale
+  i dati messi nei form restano ma non sono memorizzati
+*/
+function annullaEvento(){
+  document.querySelectorAll("div.homepage").forEach(function (e) {
+    e.querySelectorAll("*").forEach(function (e2) {
+      e2.tabIndex = "0";
+    });
+  });
+  document.getElementById("blackscreen").querySelectorAll("*").forEach(function (e) {
+    e.tabIndex = "-1";
+  });
+  document.getElementById("blackscreen").classList.add("hidden");
+  document.getElementById("createEvent").classList.add("hidden");
 }
 
 function apriChiudiBarra() {

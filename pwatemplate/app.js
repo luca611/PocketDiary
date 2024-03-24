@@ -175,6 +175,7 @@ function confirmEvent() {
   //console.log(e);
   events.push(e);
   save();
+  regenerateEventList();
   document.getElementById("inputName").value = "";
   document.getElementById("inputDate").value = "";
   document.getElementById("inputDesc").value = "";
@@ -206,14 +207,24 @@ function regenerateEventList() {
     let elenco = document.getElementById("upcomingEvents");
     elenco.innerHTML = "";
     for (let i = 0; i < events.length; i++) {
-      let d = document.createElement("div");
-      let b=document.createElement("p");
-      b.innerText=events[i].name;
-      b.classList.add("white");
-      d.classList.add("events");
-      d.appendChild(b);
-      elenco.appendChild(d);
+      let evento = document.createElement("div");
+      evento.classList.add("events");
+      let b = document.createElement("div");
+      b.innerText = events[i].name;
+      evento.appendChild(b);
+      b = document.createElement("div");
+      b.innerText = events[i].date.getDay() + "/" + events[i].date.getMonth() + "/" + events[i].date.getFullYear();
+      evento.appendChild(b);
+      b = document.createElement("br");
+      evento.appendChild(b);
+      b = document.createElement("button");
+      b.innerText = "Description";
+      b.classList.add("defButton");
+      b.classList.add("bGreen");
+      evento.appendChild(b);
+      elenco.appendChild(evento);
     }
+    set_theme();
   }
 }
 

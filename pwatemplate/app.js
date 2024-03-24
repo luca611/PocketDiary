@@ -150,21 +150,30 @@ function openEventCreation() {
     e.querySelectorAll("*").forEach(function (e2) {
       e2.tabIndex = "-1";
     });
-  });  
+  });
   document.getElementById("blackscreen").querySelectorAll("*").forEach(function (e) {
     e.tabIndex = "";
   });
   document.getElementById("blackscreen").classList.remove("hidden");
   document.getElementById("createEvent").classList.remove("hidden");
   document.getElementById("eventView").style.zIndex = "-2"; //non è il modo piu' etico che ci sia ma fa il suo lavoro per ora
+}
 
+function confirmEvent() {
+  let e = new Event("", document.getElementById("inputDate").value, document.getElementById("inputDesc").value);
+  //console.log(e);
+  events.push(e);
+  save();
+  document.getElementById("inputDate").value = "";
+  document.getElementById("inputDesc").value = "";
+  cancelEvent();  //per semplicità chiamo questa anche se non viene cancellato l'evento
 }
 
 /*
   fa sparire il popup e torna alla home normale
   i dati messi nei form restano ma non sono memorizzati
 */
-function annullaEvento(){
+function cancelEvent() {
   document.querySelectorAll("div.homepage").forEach(function (e) {
     e.querySelectorAll("*").forEach(function (e2) {
       e2.tabIndex = "0";
@@ -186,6 +195,15 @@ function loadFromStorage() {
     name = JSON.parse(localStorage.name);
     theme = JSON.parse(localStorage.theme);
     document.getElementById("displayUsername").innerText = name;
+    try {
+      events = JSON.parse(localStorage.events);
+      for (let i = 0; i < events.length; i++) {
+        events[i] = new Event(events[i].name, events[i].date, events[i].desc);
+        console.log(events[i]);
+      }
+    } catch (ex) {
+      events = [];
+    }
     console.log("Nome: " + name + "\nTema: " + theme);
   } catch (ex) {
     document.getElementById("start").classList.remove("hidden");
@@ -197,6 +215,7 @@ function loadFromStorage() {
 function save() {
   localStorage.name = JSON.stringify(name);
   localStorage.theme = JSON.stringify(theme);
+  localStorage.events = JSON.stringify(events);
 }
 
 function toSlide(id) {

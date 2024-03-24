@@ -171,10 +171,11 @@ function openEventCreation() {
   aggiunge un nuovo evento all'elenco prendendo i valori inseriti nel popUp
 */
 function confirmEvent() {
-  let e = new Event("", document.getElementById("inputDate").value, document.getElementById("inputDesc").value);
+  let e = new Event(document.getElementById("inputName").value, document.getElementById("inputDate").value, document.getElementById("inputDesc").value);
   //console.log(e);
   events.push(e);
   save();
+  document.getElementById("inputName").value = "";
   document.getElementById("inputDate").value = "";
   document.getElementById("inputDesc").value = "";
   cancelEvent();  //per semplicità chiamo questa anche se non viene cancellato l'evento

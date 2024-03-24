@@ -46,12 +46,14 @@
 
     <div class="mainApp hidden slide" id="home"><!--mainApp-->
         <div class="appContainer">
-            <div class="hidden" id="scuro"> <!-- AGGIUNTO PER FAR DIVENTARE TUTTO SCURO ECCETTO LA BARRA APERTA, SCONSIGLIO DI MODIFICARE QUELLO DEI POPUP CON QUESTO, sostituire "hidden" con "scuro"-->
+            <div class="hidden" id="scuro">
+                <!-- AGGIUNTO PER FAR DIVENTARE TUTTO SCURO ECCETTO LA BARRA APERTA, SCONSIGLIO DI MODIFICARE QUELLO DEI POPUP CON QUESTO, sostituire "hidden" con "scuro"-->
             </div>
             <div class="esciBarra hidden">
                 <button onclick="" class="exit"></button>
             </div>
-            <div class="barraLaterale bGreen " id="barraChiusa"> <!--SOSTITUIRE BARRALATERALE CON "aperta" PER VEDERE LA BARRA APERTA-->
+            <div class="barraLaterale bGreen " id="barraChiusa">
+                <!--SOSTITUIRE BARRALATERALE CON "aperta" PER VEDERE LA BARRA APERTA-->
                 <div class="iconeRidotte" id="iconeRid"> <!--METTERE QUESTO A "hidden" QUANDO APERTA-->
                     <button class="rapido" onclick=""><img src="resources/school.svg" alt="" class="imgRapido"></button>
                     <button class="rapido" onclick=""><img src="resources/clock.svg" alt="" class="imgRapido"></button>
@@ -64,11 +66,18 @@
 
                 <div class="barraContenuto  , hidden" id="barraAperta">
                     <h2 class="white">My pocket diary</h2>
-                    <button class="elemntoBarra" onclick=""><img src="resources/school.svg" alt="" class="imgRapido"><b class="white">Home</b> </button><br><hr class="separaOpzioni">
-                    <button class="elemntoBarra" onclick=""><img src="resources/clock.svg" alt="" class="imgRapido"> <b class="white">Schedule</b></button><br><hr class="separaOpzioni">
-                    <button class="elemntoBarra" onclick=""><img src="resources/calendar.svg" alt=""
-                            class="imgRapido"> <b class="white">Calendar</b></button><br><hr class="separaOpzioni">
-                    <button class="elemntoBarra" onclick=""><img src="resources/test.svg" alt="" class="imgRapido"> <b class="white">Marks</b></button><br><hr class="separaOpzioni">
+                    <button class="elemntoBarra" onclick=""><img src="resources/school.svg" alt="" class="imgRapido"><b
+                            class="white">Home</b> </button><br>
+                    <hr class="separaOpzioni">
+                    <button class="elemntoBarra" onclick=""><img src="resources/clock.svg" alt="" class="imgRapido"> <b
+                            class="white">Schedule</b></button><br>
+                    <hr class="separaOpzioni">
+                    <button class="elemntoBarra" onclick=""><img src="resources/calendar.svg" alt="" class="imgRapido">
+                        <b class="white">Calendar</b></button><br>
+                    <hr class="separaOpzioni">
+                    <button class="elemntoBarra" onclick=""><img src="resources/test.svg" alt="" class="imgRapido"> <b
+                            class="white">Marks</b></button><br>
+                    <hr class="separaOpzioni">
                     <button class="elemntoBarra , settingsContenuto" onclick=""><img src="resources/settings.svg" alt=""
                             class="imgRapido"> <b class="white">Settings</b></button><br>
                 </div>
@@ -76,14 +85,15 @@
             <div class="homepage">
                 <div class="blackScreen hidden" id="blackscreen">
                     <div class="hidden popUP" id="createEvent">
-                        <div class="inLabel bGreen" id="eventName">{event name}</div>
+                        <div class="inLabel bGreen" id="eventName">Insert event name</div><input type="text"
+                            class="setName" id="inputName">
                         <div class="inLabel bGreen">Date</div><input type="date" class="setData" id="inputDate">
                         <div class="inLabel bGreen" id="Description">Description</div>
                         <input type="text" class="setDesc" id="inputDesc">
                         <button class="defButton bGreen" onclick="cancelEvent()">Cancel</button><button
                             class="defButton bGreen" onclick="confirmEvent()">Confirm</button>
                     </div>
-                    
+
                     <div class="hidden popUP" id="eventView">
                         <div class="inLabel bGreen hidden" id="eventName">{event name}</div>
                         <div class="descContainer bGreen hidden" id="eventDesc">{descrizione}
@@ -149,15 +159,16 @@
                 <h1 class="welcomingMessage">Welcome <b class="" id="displayUsername">{username}</b></h1>
                 <div class="azioniRapideMobile">
                     <button class="rapidoMob , bGreen" onclick=""><img src="resources/clock.svg" alt=""
-                            class="imgRapido"> Schedule</button>
+                            class="imgRapido">
+                        Schedule</button>
                     <button class="rapidoMob , bGreen" onclick=""><img src="resources/calendar.svg" alt=""
                             class="imgRapido"> Calendar</button>
                     <button class="rapidoMob , bGreen" onclick=""><img src="resources/test.svg" alt=""
-                            class="imgRapido"> Grades</button>
+                            class="imgRapido">
+                        Grades</button>
                 </div>
 
-                <button onclick="openEventCreation()"
-                    class="addEvent bGreen">➕</button>
+                <button onclick="openEventCreation()" class="addEvent bGreen">➕</button>
 
                 <div class="upcomingEvents bGreen">
 

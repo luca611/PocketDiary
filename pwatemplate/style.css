@@ -1,20 +1,21 @@
-html,body {
+html,
+body {
     height: 100%;
-    
+
     background-color: white;
     margin: 0;
     padding: 0;
     overflow-x: hidden
 }
 
-.slide{
+.slide {
     width: 100%;
     height: 100%;
 }
 
 ::selection {
-    background:burlywood;
-  }
+    background: burlywood;
+}
 
 @font-face {
     font-family: 'itim';
@@ -22,7 +23,7 @@ html,body {
     font-weight: normal;
 }
 
-.sfondo{
+.sfondo {
     position: fixed;
     top: 0;
     left: 0;
@@ -32,7 +33,7 @@ html,body {
     opacity: 100%;
 }
 
-.login{
+.login {
     font-family: "itim";
     text-align: center;
     z-index: 2;
@@ -49,7 +50,7 @@ html,body {
     align-items: center;
 }
 
-.appContainer{
+.appContainer {
     background-color: rgb(255, 255, 255);
     font-family: "itim";
     text-align: center;
@@ -67,12 +68,12 @@ html,body {
     align-items: center;
 }
 
-.white{
+.white {
     color: white;
     font-family: "itim";
 }
 
-.aperta{
+.aperta {
     z-index: 99;
     width: 30%;
     align-self: self-start;
@@ -81,7 +82,8 @@ html,body {
     border-radius: 1rem;
     margin-left: 0;
 }
-.barraLaterale{
+
+.barraLaterale {
     align-self: self-start;
     position: absolute;
     height: 100%;
@@ -90,65 +92,75 @@ html,body {
     margin-left: 0;
 }
 
-.blackScreen{
-	position: absolute; 
-	background-color: rgba(0,0,0,0.41); 
-	height: 100%;
-	width: 100%;
-	z-index: 99;
-	border-radius: 1rem;
+.blackScreen {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.41);
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+    border-radius: 1rem;
 }
 
-.popUPadd{
-	display: flex;
-	flex-direction: column;
-	top: 30%;
-	left: 30%;
-	position: absolute;
-	width: 40%;
-	height: auto; 
-	background-color: white;
-	border-radius: 1rem;
-	grid-template-rows: 50%;
-	padding: 1rem;
+.popUPadd {
+    display: flex;
+    flex-direction: column;
+    top: 30%;
+    left: 30%;
+    position: absolute;
+    width: 40%;
+    height: auto;
+    background-color: white;
+    border-radius: 1rem;
+    grid-template-rows: 50%;
+    padding: 1rem;
 }
 
-.defButton{
-	font-family: "itim";
-	padding: 1rem;
-	border-radius: 1rem;
-	margin-bottom: 0.3rem;
-	border: none;
-	transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+.defButton {
+    font-family: "itim";
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 0.3rem;
+    border: none;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
 }
 
-.defButton:hover{
-	transform: scale(0.99);
-	filter: brightness(80%);
+.defButton:hover {
+    transform: scale(0.99);
+    filter: brightness(80%);
 }
-.setDesc{
-	min-height: 5rem;
-	border-color: rgba(163,163,163,0.40);
-	border-radius: 1rem;margin-bottom: 0.5rem;
+
+.setDesc {
+    min-height: 5rem;
+    border-color: rgba(163, 163, 163, 0.40);
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
 }
-.setData{
-	padding: 0.5rem; 
-	border-top:none;
-	border-left: none;
-	border-right: none;
-	
+
+.setName {
+    min-height: 2rem;
+    border-color: rgba(163, 163, 163, 0.40);
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.setData {
+    padding: 0.5rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+
 }
 
 .inLabel {
-	border-radius: 0.5rem;
-	padding: 0.5rem;
-	margin-top: 0.5rem;
-	margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-.upcomingEvents{
+.upcomingEvents {
     background-color: #CCE1D4;
-    top: 10rem; 
+    top: 10rem;
     bottom: 5rem;
     left: 5rem;
     border-radius: 1rem;
@@ -164,12 +176,13 @@ html,body {
     text-align: center;
     overflow-y: auto;
 }
-.upcomingEvents > :last-child {
-    margin-bottom: 1rem; 
+
+.upcomingEvents> :last-child {
+    margin-bottom: 1rem;
 }
 
-.utilsDesktop{
-    top: 10rem; 
+.utilsDesktop {
+    top: 10rem;
     bottom: 5rem;
     border-radius: 1rem;
     height: auto;
@@ -179,7 +192,7 @@ html,body {
     margin-right: 2rem;
 }
 
-.selection{
+.selection {
     padding-top: 2rem;
     font-family: "itim";
     text-align: center;
@@ -197,7 +210,7 @@ html,body {
     align-items: center;
 }
 
-.welcome{
+.welcome {
     width: 100%;
     height: 100%;
     display: flex;
@@ -207,7 +220,7 @@ html,body {
     text-align: center;
 }
 
-.opzioni{
+.opzioni {
     justify-content: center;
     align-items: center;
     margin-bottom: 3rem;
@@ -215,7 +228,7 @@ html,body {
     padding-right: 3%;
 }
 
-.scelta{
+.scelta {
     margin-bottom: 1rem;
     margin-top: 1rem;
     border-radius: 90rem;
@@ -223,18 +236,18 @@ html,body {
     border: solid white 0.3rem
 }
 
-.scelta:hover{
+.scelta:hover {
     border: solid burlywood 0.3rem;
 }
 
 
-.bottScelta{
+.bottScelta {
     background-color: white;
     border: 0px;
     transition: transform 0.3s;
 }
 
-.themeSelection{
+.themeSelection {
     width: 100%;
     height: 100%;
     display: flex;
@@ -244,7 +257,7 @@ html,body {
     text-align: center;
 }
 
-.apri{
+.apri {
     position: absolute;
     top: 2rem;
     left: 1rem;
@@ -262,7 +275,7 @@ html,body {
     border-radius: 1rem;
     padding: 0.3rem;
     background-color: transparent;
-    
+
     display: flex;
     margin-bottom: -1rem;
     margin-top: 0.3rem;
@@ -274,21 +287,22 @@ html,body {
 }
 
 .elemntoBarra:hover {
-    transition: background-color 0.3s; 
+    transition: background-color 0.3s;
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-.separaOpzioni{
+.separaOpzioni {
     width: 80%;
-    border: solid  rgba(184, 184, 184, 0.17) 0.1rem;
+    border: solid rgba(184, 184, 184, 0.17) 0.1rem;
 }
-.imgRapido{
+
+.imgRapido {
     width: 2rem;
     fill: white;
     margin-right: 0.3rem;
 }
 
-.rapido{
+.rapido {
     margin-top: 0.3rem;
     margin-bottom: 0.3rem;
     background: none;
@@ -296,52 +310,53 @@ html,body {
     transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
 }
 
-.azioniRapideMobile{
+.azioniRapideMobile {
     display: none;
 }
 
 ::-webkit-scrollbar {
     width: 0.5rem;
-  }
-  
-  ::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-track {
     border-radius: 10px;
     height: 50%;
-  }
-  
-  ::-webkit-scrollbar-thumb {
+}
+
+::-webkit-scrollbar-thumb {
     background: rgb(204, 204, 204);
     border-radius: 10px;
-  }
-  
-.rapido:hover{
+}
+
+.rapido:hover {
     filter: brightness(80%);
     transform: rotate(20deg);
 }
 
-.welcomingMessage{
+.welcomingMessage {
     position: absolute;
     top: 2rem;
     left: 7rem;
 }
-.settingsContenuto{
+
+.settingsContenuto {
     position: absolute;
     bottom: 2rem;
 }
 
-.settings{
+.settings {
     position: absolute;
     bottom: 0.5rem;
     left: 0.65rem;
 }
 
 
-.apri:hover{
+.apri:hover {
     filter: brightness(80%);
     transform: rotate(20deg);
 }
 
-.mainApp{
+.mainApp {
     width: 100%;
     height: 100%;
     display: flex;
@@ -352,12 +367,12 @@ html,body {
 }
 
 
-.hidden{
+.hidden {
     display: none;
     z-index: -6;
 }
 
-.scuro{
+.scuro {
     z-index: 98;
     border-radius: 1rem;
     position: absolute;
@@ -365,7 +380,8 @@ html,body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.33);
 }
-.tema{
+
+.tema {
     width: 100%;
     height: auto;
     display: flex;
@@ -373,34 +389,34 @@ html,body {
     columns: 3;
 }
 
-.poketD{
+.poketD {
     color: burlywood;
 }
 
-.scelta{
+.scelta {
     max-width: 20rem;
     width: 50%;
     height: auto;
 }
 
-.imgWelcome{
+.imgWelcome {
     margin-top: 3rem;
     max-width: 12rem;
-    width: 50%; 
-    height: auto; 
+    width: 50%;
+    height: auto;
 }
 
-.separatoreLogin{
+.separatoreLogin {
     width: 40%;
     color: burlywood;
 }
 
-.separatoreTemi{
+.separatoreTemi {
     width: 60%;
     color: burlywood;
 }
 
-.nome{
+.nome {
     text-align: center;
     width: 20vh;
     height: 3rem;
@@ -410,7 +426,7 @@ html,body {
 }
 
 
-.continue{
+.continue {
     font-family: "itim";
     font-weight: bold;
     border-radius: 1rem;
@@ -420,24 +436,23 @@ html,body {
     height: 3rem;
     transition: transform 0.3s;
     margin-bottom: 3rem
-
 }
 
-.iconeRidotte{
-    margin-top:8rem;
+.iconeRidotte {
+    margin-top: 8rem;
 }
 
-.tip{
-    color:  dimgrey;
+.tip {
+    color: dimgrey;
 }
 
-.continue:hover{
+.continue:hover {
     filter: brightness(80%);
     color: white;
     transform: scale(1.5);
 }
 
-.rapidoMob{
+.rapidoMob {
     display: flex;
     align-items: center;
     margin-right: 1rem;
@@ -451,7 +466,7 @@ html,body {
     transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
 }
 
-.events{
+.events {
     margin-top: 1rem;
     background-color: white;
     width: 90%;
@@ -460,32 +475,35 @@ html,body {
     min-height: 5rem;
 }
 
-.rapidoMob:hover{
+.rapidoMob:hover {
     filter: brightness(80%);
     transform: scale(0.9);
 }
-.popUP{
+
+.popUP {
     display: flex;
     flex-direction: column;
     top: 20%;
     left: 30%;
     position: absolute;
     width: 40%;
-    height: auto; 
+    height: auto;
     background-color: white;
     border-radius: 1rem;
     grid-template-rows: 50%;
     padding: 1rem;
 }
-.blackScreen{
-	position: absolute; 
-	background-color: rgba(0,0,0,0.41); 
-	height: 100%;
-	width: 100%;
-	z-index: 99;
-    
-	border-radius: 1rem;
+
+.blackScreen {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.41);
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+
+    border-radius: 1rem;
 }
+
 .inLabel {
     border-radius: 0.5rem;
     padding: 0.5rem;
@@ -493,9 +511,9 @@ html,body {
     margin-bottom: 0.5rem;
 }
 
-.descContainer{
+.descContainer {
     display: flex;
-    overflow-y:auto;
+    overflow-y: auto;
     border-radius: 1rem;
     min-width: 90%;
     min-height: 20rem;
@@ -503,12 +521,12 @@ html,body {
     padding: 1rem;
 }
 
-.esciBarra{
+.esciBarra {
     width: 100%;
     height: 100%;
 }
 
-.exit{
+.exit {
     width: 100%;
     height: 100%;
     background-color: black;
@@ -516,7 +534,7 @@ html,body {
     border-radius: 1rem;
 }
 
-.noElements{
+.noElements {
     z-index: 4;
     height: 100%;
     width: 100%;
@@ -525,7 +543,7 @@ html,body {
     text-align: center;
 }
 
-.addEvent{
+.addEvent {
     position: absolute;
     top: 2rem;
     right: 2rem;
@@ -535,62 +553,66 @@ html,body {
     transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
 }
 
-.addEvent:hover{
+.addEvent:hover {
     filter: brightness(80%);
     transform: rotate(20deg) scale(1.1);
 }
 
-.selected{
-    border:solid rgb(222, 135, 135) 0.3rem;
+.selected {
+    border: solid rgb(222, 135, 135) 0.3rem;
 }
 
-.selected_m{
-   border: none;
+.selected_m {
+    border: none;
 }
 
 @media (max-width: 60em) {
 
-    .html{
+    .html {
         background-color: white;
     }
+
     .sfondo {
-        display: none; 
-        
+        display: none;
+
     }
-	
-	.blackScreen{
-		border-radius: 0;
-	}
-	.popUPadd{
-		width: 90%;
-		left: 2.5%;
-	}
+
+    .blackScreen {
+        border-radius: 0;
+    }
+
+    .popUPadd {
+        width: 90%;
+        left: 2.5%;
+    }
+
     body {
         background-color: white;
     }
-    
-    .welcome{
+
+    .welcome {
         width: 100%;
     }
 
-    .login{
+    .login {
         width: 100%;
     }
 
-    .appContainer{
+    .appContainer {
         margin-top: 0;
         margin-bottom: 0;
         object-fit: fill;
-        position: relative;;
+        position: relative;
+        ;
         width: 100%;
         height: 100%;
     }
-    
-    .blackScreen{
+
+    .blackScreen {
         position: fixed;
     }
 
-    .aperta{
+    .aperta {
         z-index: 99;
         width: 60%;
         align-self: self-start;
@@ -600,39 +622,39 @@ html,body {
         margin-left: 0;
     }
 
-    .bottScelta{
+    .bottScelta {
         background-color: rgb(192, 192, 192);
         border: solid white 0.3rem;
         border-radius: 2rem;
     }
 
-    .popUP{
+    .popUP {
         width: 80%;
         left: 5%;
     }
 
-    .bottScelta:hover{
+    .bottScelta:hover {
         border: solid burlywood 0.3rem;
     }
 
-    .mainApp{
+    .mainApp {
         margin: 0;
         padding: 0;
     }
 
-    .scelta:hover{
+    .scelta:hover {
         border: solid rgb(255, 255, 255) 0.3rem;
     }
 
-    .barraLaterale{
+    .barraLaterale {
         width: 0;
     }
-    
-    .iconeRidotte{
+
+    .iconeRidotte {
         display: none;
     }
 
-    .azioniRapideMobile{
+    .azioniRapideMobile {
         position: absolute;
         top: 8rem;
         left: 1rem;
@@ -641,21 +663,22 @@ html,body {
         max-width: 90%;
         padding-bottom: 0.2rem;
     }
-	
-	.defButton{
-		padding-top: 2rem;
-		padding-bottom: 2rem;
-        font-size: large;
-	}
 
-    .azioniRapideMobile > :last-child {
-        margin-right: 0.5rem; 
+    .defButton {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        font-size: large;
     }
-    .utilsDesktop{
+
+    .azioniRapideMobile> :last-child {
+        margin-right: 0.5rem;
+    }
+
+    .utilsDesktop {
         display: none;
     }
 
-    .upcomingEvents{
+    .upcomingEvents {
         position: absolute;
         margin: 0;
         margin-top: 2rem;
@@ -670,23 +693,24 @@ html,body {
         right: 2vh;
     }
 
-    .addEvent{
+    .addEvent {
         top: 12rem;
         left: 1rem;
         right: unset;
     }
-    .selected{
+
+    .selected {
         border: solid white 0.3rem;
     }
 
-    .selected_m{
-        border:solid rgb(222, 135, 135) 0.3rem;
+    .selected_m {
+        border: solid rgb(222, 135, 135) 0.3rem;
     }
 }
 
 
 
-.homepage{
+.homepage {
     padding: 0;
     margin: 0;
     display: flex;
@@ -696,45 +720,45 @@ html,body {
     bottom: 0;
 }
 
-.blue{
+.blue {
     color: #568A9A;
 }
 
-.green{
+.green {
     color: #569A65;
 }
 
-.yellow{
+.yellow {
     color: #BBB536;
 }
 
-.bBlue{
+.bBlue {
     background-color: #568A9A;
 }
 
-.bGreen{
+.bGreen {
     background-color: #569A65;
 }
 
-.bYellow{
+.bYellow {
     background-color: #BBB536;
 }
 
-.bBlueD{
+.bBlueD {
     background-color: #36697E;
 }
 
-.bGreenD{
+.bGreenD {
     background-color: #367E42;
 }
 
-.bYellowD{
+.bYellowD {
     background-color: #928C22;
 }
 
 
 
-.calendario{
+.calendario {
     height: 49%;
     padding: 1rem;
     width: 100%;
@@ -742,7 +766,7 @@ html,body {
     border-radius: 1rem;
 }
 
-.motivational{
+.motivational {
     display: flex;
     justify-content: center;
     height: 50%;
@@ -750,11 +774,8 @@ html,body {
     border-radius: 1rem;
 }
 
-.motivationalImg{
+.motivationalImg {
     position: relative;
     width: 49%;
     height: auto;
 }
-
-
-

@@ -77,10 +77,10 @@
                 <div class="blackScreen hidden" id="blackscreen">
                     <div class="hidden popUP" id="createEvent">
                         <div class="inLabel bGreen" id="eventName">{event name}</div>
-                        <div class="inLabel bGreen">Date</div><input type="date" class="setData">
+                        <div class="inLabel bGreen">Date</div><input type="date" class="setData" id="inputDate">
                         <div class="inLabel bGreen" id="Description">Description</div>
-                        <input type="text" class="setDesc">
-                        <button class="defButton bGreen">Cancel</button><button
+                        <input type="text" class="setDesc" id="inputDesc">
+                        <button class="defButton bGreen" onclick="annullaEvento()">Cancel</button><button
                             class="defButton bGreen">Confirm</button>
                     </div>
                     
@@ -156,7 +156,7 @@
                             class="imgRapido"> Grades</button>
                 </div>
 
-                <button onclick="eventCreation()"
+                <button onclick="openEventCreation()"
                     class="addEvent bGreen">➕</button>
 
                 <div class="upcomingEvents bGreen">
@@ -172,7 +172,7 @@
                 </div>
             </div>
             <div class="pulsanteBarra">
-                <button class="apri , bGreen" onclick="toSlide('barraLaterale')">
+                <button class="apri , bGreen" onclick="">
                     <img src="resources/sideBar.svg" alt="">
                 </button>
             </div>

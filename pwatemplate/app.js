@@ -210,7 +210,7 @@ function regenerateEventList() {
       let b=document.createElement("p");
       b.innerText=events[i].name;
       b.classList.add("white");
-      d.classList.add("appContainer");
+      d.classList.add("events");
       d.appendChild(b);
       elenco.appendChild(d);
     }

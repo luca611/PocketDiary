@@ -186,8 +186,13 @@ function cancelEvent() {
   document.getElementById("createEvent").classList.add("hidden");
 }
 
-function apriChiudiBarra() {
-  //document.getElementById("barraLaterale").classList.toggle("chiusa");
+function openSideBar() {
+  document.getElementById("barraChiusa").classList.remove("barraLaterale");
+  document.getElementById("barraChiusa").classList.add("aperta");
+  document.getElementById("scuro").classList.remove("hidden");
+  document.getElementById("scuro").classList.add("scuro");
+  document.getElementById("iconeRid").classList.add("hidden");
+  document.getElementById("barraAperta").classList.remove("hidden");
 }
 
 function loadFromStorage() {

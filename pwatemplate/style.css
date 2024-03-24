@@ -170,6 +170,7 @@ body {
     margin-top: 10rem;
     margin-left: 5rem;
     margin-bottom: 3rem;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -533,6 +534,11 @@ body {
     opacity: 40%;
     border-radius: 1rem;
 }
+
+.placeHolderEvents{
+    margin-top: 40%;
+}
+
 
 .noElements {
     z-index: 4;

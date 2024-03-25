@@ -241,6 +241,18 @@ function openSideBar() {
 }
 
 /*
+  modifica alcune classi di alcuni elementi per far scomparire la barra laterale
+*/
+function closeSideBar() {
+  document.getElementById("barraChiusa").classList.remove("aperta");
+  document.getElementById("barraChiusa").classList.add("barraLaterale");
+  document.getElementById("scuro").classList.remove("scuro");
+  document.getElementById("scuro").classList.add("hidden");
+  document.getElementById("iconeRid").classList.remove("hidden");
+  document.getElementById("barraAperta").classList.add("hidden");
+}
+
+/*
   carica il nome utente, il tema scelto e gli eventi salvati dal localstorage
 */
 function loadFromStorage() {

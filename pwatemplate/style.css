@@ -537,7 +537,8 @@ body {
 }
 
 .placeHolderEvents{
-    margin-top: 40%; /*INSERITO QUA*/
+    display: absolute;
+    margin-top: 20%; /*INSERITO QUA*/
 }
 
 

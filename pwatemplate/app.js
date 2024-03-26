@@ -209,18 +209,46 @@ function regenerateEventList() {
     for (let i = 0; i < events.length; i++) {
       let evento = document.createElement("div");
       evento.classList.add("events");
+      //aggiunta titolo
       let b = document.createElement("div");
       b.innerText = events[i].name;
       evento.appendChild(b);
+      //aggiunta data
       b = document.createElement("div");
       b.innerText = events[i].date.getDay() + "/" + events[i].date.getMonth() + "/" + events[i].date.getFullYear();
       evento.appendChild(b);
+      //aggiunta pulsante descrizione a capo
       b = document.createElement("br");
       evento.appendChild(b);
       b = document.createElement("button");
       b.innerText = "Description";
       b.classList.add("defButton");
       b.classList.add("bGreen");
+      b.classList.add("inLabel");
+      b.onclick = function () {
+        document.querySelectorAll("div.homepage").forEach(function (e) {
+          e.querySelectorAll("*").forEach(function (e2) {
+            e2.tabIndex = "-1";
+          });
+        });
+        document.getElementById("blackscreen").querySelectorAll("*").forEach(function (e) {
+          e.tabIndex = "";
+        });
+        document.getElementById("blackscreen").classList.remove("hidden");
+        document.getElementById("createEvent").classList.add("hidden");
+        document.getElementById("eventView").classList.remove("hidden");
+        document.getElementById("eventView").style.zIndex = "0";
+      };
+      evento.appendChild(b);
+      //aggiunta modifica
+      b = document.createElement("button");
+      b.innerText = "Modify";
+      b.classList.add("inLabel");
+      b.classList.add("defButton");
+      b.classList.add("bGreen");
+      b.onclick = function () {
+
+      };
       evento.appendChild(b);
       elenco.appendChild(evento);
     }

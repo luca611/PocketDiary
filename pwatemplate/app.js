@@ -66,7 +66,7 @@ function welcome() {
   //console.log(n);
   if (n.length > 3 && isValidString(n)) {
     document.getElementById("displayUsername").innerText = n;
-    name = n;
+    name = n.trim();
     save();
   } else {
     document.getElementById("nomeNonDisponibile").classList.remove("hidden");

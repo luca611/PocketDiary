@@ -31,6 +31,11 @@ xhr.send();
 let name;               //nome dell'utente
 let theme = "bGreen";   //tema scelto, preimpostato a verde, chiamato come la classe del css per comodità
 let events = [];        //elenco degli eventi
+
+//costanti del sito
+let minNameLength = 3;
+let maxNameLength = 20;
+let maxDescLength = 1000;
 let notAvailableChars = ["|", "!", "?", '"', "£", "$", "%", "&", "/", "*", "+", "-", "=", "^", "(", ")", "{", "}", "[", "]", "ç", "@", "°", "#", "§", ";", ",", ":", ".", ">", "<"];
 
 function Event(name, date, desc) {
@@ -64,7 +69,7 @@ Event.prototype = {
 function welcome() {
   n = document.getElementById("input_nome").value;
   //console.log(n);
-  if (n.length > 3 && isValidString(n)) {
+  if (n.length > minNameLength && n.length < maxNameLength && isValidString(n)) {
     document.getElementById("displayUsername").innerText = n;
     name = n.trim();
     save();
@@ -193,15 +198,22 @@ function openEventCreation() {
   aggiunge un nuovo evento all'elenco prendendo i valori inseriti nel popUp
 */
 function confirmEvent() {
-  let e = new Event(document.getElementById("inputName").value, document.getElementById("inputDate").value, document.getElementById("inputDesc").value);
-  //console.log(e);
-  events.push(e);
-  save();
-  regenerateEventList();
-  document.getElementById("inputName").value = "";
-  document.getElementById("inputDate").value = "";
-  document.getElementById("inputDesc").value = "";
-  cancelEvent();  //per semplicità chiamo questa anche se non viene cancellato l'evento
+  let tempName = document.getElementById("inputName").value;
+  let tempDate = new Date(document.getElementById("inputDate").value);
+  let tempDesc = document.getElementById("inputDesc").value;
+  if (tempName.length > minNameLength && tempName.length < maxNameLength && isValidString(tempName) && tempDate.getTime() > Date.now() && tempDesc.length < maxDescLength) {
+    let e = new Event(tempName, tempDate, tempDesc);
+    //console.log(e);
+    events.push(e);
+    save();
+    regenerateEventList();
+    document.getElementById("inputName").value = "";
+    document.getElementById("inputDate").value = "";
+    document.getElementById("inputDesc").value = "";
+    cancelEvent();  //per semplicità chiamo questa anche se non viene cancellato l'evento
+  } else {
+    throw "input non disponibili";
+  }
 }
 
 /*
@@ -261,7 +273,7 @@ function regenerateEventList() {
         document.getElementById("createEvent").classList.add("hidden");
         document.getElementById("eventView").classList.remove("hidden");
         document.getElementById("eventView").style.zIndex = "0";
-        document.getElementById  ("eventDesc").innerText = events[i].desc;
+        document.getElementById("eventDesc").innerText = events[i].desc;
       };
       evento.appendChild(b);
       //aggiunta modifica

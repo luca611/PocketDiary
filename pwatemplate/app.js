@@ -31,7 +31,7 @@ xhr.send();
 let name;               //nome dell'utente
 let theme = "bGreen";   //tema scelto, preimpostato a verde, chiamato come la classe del css per comodità
 let events = [];        //elenco degli eventi
-let notAvailableChars="";
+let notAvailableChars = ["|", "!", "?", '"', "£", "$", "%", "&", "/", "*", "+", "-", "=", "^", "(", ")", "{", "}", "[", "]", "ç", "@", "°", "#", "§", ";", ",", ":", ".", ">", "<"];
 
 function Event(name, date, desc) {
   this.name = name;
@@ -64,12 +64,28 @@ Event.prototype = {
 function welcome() {
   n = document.getElementById("input_nome").value;
   //console.log(n);
-  if (n.length < 3 || n.includes(notAvailableChars)) {
+  if (n.length > 3 && isValidString(n)) {
+    document.getElementById("displayUsername").innerText = n;
+    name = n;
+    save();
+  } else {
     document.getElementById("nomeNonDisponibile").classList.remove("hidden");
     throw "Nome non disponibile";
   }
-  document.getElementById("displayUsername").innerText = n;
-  save();
+}
+
+/*
+  funzione per verificare se una stringa è valida
+  una stringa è valida se non contiene i caratteri speciali presenti in notAvailableChars
+*/
+function isValidString(n) {
+  notAvailableChars.forEach(function (e) {
+    if (n.includes(e)) {
+      console.log(e);
+      return false;
+    }
+  });
+  return true;
 }
 
 /*
@@ -312,9 +328,13 @@ function loadFromStorage() {
   salva nome, tema ed eventi nel localstorage
 */
 function save() {
-  localStorage.name = JSON.stringify(name);
-  localStorage.theme = JSON.stringify(theme);
-  localStorage.events = JSON.stringify(events);
+  try {
+    localStorage.name = JSON.stringify(name);
+    localStorage.theme = JSON.stringify(theme);
+    localStorage.events = JSON.stringify(events);
+  } catch (ex) {
+    console.log("Errore di salvatggio");
+  }
 }
 
 /*

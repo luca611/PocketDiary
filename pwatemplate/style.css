@@ -373,6 +373,20 @@ body {
     z-index: -6;
 }
 
+.popUP {
+    display: flex;
+    flex-direction: column;
+    top: 20%;
+    left: 30%;
+    position: absolute;
+    width: 40%;
+    height: auto;
+    background-color: white;
+    border-radius: 1rem;
+    grid-template-rows: 50%;
+    padding: 1rem;
+}
+
 .scuro {
     z-index: 98;
     border-radius: 1rem;
@@ -482,19 +496,7 @@ body {
     transform: scale(0.9);
 }
 
-.popUP {
-    display: flex;
-    flex-direction: column;
-    top: 20%;
-    left: 30%;
-    position: absolute;
-    width: 40%;
-    height: auto;
-    background-color: white;
-    border-radius: 1rem;
-    grid-template-rows: 50%;
-    padding: 1rem;
-}
+
 
 .blackScreen {
     position: absolute;
@@ -513,13 +515,19 @@ body {
     margin-bottom: 0.5rem;
 }
 
+.utilityButton{
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+}
+
 .descContainer {
     display: flex;
     overflow-y: auto;
     border-radius: 1rem;
     min-width: 90%;
-    min-height: 20rem;
-    max-height: 20rem;
+    min-height: 21rem;
+    max-height: 21rem;
+    margin-bottom: 1rem;
     padding: 1rem;
 }
 
@@ -619,7 +627,11 @@ body {
         width: 100%;
         height: 100%;
     }
-
+    .descContainer {
+        
+        min-height: 22rem;
+        max-height: 22rem;
+    }
     .events{
         width: 70%;
         padding-bottom: 5rem;

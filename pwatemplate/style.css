@@ -527,7 +527,11 @@ body {
     width: 100%;
     height: 100%;
 }
-
+.sfondouscita{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
 .exit {
     width: 100%;
     height: 100%;

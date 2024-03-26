@@ -422,6 +422,21 @@ function loadFromStorage() {
     } catch (ex) {
       events = [];
     }
+
+    //hey, dovrei proprio caricare le materie, quindi nulla.. chi tocca è gay (quindi diventa mio marito)
+    try {
+      subjects = JSON.parse(localStorage.subjects);
+      let inputs = document.querySelectorAll('.subject, .color');
+      for (let i = 0; i < inputs.length; i++) {
+        if (subjects[i]) {
+          inputs[i].value = subjects[i];
+        }
+      }
+    } catch (ex) {
+      subjects = [];
+    }
+    //bene, tolgo il disturbo.
+
     console.log("Nome: " + name + "\nTema: " + theme);
     toSlide("home");
   } catch (ex) {
@@ -439,6 +454,16 @@ function save() {
     localStorage.name = JSON.stringify(name);
     localStorage.theme = JSON.stringify(theme);
     localStorage.events = JSON.stringify(events);
+
+    //sono ancora io
+    let subjects = [];
+    let inputs = document.querySelectorAll('.subject, .color');
+    for (let i = 0; i < inputs.length; i++) {
+      subjects[i] = inputs[i].value;
+    }
+    localStorage.subjects = JSON.stringify(subjects);
+    //tolgo nuovamente il disturbo
+
   } catch (ex) {
     console.log("Errore di salvatggio");
   }
@@ -460,3 +485,41 @@ function toSlide(id) {
     e2.tabIndex = "";
   });
 }
+
+//il codice per il mannaggia delle materie, però non va YIUPPE
+function initializeSubjects() {
+  console.log("Inizializzazione materie");
+
+  // Carica le materie dal local storage
+  loadFromStorage();
+
+  // Genera i giorni della settimana e gli slot orari
+  generateWeek();
+
+  // Aggiungi un event listener a ogni input
+  let inputs = document.querySelectorAll('.subject, .color');
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener('change', save);
+  }
+
+  toSlide('subjects');
+}
+
+function generateWeek() {
+  let week = document.getElementById('week');
+  let days = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato', 'Domenica'];
+  for (let i = 0; i < days.length; i++) {
+    let day = document.createElement('div');
+    day.className = 'day';
+    day.innerHTML = '<h2>' + days[i] + '</h2>';
+    for (let j = 0; j < 24; j++) {
+      let hour = document.createElement('div');
+      hour.className = 'hour';
+      hour.innerHTML = '<input type="text" class="subject" placeholder="Inserisci la materia">' +
+                       '<input type="color" class="color">';
+      day.appendChild(hour);
+    }
+    week.appendChild(day);
+  }
+}
+//tolgo il disturbo.

@@ -47,10 +47,19 @@
 
     <div class="mainApp hidden slide" id="home"><!--mainApp-->
         <div class="appContainer">
+
             <div class="hidden" id="scuro">
                 <button class="sfondouscita" onclick="closeSideBar()">prova</button>
                 <!-- AGGIUNTO PER FAR DIVENTARE TUTTO SCURO ECCETTO LA BARRA APERTA, SCONSIGLIO DI MODIFICARE QUELLO DEI POPUP CON QUESTO, sostituire "hidden" con "scuro"-->
             </div>
+
+            <!-- subjects-->
+            <div id="subjects" class="slide hidden subjects" >
+                <div id="week">
+                  <!-- I giorni e gli slot degli orari saranno generati qui mannaggia a dio-->
+                </div>
+            </div>
+
             <div class="esciBarra hidden">
                 <button onclick="" class="exit"></button>
             </div>
@@ -71,8 +80,9 @@
                     <button class="elemntoBarra" onclick=""><img src="resources/school.svg" alt="" class="imgRapido"><b
                             class="white">Home</b> </button><br>
                     <hr class="separaOpzioni">
-                    <button class="elemntoBarra" onclick=""><img src="resources/clock.svg" alt="" class="imgRapido"> <b
-                            class="white">Schedule</b></button><br>
+                    <button class="elemntoBarra" onclick="initializeSubjects()"> <img src="resources/clock.svg" alt="" class="imgRapido"> 
+                        <b class="white">Schedule</b>
+                      </button><br>
                     <hr class="separaOpzioni">
                     <button class="elemntoBarra" onclick=""><img src="resources/calendar.svg" alt="" class="imgRapido">
                         <b class="white">Calendar</b></button><br>
@@ -114,9 +124,9 @@
                 </div>
                 <h1 class="welcomingMessage">Welcome <b class="" id="displayUsername">{username}</b></h1>
                 <div class="azioniRapideMobile">
-                    <button class="rapidoMob , bGreen" onclick=""><img src="resources/clock.svg" alt=""
-                            class="imgRapido">
-                        Schedule</button>
+                    <button class="elementoBarra" onclick="initializeSubjects()"><img src="resources/clock.svg" alt="" class="imgRapido"> 
+                        <b class="white">Schedule</b>
+                      </button><br>
                     <button class="rapidoMob , bGreen" onclick=""><img src="resources/calendar.svg" alt=""
                             class="imgRapido"> Calendar</button>
                     <button class="rapidoMob , bGreen" onclick=""><img src="resources/test.svg" alt=""

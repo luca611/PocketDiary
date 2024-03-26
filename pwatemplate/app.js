@@ -31,6 +31,7 @@ xhr.send();
 let name;               //nome dell'utente
 let theme = "bGreen";   //tema scelto, preimpostato a verde, chiamato come la classe del css per comodità
 let events = [];        //elenco degli eventi
+let modifying = -1;     //indice dell'evento che l'utente sta modificando
 
 //costanti del sito
 let minNameLength = 3;
@@ -176,6 +177,7 @@ function set_theme() {
     e.classList.add(theme + "D");
   });
 }
+
 /*
   funzione eseguita la clic del +
   mette il popup in sovraimpressione alla homepage
@@ -234,7 +236,78 @@ function cancelEvent() {
 }
 
 /*
+  chiude il popup di modifica dell'evento
+*/
+function cancelModifyEvent() {
+  document.querySelectorAll("div.homepage").forEach(function (e) {
+    e.querySelectorAll("*").forEach(function (e2) {
+      e2.tabIndex = "0";
+    });
+  });
+  document.getElementById("blackscreen").querySelectorAll("*").forEach(function (e) {
+    e.tabIndex = "-1";
+  });
+  document.getElementById("blackscreen").classList.add("hidden");
+  document.getElementById("modifyEvent").classList.add("hidden");
+}
+
+/*
+  funzione per modificare un evento, elimina il vecchio evento e sostituisce col nuovo allo stesso indice
+*/
+function modifyEvent() {
+  let tempName = document.getElementById("inputNameM").value;
+  let tempDate = new Date(document.getElementById("inputDateM").value);
+  let tempDesc = document.getElementById("inputDescM").value;
+  if (tempName.length > minNameLength && tempName.length < maxNameLength && isValidString(tempName) && tempDate.getTime() > Date.now() && tempDesc.length < maxDescLength) {
+    let e = new Event(tempName, tempDate, tempDesc);
+    //console.log(e);
+    events.splice(modifying, 1, e);
+    save();
+    modifying = -1;
+    regenerateEventList();
+    cancelModifyEvent();
+    document.getElementById("inputNameM").value = "";
+    document.getElementById("inputDateM").value = "";
+    document.getElementById("inputDescM").value = "";
+  } else {
+    throw "input non disponibili";
+  }
+}
+
+/*
+  apre il popup di modifica dell'evento
+*/
+function openEventModify(i) {
+  document.querySelectorAll("div.homepage").forEach(function (e) {
+    e.querySelectorAll("*").forEach(function (e2) {
+      e2.tabIndex = "-1";
+    });
+  });
+  document.getElementById("blackscreen").querySelectorAll("*").forEach(function (e) {
+    e.tabIndex = "";
+  });
+  document.getElementById("blackscreen").classList.remove("hidden");
+  document.getElementById("modifyEvent").classList.remove("hidden");
+  document.getElementById("eventView").style.zIndex = "-2";
+  document.getElementById("inputNameM").value = events[i].name;
+  document.getElementById("inputDateM").value = events[i].date.getFullYear + "-" + events[i].date.getMonth + "-" + events[i].date.getDay;
+  document.getElementById("inputDescM").value = events[i].desc;
+}
+
+/*
+  elimina l'evento che si sta modificando
+*/
+function deleteEvent() {
+  events.splice(modifying, 1);
+  modifying = -1;
+  cancelModifyEvent();
+  save();
+  regenerateEventList();
+}
+
+/*
   funzione per generare la lista degli eventi nella home
+  quando è vuota fa visualizzare l'immagine etesto placeholder
 */
 function regenerateEventList() {
   if (events.length > 0) {
@@ -284,11 +357,26 @@ function regenerateEventList() {
       b.classList.add("utilityButton");
       b.classList.add("bGreen");
       b.onclick = function () {
-
+        modifying = i;
+        openEventModify(i);
       };
       evento.appendChild(b);
       elenco.appendChild(evento);
     }
+    set_theme();
+  } else {
+    let placeholder = document.getElementById("upcomingEvents");
+    placeholder.innerHTML = "";
+    let img = document.createElement("img");
+    img.src = "resources/notingToDo.svg";
+    img.classList.add("motivationalImg");
+    img.classList.add("bGreen");
+    placeholder.appendChild(img);
+    placeholder.appendChild(document.createElement("br"));
+    let testo = document.createElement("p");
+    testo.classList.add("white");
+    testo.innerText = "Seems like you have nothing left to do, enjoy a break!";
+    placeholder.appendChild(testo);
     set_theme();
   }
 }

@@ -87,20 +87,29 @@
             <div class="homepage">
                 <div class="blackScreen hidden" id="blackscreen">
                     <div class="hidden popUP" id="createEvent">
-                        <div class="inLabel bGreen" id="eventName">Insert event name</div><input type="text"
-                            class="setName" id="inputName">
+                        <div class="inLabel bGreen" id="eventName">Insert event name</div>
+                        <input type="text" class="setName" id="inputName">
                         <div class="inLabel bGreen">Date</div><input type="date" class="setData" id="inputDate">
                         <div class="inLabel bGreen" id="Description">Description</div>
                         <input type="text" class="setDesc" id="inputDesc">
-                        <button class="defButton bGreen" onclick="cancelEvent()">Cancel</button><button
-                            class="defButton bGreen" onclick="confirmEvent()">Confirm</button>
+                        <button class="defButton bGreen" onclick="cancelEvent()">Cancel</button>
+                        <button class="defButton bGreen" onclick="confirmEvent()">Confirm</button>
                     </div>
-
+                    <div class="hidden popUP" id="modifyEvent">
+                        <div class="inLabel bGreen" id="eventNameM">Insert event name</div>
+                        <input type="text" class="setName" id="inputNameM">
+                        <div class="inLabel bGreen">Date</div><input type="date" class="setData" id="inputDateM">
+                        <div class="inLabel bGreen" id="Description">Description</div>
+                        <input type="text" class="setDesc" id="inputDescM">
+                        <button class="defButton bGreen" onclick="cancelModifyEvent()">Cancel</button>
+                        <button class="defButton bGreen" onclick="deleteEvent()">Delete</button>
+                        <button class="defButton bGreen" onclick="modifyEvent()">Confirm</button>
+                    </div>
                     <div class="hidden popUP" id="eventView">
                         <div class="descContainer bGreen hidden" id="eventDesc">
 
                         </div>
-                        <button class="defButton bGreen" onclick="cancelEvent()" >close</button>
+                        <button class="defButton bGreen" onclick="cancelEvent()">close</button>
                     </div>
                 </div>
                 <h1 class="welcomingMessage">Welcome <b class="" id="displayUsername">{username}</b></h1>

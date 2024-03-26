@@ -79,12 +79,16 @@ function welcome() {
   una stringa è valida se non contiene i caratteri speciali presenti in notAvailableChars
 */
 function isValidString(n) {
-  notAvailableChars.forEach(function (e) {
-    if (n.includes(e)) {
-      console.log(e);
-      return false;
-    }
-  });
+  try {
+    notAvailableChars.forEach(function (e) {
+      if (n.includes(e)) {
+        console.log(e);
+        throw "carattere proibito trovato"
+      }
+    });
+  }catch(ex){
+    return false;
+  }
   return true;
 }
 

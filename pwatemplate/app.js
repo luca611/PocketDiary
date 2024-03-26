@@ -242,6 +242,7 @@ function regenerateEventList() {
       b.innerText = "Description";
       b.classList.add("defButton");
       b.classList.add("bGreen");
+      b.classList.add("utilityButton");
       b.classList.add("inLabel");
       b.onclick = function () {
         document.querySelectorAll("div.homepage").forEach(function (e) {
@@ -263,6 +264,7 @@ function regenerateEventList() {
       b.innerText = "Modify";
       b.classList.add("inLabel");
       b.classList.add("defButton");
+      b.classList.add("utilityButton");
       b.classList.add("bGreen");
       b.onclick = function () {
 

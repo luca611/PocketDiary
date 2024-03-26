@@ -31,6 +31,7 @@ xhr.send();
 let name;               //nome dell'utente
 let theme = "bGreen";   //tema scelto, preimpostato a verde, chiamato come la classe del css per comodità
 let events = [];        //elenco degli eventi
+let notAvailableChars="";
 
 function Event(name, date, desc) {
   this.name = name;
@@ -61,12 +62,13 @@ Event.prototype = {
   rileva il nome scelto (>= di 3 caratteri), lo scrive nella homepage e lo salva
 */
 function welcome() {
-  name = document.getElementById("input_nome").value;
-  //console.log(name);
-  if (name.length < 3) {
+  n = document.getElementById("input_nome").value;
+  //console.log(n);
+  if (n.length < 3 || n.includes(notAvailableChars)) {
+    document.getElementById("nomeNonDisponibile").classList.remove("hidden");
     throw "Nome non disponibile";
   }
-  document.getElementById("displayUsername").innerText = name;
+  document.getElementById("displayUsername").innerText = n;
   save();
 }
 
@@ -298,11 +300,12 @@ function loadFromStorage() {
       events = [];
     }
     console.log("Nome: " + name + "\nTema: " + theme);
+    toSlide("home");
   } catch (ex) {
-    document.getElementById("start").classList.remove("hidden");
-    welcome();
+    toSlide("start");
+    //welcome();
   }
-  toSlide("home");
+
 }
 
 /*

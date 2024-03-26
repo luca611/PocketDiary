@@ -86,7 +86,7 @@ function isValidString(n) {
         throw "carattere proibito trovato"
       }
     });
-  }catch(ex){
+  } catch (ex) {
     return false;
   }
   return true;
@@ -261,6 +261,7 @@ function regenerateEventList() {
         document.getElementById("createEvent").classList.add("hidden");
         document.getElementById("eventView").classList.remove("hidden");
         document.getElementById("eventView").style.zIndex = "0";
+        document.getElementById  ("eventDesc").innerText = events[i].desc;
       };
       evento.appendChild(b);
       //aggiunta modifica

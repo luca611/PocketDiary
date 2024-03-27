@@ -89,7 +89,7 @@ function isValidString(n) {
     notAvailableChars.forEach(function (e) {
       if (n.includes(e)) {
         console.log(e);
-        throw "carattere proibito trovato"
+        throw "carattere proibito trovato";
       }
     });
   } catch (ex) {
@@ -133,7 +133,7 @@ function theme_choose(idB) {
 /*
   funzione per cambiare il tema dell'app
   prende tutti gli elementi con le classi css dei 3 colori principali
-  e li cambia
+  e li cambia in base a theme
 */
 function set_theme() {
   document.getElementById("displayUsername").classList.add(theme.slice(1, theme.length).toLowerCase());
@@ -290,7 +290,7 @@ function openEventModify(i) {
   document.getElementById("modifyEvent").classList.remove("hidden");
   document.getElementById("eventView").style.zIndex = "-2";
   document.getElementById("inputNameM").value = events[i].name;
-  document.getElementById("inputDateM").value = events[i].date.getFullYear + "-" + events[i].date.getMonth + "-" + events[i].date.getDay;
+  document.getElementById("inputDateM").value = events[0].date.toISOString().split('T')[0];
   document.getElementById("inputDescM").value = events[i].desc;
 }
 
@@ -307,7 +307,7 @@ function deleteEvent() {
 
 /*
   funzione per generare la lista degli eventi nella home
-  quando è vuota fa visualizzare l'immagine etesto placeholder
+  quando è vuota fa visualizzare l'immagine e testo placeholder
 */
 function regenerateEventList() {
   if (events.length > 0) {

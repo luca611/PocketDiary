@@ -87,7 +87,7 @@
                     <button class="elemntoBarra" onclick=""><img src="resources/calendar.svg" alt="" class="imgRapido">
                         <b class="white">Calendar</b></button><br>
                     <hr class="separaOpzioni">
-                    <button class="elemntoBarra" onclick=""><img src="resources/test.svg" alt="" class="imgRapido"> <b
+                    <button class="elemntoBarra" onclick="toSlide('marks')"><img src="resources/test.svg" alt="" class="imgRapido"> <b 
                             class="white">Marks</b></button><br>
                     <hr class="separaOpzioni">
                     <button class="elemntoBarra , settingsContenuto" onclick=""><img src="resources/settings.svg" alt=""
@@ -151,6 +151,39 @@
                     </div>
                 </div>
             </div>
+
+            <div class="hidden" id="marks">
+                <div class="container" id="formContainer" style="display:none;">
+                    <h1>Inserimento Voto</h1>
+                    <div class="form-group">
+                        <label for="inputMateria">Materia:</label>
+                        <input type="text" id="inputMateria" placeholder="Inserisci la materia">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputData">Data:</label>
+                        <input type="text" id="inputData" placeholder="Inserisci la data (formato: YYYY-MM-DD)">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputVoto">Voto:</label>
+                        <input type="text" id="inputVoto" placeholder="Inserisci il voto (da 1 a 10)">
+                    </div>
+                    <button id="inserisciButton">Inserisci</button>
+                </div>
+            
+                <div class="container" id="introContainer">
+                    <button id="iniziaButton" >Nuovo voto</button>
+                </div>
+                <div class="container" id="previousVotesContainer">
+                  
+                    <p>Voti salvati precedentemente:</p>
+                <div id="votiInseritiContainer">
+                    
+                </div>
+                </div>
+                
+                <script type="text/javascript" src="web.js"></script>
+            </div>
+
             <div class="pulsanteBarra">
                 <button class="apri , bGreen" onclick="openSideBar()">
                     <img src="resources/sideBar.svg" alt="">

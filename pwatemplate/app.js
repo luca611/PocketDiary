@@ -32,6 +32,7 @@ let name;               //nome dell'utente
 let theme = "bGreen";   //tema scelto, preimpostato a verde, chiamato come la classe del css per comodità
 let events = [];        //elenco degli eventi
 let modifying = -1;     //indice dell'evento che l'utente sta modificando
+var votes = [];        // Array per salvare i voti
 
 //costanti del sito
 let minNameLength = 3;
@@ -413,6 +414,41 @@ function loadFromStorage() {
     name = JSON.parse(localStorage.name);
     theme = JSON.parse(localStorage.theme);
     document.getElementById("displayUsername").innerText = name;
+
+    // Caricamento dei voti
+    try {
+      votes = JSON.parse(localStorage.votes);
+
+      var container = document.getElementById("previousVotesContainer");
+      container.innerHTML = ""; // Cancella i contenuti precedenti
+
+      // Mostra i voti salvati precedentemente in ordine inverso
+      for (var i = votes.length - 1; i >= 0; i--) {
+        var vote = votes[i];
+
+        var voteContainer = document.createElement("div");
+        voteContainer.classList.add("vote-container");
+
+        var materiaInfo = document.createElement("p");
+        materiaInfo.textContent = "Materia: " + vote.materia;
+        voteContainer.appendChild(materiaInfo);
+
+        var dataInfo = document.createElement("p");
+        dataInfo.textContent = "Data: " + vote.data;
+        voteContainer.appendChild(dataInfo);
+
+        var votoInfo = document.createElement("p");
+        votoInfo.textContent = "Voto: " + vote.voto;
+        voteContainer.appendChild(votoInfo);
+
+        container.appendChild(voteContainer);
+      }
+    } catch (ex) {
+      // Se non ci sono voti salvati o c'è un errore nel caricamento, gestiamo l'eccezione
+      console.log("Nessun voto salvato o errore nel caricamento dei voti.");
+    }
+
+    // Caricamento degli eventi
     try {
       events = JSON.parse(localStorage.events);
       for (let i = 0; i < events.length; i++) {
@@ -423,7 +459,7 @@ function loadFromStorage() {
       events = [];
     }
 
-    //hey, dovrei proprio caricare le materie, quindi nulla.. chi tocca è gay (quindi diventa mio marito)
+    // Caricamento delle materie
     try {
       subjects = JSON.parse(localStorage.subjects);
       let inputs = document.querySelectorAll('.subject, .color');
@@ -435,7 +471,6 @@ function loadFromStorage() {
     } catch (ex) {
       subjects = [];
     }
-    //bene, tolgo il disturbo.
 
     console.log("Nome: " + name + "\nTema: " + theme);
     toSlide("home");
@@ -443,8 +478,8 @@ function loadFromStorage() {
     toSlide("start");
     //welcome();
   }
-
 }
+
 
 /*
   salva nome, tema ed eventi nel localstorage
@@ -455,19 +490,31 @@ function save() {
     localStorage.theme = JSON.stringify(theme);
     localStorage.events = JSON.stringify(events);
 
-    //sono ancora io
+    // Salvataggio dei voti 
+    let voteContainers = document.querySelectorAll('.vote-container');
+    voteContainers.forEach(container => {
+      let vote = {
+        materia: container.querySelector('.materia').textContent,
+        data: container.querySelector('.data').textContent,
+        voto: container.querySelector('.voto').textContent
+      };
+      votes.push(vote); // Aggiungiamo il voto all'array dei voti
+    });
+    localStorage.votes = JSON.stringify(votes); // Salviamo l'array dei voti
+
+    // Salvataggio delle materie
     let subjects = [];
     let inputs = document.querySelectorAll('.subject, .color');
     for (let i = 0; i < inputs.length; i++) {
       subjects[i] = inputs[i].value;
     }
     localStorage.subjects = JSON.stringify(subjects);
-    //tolgo nuovamente il disturbo
 
   } catch (ex) {
-    console.log("Errore di salvatggio");
+    console.log("Errore di salvataggio");
   }
 }
+
 
 /*
   cambia la slide visualizzata a schermo rendendo intabbabile le altre
@@ -523,3 +570,57 @@ function generateWeek() {
   }
 }
 //tolgo il disturbo.
+
+function mostraForm() {
+  document.getElementById("introContainer").style.display = "none";
+  document.getElementById("previousVotesContainer").style.display = "none"; // Nascondi i voti salvati durante l'inserimento del voto
+  document.getElementById("formContainer").style.display = "block";
+}
+
+function inserisciVoto() {   
+  
+  var materia = document.getElementById("inputMateria").value;
+  var data = document.getElementById("inputData").value;
+  var voto = document.getElementById("inputVoto").value;
+
+  // Calcoliamo il numero del voto
+  var voteNumber = document.querySelectorAll(".vote-container").length + 1;
+
+  // Creiamo il nuovo rettangolo del voto
+  var newVoteContainer = document.createElement("div");
+  newVoteContainer.classList.add("vote-container");
+
+  // Aggiungiamo le informazioni del voto
+  var voteInfo = document.createElement("p");
+  voteInfo.textContent = "Voto #" + voteNumber + ": Materia: " + materia + ", Data: " + data + ", Voto: " + voto;
+  newVoteContainer.appendChild(voteInfo);
+
+  var previousVotesContainer = document.getElementById("previousVotesContainer");
+
+  // Aggiungiamo il nuovo rettangolo del voto alla fine della lista
+  previousVotesContainer.appendChild(newVoteContainer);
+
+  // Aggiungiamo il voto alla memoria locale
+  var votoInfo = {
+      materia: materia,
+      data: data,
+      voto: voto
+  };
+
+  votes.push(votoInfo);
+  localStorage.setItem("voti", JSON.stringify(votes));
+
+  // Nascondiamo il modulo di inserimento del voto e mostriamo i voti salvati
+  document.getElementById("formContainer").style.display = "none";
+  document.getElementById("previousVotesContainer").style.display = "block";  
+  
+}
+
+window.onload = function() {
+  loadFromStorage(); // Carica i voti salvati solo all'avvio della pagina
+  document.getElementById("iniziaButton").addEventListener("click", mostraForm);
+  document.getElementById("inserisciButton").addEventListener("click", function() {
+      inserisciVoto();
+      //mostraForm(); // Dopo l'inserimento del voto, torna alla pagina iniziale
+  });
+};

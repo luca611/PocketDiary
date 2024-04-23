@@ -54,9 +54,9 @@
             </div>
 
             <!-- subjects-->
-            <div id="subjects" class="slide hidden subjects" >
+            <div id="subjects" class="slide hidden subjects">
                 <div id="week">
-                  <!-- I giorni e gli slot degli orari saranno generati qui mannaggia a dio-->
+                    <!-- I giorni e gli slot degli orari saranno generati qui mannaggia a dio-->
                 </div>
             </div>
 
@@ -80,15 +80,16 @@
                     <button class="elemntoBarra" onclick=""><img src="resources/school.svg" alt="" class="imgRapido"><b
                             class="white">Home</b> </button><br>
                     <hr class="separaOpzioni">
-                    <button class="elemntoBarra" onclick="initializeSubjects()"> <img src="resources/clock.svg" alt="" class="imgRapido"> 
+                    <button class="elemntoBarra" onclick="initializeSubjects()"> <img src="resources/clock.svg" alt=""
+                            class="imgRapido">
                         <b class="white">Schedule</b>
-                      </button><br>
+                    </button><br>
                     <hr class="separaOpzioni">
-                    <button class="elemntoBarra" onclick=""><img src="resources/calendar.svg" alt="" class="imgRapido">
+                    <button class="elemntoBarra" onclick="toSlide('calendarDiv')"><img src="resources/calendar.svg" alt="" class="imgRapido">
                         <b class="white">Calendar</b></button><br>
                     <hr class="separaOpzioni">
-                    <button class="elemntoBarra" onclick="toSlide('marks')"><img src="resources/test.svg" alt="" class="imgRapido"> <b 
-                            class="white">Marks</b></button><br>
+                    <button class="elemntoBarra" onclick="toSlide('marks')"><img src="resources/test.svg" alt=""
+                            class="imgRapido"> <b class="white">Marks</b></button><br>
                     <hr class="separaOpzioni">
                     <button class="elemntoBarra , settingsContenuto" onclick=""><img src="resources/settings.svg" alt=""
                             class="imgRapido"> <b class="white">Settings</b></button><br>
@@ -124,9 +125,10 @@
                 </div>
                 <h1 class="welcomingMessage">Welcome <b class="" id="displayUsername">{username}</b></h1>
                 <div class="azioniRapideMobile">
-                    <button class="elementoBarra" onclick="initializeSubjects()"><img src="resources/clock.svg" alt="" class="imgRapido"> 
+                    <button class="elementoBarra" onclick="initializeSubjects()"><img src="resources/clock.svg" alt=""
+                            class="imgRapido">
                         <b class="white">Schedule</b>
-                      </button><br>
+                    </button><br>
                     <button class="rapidoMob , bGreen" onclick=""><img src="resources/calendar.svg" alt=""
                             class="imgRapido"> Calendar</button>
                     <button class="rapidoMob , bGreen" onclick=""><img src="resources/test.svg" alt=""
@@ -169,19 +171,53 @@
                     </div>
                     <button id="inserisciButton">Inserisci</button>
                 </div>
-            
+
                 <div class="container" id="introContainer">
-                    <button id="iniziaButton" >Nuovo voto</button>
+                    <button id="iniziaButton">Nuovo voto</button>
                 </div>
                 <div class="container" id="previousVotesContainer">
-                  
+
                     <p>Voti salvati precedentemente:</p>
-                <div id="votiInseritiContainer">
-                    
+                    <div id="votiInseritiContainer">
+
+                    </div>
                 </div>
-                </div>
-                
+
                 <script type="text/javascript" src="web.js"></script>
+            </div>
+            <div class="hidden" id="calendarDiv">
+                <div class="calendar-container">
+                    <div class="calendar" id="calendar"></div>
+
+                    <div class="event-list" id="eventList">
+                        <h2>Eventi</h2>
+                        <ul id="eventsUl"></ul>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <button onclick="goToToday()">Torna ad oggi</button>
+                    <button onclick="prevMonth()">Mese precedente</button>
+                    <button onclick="nextMonth()">Mese successivo</button>
+                    <!-- Aggiungi il pulsante per mostrare il form per aggiungere un evento -->
+                    <button onclick="showAddEventForm()">Aggiungi evento</button>
+                </div>
+                <div class="edit-event-form" id="editEventForm" style="display: none;">
+                    <input type="date" id="editEventDate">
+                    <input type="time" id="editEventTime">
+                    <input type="text" id="editEventName" placeholder="Nome dell'evento">
+                    <input type="color" id="editEventColor">
+                    <button id="saveEditEventButton">Salva modifiche</button>
+                </div>
+
+
+                <div class="add-event-form" id="addEventForm" style="display: none;">
+                    <input type="date" id="eventDate">
+                    <input type="time" id="eventTime">
+                    <input type="text" id="eventName" placeholder="Nome dell'evento">
+                    <input type="color" id="eventColor">
+                    <button onclick="addEvent()">Aggiungi evento</button>
+                </div>
             </div>
 
             <div class="pulsanteBarra">

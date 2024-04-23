@@ -33,6 +33,9 @@ let theme = "bGreen";   //tema scelto, preimpostato a verde, chiamato come la cl
 let eventS = [];        //elenco degli eventi
 let modifying = -1;     //indice dell'evento che l'utente sta modificando
 var votes = [];        // Array per salvare i voti
+let currentYear, currentMonth;
+let events = {};
+let lastSelectedDate = null;
 
 //costanti del sito
 let minNameLength = 3;
@@ -563,7 +566,7 @@ function generateWeek() {
       let hour = document.createElement('div');
       hour.className = 'hour';
       hour.innerHTML = '<input type="text" class="subject" placeholder="Inserisci la materia">' +
-                       '<input type="color" class="color">';
+        '<input type="color" class="color">';
       day.appendChild(hour);
     }
     week.appendChild(day);
@@ -577,8 +580,8 @@ function mostraForm() {
   document.getElementById("formContainer").style.display = "block";
 }
 
-function inserisciVoto() {   
-  
+function inserisciVoto() {
+
   var materia = document.getElementById("inputMateria").value;
   var data = document.getElementById("inputData").value;
   var voto = document.getElementById("inputVoto").value;
@@ -602,9 +605,9 @@ function inserisciVoto() {
 
   // Aggiungiamo il voto alla memoria locale
   var votoInfo = {
-      materia: materia,
-      data: data,
-      voto: voto
+    materia: materia,
+    data: data,
+    voto: voto
   };
 
   votes.push(votoInfo);
@@ -612,15 +615,359 @@ function inserisciVoto() {
 
   // Nascondiamo il modulo di inserimento del voto e mostriamo i voti salvati
   document.getElementById("formContainer").style.display = "none";
-  document.getElementById("previousVotesContainer").style.display = "block";  
-  
+  document.getElementById("previousVotesContainer").style.display = "block";
+
 }
 
-window.onload = function() {
+window.onload = function () {
   loadFromStorage(); // Carica i voti salvati solo all'avvio della pagina
   document.getElementById("iniziaButton").addEventListener("click", mostraForm);
-  document.getElementById("inserisciButton").addEventListener("click", function() {
-      inserisciVoto();
-      //mostraForm(); // Dopo l'inserimento del voto, torna alla pagina iniziale
+  document.getElementById("inserisciButton").addEventListener("click", function () {
+    inserisciVoto();
+    //mostraForm(); // Dopo l'inserimento del voto, torna alla pagina iniziale
   });
 };
+
+function initializeCalendar() {
+  const currentDate = new Date();
+  currentYear = currentDate.getFullYear();
+  currentMonth = currentDate.getMonth();
+  loadEvents();
+  generateCalendar(currentYear, currentMonth);
+  updateEventList();
+}
+
+
+function getLastDayOfMonth(year, month) {
+  return new Date(year, month + 1, 0).getDate();
+}
+
+function generateCalendar(year, month) {
+  const calendarDiv = document.getElementById('calendar');
+  calendarDiv.innerHTML = '';
+
+  const today = new Date();
+  const currentDay = today.getDate();
+
+  const lastDay = getLastDayOfMonth(year, month);
+  const firstDayIndex = new Date(year, month, 1).getDay();
+  const lastDayIndex = new Date(year, month, lastDay).getDay();
+
+  const prevLastDay = getLastDayOfMonth(year, month - 1);
+  const nextFirstDay = new Date(year, month + 1, 1).getDay();
+
+  const days = [];
+
+  for (let i = firstDayIndex - 1; i >= 0; i--) {
+    days.push({ day: prevLastDay - i, month: month - 1, year: year });
+  }
+
+  for (let i = 1; i <= lastDay; i++) {
+    days.push({ day: i, month: month, year: year });
+  }
+
+  for (let i = 1; i <= 6 - lastDayIndex; i++) {
+    days.push({ day: i, month: month + 1, year: year });
+  }
+
+  days.forEach(day => {
+    const dayDiv = document.createElement('div');
+    dayDiv.classList.add('day');
+    dayDiv.dataset.date = `${day.year}-${(day.month + 1).toString().padStart(2, '0')}-${day.day.toString().padStart(2, '0')}`;
+
+    if (day.month === today.getMonth() && day.year === today.getFullYear() && day.day === currentDay) {
+      dayDiv.classList.add('current-day');
+    }
+
+    const fullDateDiv = document.createElement('div');
+    fullDateDiv.textContent = `${day.day}/${day.month + 1}/${day.year}`;
+    fullDateDiv.classList.add('full-date');
+
+    dayDiv.appendChild(fullDateDiv);
+
+    const eventsDiv = document.createElement('div');
+    eventsDiv.classList.add('events');
+    const dayKey = `${day.year}-${(day.month + 1).toString().padStart(2, '0')}-${day.day.toString().padStart(2, '0')}`;
+
+    if (events[dayKey] && events[dayKey].length > 0) {
+      events[dayKey].forEach(event => {
+        const eventElement = document.createElement('div');
+        eventElement.textContent = event.name + ' (' + event.time + ')';
+        eventElement.style.color = event.color;
+        eventsDiv.appendChild(eventElement);
+      });
+    }
+
+    dayDiv.addEventListener('click', (event) => {
+      const clickedDate = event.currentTarget.dataset.date;
+      showEventsForDate(clickedDate);
+    });
+
+    dayDiv.appendChild(eventsDiv);
+
+    calendarDiv.appendChild(dayDiv);
+  });
+
+}
+
+function loadEvents() {
+  const storedEvents = localStorage.getItem('events');
+  if (storedEvents) {
+    events = JSON.parse(storedEvents);
+  }
+}
+
+function updateEventList() {
+  const eventList = document.getElementById('eventsUl');
+  eventList.innerHTML = '';
+
+  // Creazione di un array di coppie [data, eventi] per ogni giorno con eventi
+  const sortedEvents = Object.entries(events)
+    .map(([dayKey, dayEvents]) => ({ date: dayKey, events: dayEvents }))
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  // Iterazione sugli eventi ordinati e aggiunta alla lista
+  sortedEvents.forEach(({ date, events }) => {
+    events.forEach((event) => {
+      const eventListItem = document.createElement('li');
+      const formattedDate = new Date(date).toLocaleDateString('it-IT');
+      eventListItem.textContent = `${formattedDate}: ${event.name} (${event.time})`;
+
+      eventList.appendChild(eventListItem);
+    });
+  });
+
+  // Aggiorna il titolo della lista base
+  const baseEventListTitle = document.getElementById('baseEventListTitle');
+  baseEventListTitle.textContent = 'Eventi';
+}
+
+
+
+
+
+
+
+function prevMonth() {
+  currentMonth -= 1;
+  if (currentMonth < 0) {
+    currentYear -= 1;
+    currentMonth = 11;
+  }
+  generateCalendar(currentYear, currentMonth);
+}
+
+function nextMonth() {
+  currentMonth += 1;
+  if (currentMonth > 11) {
+    currentYear += 1;
+    currentMonth = 0;
+  }
+  generateCalendar(currentYear, currentMonth);
+}
+
+function goToToday() {
+  const today = new Date();
+  currentYear = today.getFullYear();
+  currentMonth = today.getMonth();
+  generateCalendar(currentYear, currentMonth);
+  updateEventList();
+}
+
+function showAddEventForm() {
+  document.getElementById('addEventForm').style.display = 'block';
+}
+
+function addEvent() {
+  const eventDate = document.getElementById('eventDate').value;
+  const eventTime = document.getElementById('eventTime').value;
+  const eventName = document.getElementById('eventName').value;
+  const eventColor = document.getElementById('eventColor').value;
+
+  // Assicurati che tutti i campi del form siano compilati
+  if (!eventDate || !eventTime || !eventName || !eventColor) {
+    alert('Si prega di compilare tutti i campi del form.');
+    return;
+  }
+
+  const event = { name: eventName, time: eventTime, color: eventColor };
+
+  try {
+    const dayKey = new Date(eventDate).toISOString().split('T')[0];
+
+    let storedEvents = localStorage.getItem('events');
+    if (!storedEvents) {
+      events = {};
+    } else {
+      events = JSON.parse(storedEvents);
+    }
+
+    if (!events[dayKey]) {
+      events[dayKey] = [];
+    }
+    events[dayKey].push(event);
+
+    localStorage.setItem('events', JSON.stringify(events));
+
+    generateCalendar(currentYear, currentMonth);
+    showAllEventsForDate();
+
+    // Resetta i valori del form
+    document.getElementById('eventDate').value = '';
+    document.getElementById('eventTime').value = '';
+    document.getElementById('eventName').value = '';
+    document.getElementById('eventColor').value = '';
+
+    // Nascondi il form dopo l'aggiunta di un nuovo evento
+    document.getElementById('addEventForm').style.display = 'none';
+  } catch (error) {
+    console.error('Errore durante il salvataggio degli eventi nel localStorage:', error);
+  }
+}
+
+
+
+
+function showEventsForDate(date) {
+  const eventList = document.getElementById('eventsUl');
+  eventList.innerHTML = '';
+
+  // Ottieni la data selezionata e formatta il titolo degli eventi
+  const selectedDate = new Date(date);
+  lastSelectedDate = selectedDate;
+  const formattedTitle = selectedDate.toLocaleDateString('it-IT', { day: 'numeric', month: 'long' });
+  document.getElementById('eventList').getElementsByTagName('h2')[0].textContent = `Eventi ${formattedTitle}`;
+
+  if (events[date] && events[date].length > 0) {
+    events[date].forEach((event, index) => {
+      const eventListItem = document.createElement('li');
+      const eventContent = document.createElement('span');
+      eventContent.textContent = `${date}: ${event.name} (${event.time})`;
+      eventListItem.appendChild(eventContent);
+
+      // Aggiungi il pulsante Modifica
+      const editButton = document.createElement('button');
+      editButton.textContent = 'Modifica';
+      editButton.addEventListener('click', () => {
+        editEventFromList(date, index);
+      });
+      eventListItem.appendChild(editButton);
+
+      // Aggiungi il pulsante Elimina
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Elimina';
+      deleteButton.addEventListener('click', () => {
+        deleteEventFromList(date, index);
+      });
+      eventListItem.appendChild(deleteButton);
+
+      eventList.appendChild(eventListItem);
+    });
+
+    // Aggiungi il pulsante "Visualizza tutti" alla fine della lista
+    const viewAllButton = document.createElement('button');
+    viewAllButton.textContent = 'Visualizza tutti';
+    viewAllButton.addEventListener('click', () => {
+      showAllEventsForDate(date);
+    });
+    eventList.appendChild(viewAllButton);
+  } else {
+    const noEventsMessage = document.createElement('li');
+    noEventsMessage.textContent = 'Nessun evento per questa data.';
+    eventList.appendChild(noEventsMessage);
+    const viewAllButton = document.createElement('button');
+    viewAllButton.textContent = 'Visualizza tutti';
+    viewAllButton.addEventListener('click', () => {
+      showAllEventsForDate(date);
+    });
+    eventList.appendChild(viewAllButton);
+  }
+}
+
+
+
+
+function showAllEventsForDate(date) {
+  // Ripristina il titolo predefinito della lista degli eventi
+  const eventList = document.getElementById('eventsUl');
+  eventList.innerHTML = '';
+  document.getElementById('eventList').getElementsByTagName('h2')[0].textContent = 'Eventi'; // Modifica il testo del titolo
+
+  // Mostra tutti gli eventi per la data specificata
+  const sortedEvents = Object.entries(events)
+    .map(([dayKey, dayEvents]) => ({ date: dayKey, events: dayEvents }))
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  sortedEvents.forEach(({ date, events }) => {
+    events.forEach((event) => {
+      const eventListItem = document.createElement('li');
+      const formattedDate = new Date(date).toLocaleDateString('it-IT');
+      eventListItem.textContent = `${formattedDate}: ${event.name} (${event.time})`;
+      eventList.appendChild(eventListItem);
+    });
+  });
+}
+
+
+
+
+function editEventFromList(date, index) {
+  const event = events[date][index];
+
+  // Popola il form con i dettagli dell'evento
+  document.getElementById('editEventForm').style.display = 'block';
+  document.getElementById('editEventName').value = event.name;
+  document.getElementById('editEventDate').value = date;
+  document.getElementById('editEventTime').value = event.time;
+  document.getElementById('editEventColor').value = event.color;
+
+  // Quando viene cliccato "Salva modifiche", esegui la funzione updateEvent
+  document.getElementById('saveEditEventButton').onclick = () => {
+    updateEvent(date, index);
+  };
+}
+
+function updateEvent(date, index) {
+  const eventDate = document.getElementById('editEventDate').value;
+  const eventTime = document.getElementById('editEventTime').value;
+  const eventName = document.getElementById('editEventName').value;
+  const eventColor = document.getElementById('editEventColor').value;
+
+  // Rimuovi l'evento dalla data originale
+  events[date].splice(index, 1);
+  // Se non ci sono più eventi per la data originale, elimina la chiave
+  if (events[date].length === 0) {
+    delete events[date];
+  }
+
+  // Aggiungi l'evento alla nuova data
+  const newDateKey = new Date(eventDate).toISOString().split('T')[0];
+  if (!events[newDateKey]) {
+    events[newDateKey] = [];
+  }
+  events[newDateKey].push({ name: eventName, time: eventTime, color: eventColor });
+
+  // Salva gli eventi aggiornati nel localStorage
+  localStorage.setItem('events', JSON.stringify(events));
+
+  // Nascondi il form di modifica
+  document.getElementById('editEventForm').style.display = 'none';
+
+  // Genera il nuovo calendario e aggiorna la lista degli eventi
+  generateCalendar(currentYear, currentMonth);
+  showAllEventsForDate(date);
+}
+
+function deleteEventFromList(date, index) {
+  const confirmDelete = confirm('Sei sicuro di voler eliminare questo evento?');
+  if (confirmDelete) {
+    events[date].splice(index, 1);
+    if (events[date].length === 0) {
+      delete events[date];
+    }
+    localStorage.setItem('events', JSON.stringify(events));
+
+    generateCalendar(currentYear, currentMonth);
+    showAllEventsForDate(date);
+  }
+}

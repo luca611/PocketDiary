@@ -523,17 +523,27 @@ function save() {
   cambia la slide visualizzata a schermo rendendo intabbabile le altre
 */
 function toSlide(id) {
+  console.log("Chiamata a toSlide con ID:", id);
+  
+  // Nascondi tutti i div con la classe "slide"
   document.querySelectorAll("div.slide").forEach(function (e) {
     e.classList.add("hidden");
     e.querySelectorAll("*").forEach(function (e2) {
       e2.tabIndex = "-1";
     });
   });
+
+  // Mostra il div con l'ID specificato
   let d = document.getElementById(id);
-  d.classList.remove("hidden");
-  d.querySelectorAll("*").forEach(function (e2) {
-    e2.tabIndex = "";
-  });
+  if (d) {
+    console.log("Elemento con ID", id, "trovato. Mostrando...");
+    d.classList.remove("hidden");
+    d.querySelectorAll("*").forEach(function (e2) {
+      e2.tabIndex = ""; 
+    });
+  } else {
+    console.error("Elemento con ID", id, "non trovato.");
+  }
 }
 
 //il codice per il mannaggia delle materie, però non va YIUPPE
@@ -970,4 +980,9 @@ function deleteEventFromList(date, index) {
     generateCalendar(currentYear, currentMonth);
     showAllEventsForDate(date);
   }
+}
+
+function handleCalendarButtonClick() {
+  initializeCalendar();
+  toSlide('calendarDiv');
 }

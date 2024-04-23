@@ -748,8 +748,8 @@ function updateEventList() {
   });
 
   // Aggiorna il titolo della lista base
-  const baseEventListTitle = document.getElementById('baseEventListTitle');
-  baseEventListTitle.textContent = 'Eventi';
+  /*const baseEventListTitle = document.getElementById('baseEventListTitle');
+  baseEventListTitle.textContent = 'Eventi';*/
 }
 
 

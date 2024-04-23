@@ -536,13 +536,13 @@ function toSlide(id) {
   // Mostra il div con l'ID specificato
   let d = document.getElementById(id);
   if (d) {
-    console.log("Elemento con ID", id, "trovato. Mostrando...");
+    console.log("Elemento con ID", id, " trovato. Mostrando...");
     d.classList.remove("hidden");
     d.querySelectorAll("*").forEach(function (e2) {
       e2.tabIndex = ""; 
     });
   } else {
-    console.error("Elemento con ID", id, "non trovato.");
+    console.error("Elemento con ID", id, " non trovato.");
   }
 }
 

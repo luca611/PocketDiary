@@ -30,7 +30,7 @@ xhr.send();
 //Your code here
 let name;               //nome dell'utente
 let theme = "bGreen";   //tema scelto, preimpostato a verde, chiamato come la classe del css per comodità
-let events = [];        //elenco degli eventi
+let eventS = [];        //elenco degli eventi
 let modifying = -1;     //indice dell'evento che l'utente sta modificando
 var votes = [];        // Array per salvare i voti
 
@@ -207,7 +207,7 @@ function confirmEvent() {
   if (tempName.length > minNameLength && tempName.length < maxNameLength && isValidString(tempName) && tempDate.getTime() > Date.now() && tempDesc.length < maxDescLength) {
     let e = new Event(tempName, tempDate, tempDesc);
     //console.log(e);
-    events.push(e);
+    eventS.push(e);
     save();
     regenerateEventList();
     document.getElementById("inputName").value = "";
@@ -262,7 +262,7 @@ function modifyEvent() {
   if (tempName.length > minNameLength && tempName.length < maxNameLength && isValidString(tempName) && tempDate.getTime() > Date.now() && tempDesc.length < maxDescLength) {
     let e = new Event(tempName, tempDate, tempDesc);
     //console.log(e);
-    events.splice(modifying, 1, e);
+    eventS.splice(modifying, 1, e);
     save();
     modifying = -1;
     regenerateEventList();
@@ -290,16 +290,16 @@ function openEventModify(i) {
   document.getElementById("blackscreen").classList.remove("hidden");
   document.getElementById("modifyEvent").classList.remove("hidden");
   document.getElementById("eventView").style.zIndex = "-2";
-  document.getElementById("inputNameM").value = events[i].name;
-  document.getElementById("inputDateM").value = events[0].date.toISOString().split('T')[0];
-  document.getElementById("inputDescM").value = events[i].desc;
+  document.getElementById("inputNameM").value = eventS[i].name;
+  document.getElementById("inputDateM").value = eventS[0].date.toISOString().split('T')[0];
+  document.getElementById("inputDescM").value = eventS[i].desc;
 }
 
 /*
   elimina l'evento che si sta modificando
 */
 function deleteEvent() {
-  events.splice(modifying, 1);
+  eventS.splice(modifying, 1);
   modifying = -1;
   cancelModifyEvent();
   save();
@@ -311,19 +311,19 @@ function deleteEvent() {
   quando è vuota fa visualizzare l'immagine e testo placeholder
 */
 function regenerateEventList() {
-  if (events.length > 0) {
+  if (eventS.length > 0) {
     let elenco = document.getElementById("upcomingEvents");
     elenco.innerHTML = "";
-    for (let i = 0; i < events.length; i++) {
+    for (let i = 0; i < eventS.length; i++) {
       let evento = document.createElement("div");
       evento.classList.add("events");
       //aggiunta titolo
       let b = document.createElement("div");
-      b.innerText = events[i].name;
+      b.innerText = eventS[i].name;
       evento.appendChild(b);
       //aggiunta data
       b = document.createElement("div");
-      b.innerText = events[i].date.getDay() + "/" + events[i].date.getMonth() + "/" + events[i].date.getFullYear();
+      b.innerText = eventS[i].date.getDay() + "/" + eventS[i].date.getMonth() + "/" + eventS[i].date.getFullYear();
       evento.appendChild(b);
       //aggiunta pulsante descrizione a capo
       b = document.createElement("br");
@@ -347,7 +347,7 @@ function regenerateEventList() {
         document.getElementById("createEvent").classList.add("hidden");
         document.getElementById("eventView").classList.remove("hidden");
         document.getElementById("eventView").style.zIndex = "0";
-        document.getElementById("eventDesc").innerText = events[i].desc;
+        document.getElementById("eventDesc").innerText = eventS[i].desc;
       };
       evento.appendChild(b);
       //aggiunta modifica
@@ -450,13 +450,13 @@ function loadFromStorage() {
 
     // Caricamento degli eventi
     try {
-      events = JSON.parse(localStorage.events);
+      eventS = JSON.parse(localStorage.eventS);
       for (let i = 0; i < events.length; i++) {
-        events[i] = new Event(events[i].name, events[i].date, events[i].desc);
-        console.log(events[i]);
+        eventS[i] = new Event(eventS[i].name, eventS[i].date, eventS[i].desc);
+        console.log(eventS[i]);
       }
     } catch (ex) {
-      events = [];
+      eventS = [];
     }
 
     // Caricamento delle materie
@@ -488,7 +488,7 @@ function save() {
   try {
     localStorage.name = JSON.stringify(name);
     localStorage.theme = JSON.stringify(theme);
-    localStorage.events = JSON.stringify(events);
+    localStorage.eventS = JSON.stringify(eventS);
 
     // Salvataggio dei voti 
     let voteContainers = document.querySelectorAll('.vote-container');

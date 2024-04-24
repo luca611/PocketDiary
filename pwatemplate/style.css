@@ -407,10 +407,7 @@ body {
     bottom: 0;
 }
 
-.hidden {
-    display: none;
-    z-index: -6;
-}
+
 
 .popUP {
     display: flex;
@@ -627,6 +624,7 @@ body {
 .selected_m {
     border: none;
 }
+
 
 @media (max-width: 60em) {
 
@@ -915,4 +913,9 @@ button {
 .vote-number {
     font-weight: bold; /* Rendi il numero del voto in grassetto */
     margin-right: 10px; /* Aggiungi spazio a destra del numero del voto */
+}
+
+.hidden {
+    display: none;
+    z-index: -6;
 }

@@ -546,7 +546,7 @@ function toSlide(id) {
   }
 }
 
-//il codice per il mannaggia delle materie, però non va YIUPPE
+//il codice per le materie
 function initializeSubjects() {
   console.log("Inizializzazione materie");
 
@@ -582,7 +582,6 @@ function generateWeek() {
     week.appendChild(day);
   }
 }
-//tolgo il disturbo.
 
 function mostraForm() {
   document.getElementById("introContainer").style.display = "none";

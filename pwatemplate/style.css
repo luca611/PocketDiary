@@ -899,9 +899,6 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
 .vote-container {
     margin-bottom: 20px; 
     padding: 10px; 

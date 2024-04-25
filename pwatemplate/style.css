@@ -1021,20 +1021,17 @@ input[type="text"] {
         margin: 0.3rem;
         background-color: #c2c2c2;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        display: inline-block; /* Add this property */
+        display: inline-block; 
     }
 }
 
 
-
-.hidden {
-    display: none;
-    z-index: -6;
-}
-
 .week-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    white-space: nowrap; 
   }
   
   .day {
@@ -1046,6 +1043,12 @@ input[type="text"] {
   .hour {
     margin-bottom: 10px; /* Spazio tra gli slot delle lezioni */
   }  
+
+.hidden {
+    display: none;
+    z-index: -6;
+}
+
 
 
   

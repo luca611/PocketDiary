@@ -656,6 +656,15 @@ button:hover {
     display: inline-block; /* Add this property */
 }
 
+.books{
+    display: flex;
+    margin: 9vh;
+    justify-content: center;
+    height: 50%;
+    width: 100%;
+    border-radius: 1rem;
+}
+
 
 @media (max-width: 60em) {
 
@@ -892,24 +901,27 @@ button:hover {
 
 
 .calendario {
+    display: flex;
+    justify-content: center;
     height: 49%;
-    padding: 1rem;
     width: 100%;
-    margin-bottom: 0.6rem;
     border-radius: 1rem;
+    margin-bottom: 1%;
 }
 
 
 .motivational {
+    margin-top:2%;
     display: flex;
+    vertical-align: center;
     justify-content: center;
-    height: 50%;
+    height: 49%;
     width: 100%;
     border-radius: 1rem;
 }
 
 .motivationalImg {
-    position: relative;
+    margin-top: 10vh;
     width: 49%;
     height: auto;
 }

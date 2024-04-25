@@ -1036,6 +1036,10 @@ input[type="text"] {
     margin-left: 5rem;
     margin-right: 3rem;
   }
+
+  .subjects{
+    border-radius: 1rem;
+  }
   .subject{
     min-width: 80%;
   }

@@ -1034,15 +1034,16 @@ input[type="text"] {
     white-space: nowrap; 
   }
   
-  .day {
+  .weekday {
     flex: 1 0 14%; /* Larghezza fissa per ogni giorno */
     margin-right: 1%; /* Spazio tra i giorni */
     margin-bottom: 20px; /* Spazio tra le righe dei giorni */
   }
   
-  .hour {
+  .slot {
     margin-bottom: 10px; /* Spazio tra gli slot delle lezioni */
-  }  
+  }
+  
 
 .hidden {
     display: none;

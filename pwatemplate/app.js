@@ -207,23 +207,23 @@ function confirmEvent() {
   let tempName = document.getElementById("inputName").value;
   let tempDate = new Date(document.getElementById("inputDate").value);
   let tempDesc = document.getElementById("inputDesc").value;
-  
+
   if (tempName.length <= minNameLength) {
     throw "Il nome è troppo corto.";
   }
-  
+
   if (tempName.length >= maxNameLength) {
     throw "Il nome è troppo lungo.";
   }
-  
+
   if (!isValidString(tempName)) {
     throw "Il nome contiene caratteri non validi.";
   }
-  
+
   if (tempDate.getTime() < new Date().setHours(0, 0, 0, 0)) {
     throw "La data inserita è nel passato.";
   }
-  
+
   if (tempDesc.length >= maxDescLength) {
     throw "La descrizione è troppo lunga.";
   }
@@ -239,12 +239,12 @@ function confirmEvent() {
   console.log("Nome:", tempName);
   console.log("Data:", tempDate.toDateString());
   console.log("Descrizione:", tempDesc);
-  
+
   // Ripuliamo i campi del form
   document.getElementById("inputName").value = "";
   document.getElementById("inputDate").value = "";
   document.getElementById("inputDesc").value = "";
-  
+
   //per semplicità chiamo questa anche se non viene cancellato l'evento
   cancelEvent();
 }
@@ -439,7 +439,7 @@ function closeSideBar() {
 }
 
 /*
-  carica il nome utente, il tema scelto e gli eventi salvati dal localstorage
+  carica il nome utente, il tema scelto, le materie e gli eventi salvati dal localstorage
 */
 function loadFromStorage() {
   try {
@@ -494,12 +494,6 @@ function loadFromStorage() {
     // Caricamento delle materie
     try {
       subjects = JSON.parse(localStorage.subjects);
-      let inputs = document.querySelectorAll('.subject, .color');
-      for (let i = 0; i < inputs.length; i++) {
-        if (subjects[i]) {
-          inputs[i].value = subjects[i];
-        }
-      }
     } catch (ex) {
       subjects = [];
     }
@@ -514,7 +508,7 @@ function loadFromStorage() {
 
 
 /*
-  salva nome, tema ed eventi nel localstorage
+  salva nome, materie, tema ed eventi nel localstorage
 */
 function save() {
   try {
@@ -552,8 +546,8 @@ function save() {
   cambia la slide visualizzata a schermo rendendo intabbabile le altre
 */
 function toSlide(id) {
-  console.log("Chiamata a toSlide con ID:", id);
-  
+  //console.log("Chiamata a toSlide con ID:", id);
+
   // Nascondi tutti i div con la classe "slide"
   document.querySelectorAll("div.slide").forEach(function (e) {
     e.classList.add("hidden");
@@ -565,13 +559,13 @@ function toSlide(id) {
   // Mostra il div con l'ID specificato
   let d = document.getElementById(id);
   if (d) {
-    console.log("Elemento con ID", id, " trovato. Mostrando...");
+    //console.log("Elemento con ID", id, " trovato. Mostrando...");
     d.classList.remove("hidden");
     d.querySelectorAll("*").forEach(function (e2) {
-      e2.tabIndex = ""; 
+      e2.tabIndex = "";
     });
   } else {
-    console.error("Elemento con ID", id, " non trovato.");
+    //console.error("Elemento con ID", id, " non trovato.");
   }
 }
 
@@ -588,6 +582,9 @@ function initializeSubjects() {
   // Aggiungi un event listener a ogni input
   let inputs = document.querySelectorAll('.subject, .color');
   for (let i = 0; i < inputs.length; i++) {
+    if (subjects[i]) {
+      inputs[i].value = subjects[i];
+    }
     inputs[i].addEventListener('change', save);
   }
 

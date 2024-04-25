@@ -782,6 +782,7 @@ button:hover {
     }
 
     button {
+        border-radius: 2rem;
         padding-top: 2rem;
         padding-bottom: 2rem;
         font-size: large;
@@ -828,8 +829,8 @@ button:hover {
     .eventsCalendar{
         text-align: center;
         border-radius: 1rem;
-        width: 40vw;
-        height: 40vh;
+        width: 20vw;
+        height: 10vh;
         margin: 0.3rem;
         background-color: #c2c2c2;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

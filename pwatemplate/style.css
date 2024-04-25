@@ -666,12 +666,156 @@ button:hover {
 }
 
 
+
+
+
+
+.subjects {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background-color: white;
+}
+
+.blue {
+    color: #568A9A;
+}
+
+.green {
+    color: #569A65;
+}
+
+.yellow {
+    color: #BBB536;
+}
+
+.bBlue {
+    background-color: #568A9A;
+}
+
+.bGreen {
+    background-color: #569A65;
+}
+
+.bYellow {
+    background-color: #BBB536;
+}
+
+.bBlueD {
+    background-color: #36697E;
+}
+
+.bGreenD {
+    background-color: #367E42;
+}
+
+.bYellowD {
+    background-color: #928C22;
+}
+
+.calendar-container{
+    margin-top: 2rem;
+    margin-right: 0.7rem;
+    margin-left: 10%;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+.event-list{
+    text-align: center;
+}
+
+
+.calendario {
+    display: flex;
+    justify-content: center;
+    height: 49%;
+    width: 100%;
+    border-radius: 1rem;
+    margin-bottom: 1%;
+}
+
+
+.motivational {
+    margin-top:2%;
+    display: flex;
+    vertical-align: center;
+    justify-content: center;
+    height: 49%;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.motivationalImg {
+    margin-top: 10vh;
+    width: 49%;
+    height: auto;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+
+.vote-container {
+    margin-bottom: 20px; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+}
+
+/* spazio sopra e sotto i contenitori voto */
+.vote-container + .vote-container {
+    margin-top: 20px;
+}
+
+.vote-number {
+    font-weight: bold; /* Rendi il numero del voto in grassetto */
+    margin-right: 10px; /* Aggiungi spazio a destra del numero del voto */
+}
 @media (max-width: 60em) {
 
     .html {
         background-color: white;
     }
 
+    .calendar-container{
+        margin-left: 3vw;
+        margin-right: 3vw;
+    }
     .sfondo {
         display: none;
 
@@ -829,8 +973,8 @@ button:hover {
     .eventsCalendar{
         text-align: center;
         border-radius: 1rem;
-        width: 20vw;
-        height: 10vh;
+        width: 90vw;
+        height: 30vh;
         margin: 0.3rem;
         background-color: #c2c2c2;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -838,146 +982,6 @@ button:hover {
     }
 }
 
-
-
-
-
-.subjects {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    bottom: 0;
-    background-color: white;
-}
-
-.blue {
-    color: #568A9A;
-}
-
-.green {
-    color: #569A65;
-}
-
-.yellow {
-    color: #BBB536;
-}
-
-.bBlue {
-    background-color: #568A9A;
-}
-
-.bGreen {
-    background-color: #569A65;
-}
-
-.bYellow {
-    background-color: #BBB536;
-}
-
-.bBlueD {
-    background-color: #36697E;
-}
-
-.bGreenD {
-    background-color: #367E42;
-}
-
-.bYellowD {
-    background-color: #928C22;
-}
-
-.calendar-container{
-    margin-top: 2rem;
-    margin-right: 0.7rem;
-    margin-left: 10%;
-    max-height: 85vh;
-    overflow-y: auto;
-}
-.event-list{
-    text-align: center;
-}
-
-
-.calendario {
-    display: flex;
-    justify-content: center;
-    height: 49%;
-    width: 100%;
-    border-radius: 1rem;
-    margin-bottom: 1%;
-}
-
-
-.motivational {
-    margin-top:2%;
-    display: flex;
-    vertical-align: center;
-    justify-content: center;
-    height: 49%;
-    width: 100%;
-    border-radius: 1rem;
-}
-
-.motivationalImg {
-    margin-top: 10vh;
-    width: 49%;
-    height: auto;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-}
-
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-input[type="text"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-
-
-.vote-container {
-    margin-bottom: 20px; 
-    padding: 10px; 
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
-}
-
-/* spazio sopra e sotto i contenitori voto */
-.vote-container + .vote-container {
-    margin-top: 20px;
-}
-
-.vote-number {
-    font-weight: bold; /* Rendi il numero del voto in grassetto */
-    margin-right: 10px; /* Aggiungi spazio a destra del numero del voto */
-}
 
 
 .hidden {

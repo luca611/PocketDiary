@@ -620,12 +620,7 @@ function generateWeek() {
       subjectInput.className = 'subject';
       subjectInput.placeholder = 'Inserisci la materia';
 
-      let colorInput = document.createElement('input');
-      colorInput.type = 'color';
-      colorInput.className = 'color';
-
-      slot.appendChild(subjectInput);
-      slot.appendChild(colorInput);
+      slot.appendChild(subjectInput); // Rimuovo l'elemento colorInput
 
       slotsContainer.appendChild(slot);
     }

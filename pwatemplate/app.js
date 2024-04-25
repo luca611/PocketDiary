@@ -207,20 +207,43 @@ function confirmEvent() {
   let tempName = document.getElementById("inputName").value;
   let tempDate = new Date(document.getElementById("inputDate").value);
   let tempDesc = document.getElementById("inputDesc").value;
-  if (tempName.length > minNameLength && tempName.length < maxNameLength && isValidString(tempName) && tempDate.getTime() > Date.now() && tempDesc.length < maxDescLength) {
-    let e = new Event(tempName, tempDate, tempDesc);
-    //console.log(e);
-    eventS.push(e);
-    save();
-    regenerateEventList();
-    document.getElementById("inputName").value = "";
-    document.getElementById("inputDate").value = "";
-    document.getElementById("inputDesc").value = "";
-    cancelEvent();  //per semplicità chiamo questa anche se non viene cancellato l'evento
-  } else {
-    throw "input non disponibili";
+  
+  if (tempName.length <= minNameLength) {
+    throw "Il nome è troppo corto.";
   }
+  
+  if (tempName.length >= maxNameLength) {
+    throw "Il nome è troppo lungo.";
+  }
+  
+  if (!isValidString(tempName)) {
+    throw "Il nome contiene caratteri non validi.";
+  }
+  
+  if (tempDate.getTime() < new Date().setHours(0, 0, 0, 0)) {
+    throw "La data inserita è nel passato.";
+  }
+  
+  if (tempDesc.length >= maxDescLength) {
+    throw "La descrizione è troppo lunga.";
+  }
+
+  // Se siamo arrivati fin qui, l'input è valido, possiamo confermare l'evento
+  let e = new Event(tempName, tempDate, tempDesc);
+  eventS.push(e);
+  save();
+  regenerateEventList();
+  
+  // Ripuliamo i campi del form
+  document.getElementById("inputName").value = "";
+  document.getElementById("inputDate").value = "";
+  document.getElementById("inputDesc").value = "";
+  
+  //per semplicità chiamo questa anche se non viene cancellato l'evento
+  cancelEvent();
 }
+
+
 
 /*
   fa sparire il popup e torna alla home normale

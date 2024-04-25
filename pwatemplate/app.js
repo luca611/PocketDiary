@@ -789,10 +789,10 @@ function showAddEventForm() {
 }
 
 function addEvent() {
-  const eventDate = document.getElementById('eventDate').value;
-  const eventTime = document.getElementById('eventTime').value;
-  const eventName = document.getElementById('eventName').value;
-  const eventColor = document.getElementById('eventColor').value;
+  const eventDate = document.getElementById('eventDateCalendar').value;
+  const eventTime = document.getElementById('eventTimeCalendar').value;
+  const eventName = document.getElementById('eventNameCalendar').value;
+  const eventColor = document.getElementById('eventColorCalendar').value;
 
   // Assicurati che tutti i campi del form siano compilati
   if (!eventDate || !eventTime || !eventName || !eventColor) {

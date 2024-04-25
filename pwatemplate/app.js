@@ -823,10 +823,10 @@ function addEvent() {
     showAllEventsForDate();
 
     // Resetta i valori del form
-    document.getElementById('eventDate').value = '';
-    document.getElementById('eventTime').value = '';
-    document.getElementById('eventName').value = '';
-    document.getElementById('eventColor').value = '';
+    document.getElementById('eventDateCalendar').value = '';
+    document.getElementById('eventTimeCalendar').value = '';
+    document.getElementById('eventNameCalendar').value = '';
+    document.getElementById('eventColorCalendar').value = '';
 
     // Nascondi il form dopo l'aggiunta di un nuovo evento
     document.getElementById('addEventForm').style.display = 'none';

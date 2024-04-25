@@ -602,12 +602,11 @@ function generateWeek() {
 
   let days = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
   for (let i = 0; i < days.length; i++) {
-    let day = document.createElement('div');
-    day.className = 'day';
-    
+    let weekday = document.createElement('div');
+    weekday.className = 'weekday'; // Modificato il nome della classe
     let heading = document.createElement('h2');
     heading.textContent = days[i];
-    day.appendChild(heading);
+    weekday.appendChild(heading);
 
     let slotsContainer = document.createElement('div');
     slotsContainer.className = 'slots-container';
@@ -631,10 +630,10 @@ function generateWeek() {
       slotsContainer.appendChild(slot);
     }
 
-    day.appendChild(slotsContainer);
-    week.appendChild(day);
+    weekday.appendChild(slotsContainer);
+    week.appendChild(weekday);
   }
-} 
+}
 
 
 function mostraForm() {

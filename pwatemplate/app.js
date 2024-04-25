@@ -233,6 +233,12 @@ function confirmEvent() {
   eventS.push(e);
   save();
   regenerateEventList();
+
+  //debug
+  console.log("Evento confermato:");
+  console.log("Nome:", tempName);
+  console.log("Data:", tempDate.toDateString());
+  console.log("Descrizione:", tempDesc);
   
   // Ripuliamo i campi del form
   document.getElementById("inputName").value = "";
@@ -349,7 +355,7 @@ function regenerateEventList() {
       evento.appendChild(b);
       //aggiunta data
       b = document.createElement("div");
-      b.innerText = eventS[i].date.getDay() + "/" + eventS[i].date.getMonth() + "/" + eventS[i].date.getFullYear();
+      b.innerText = eventS[i].date.getDate() + "/" + (eventS[i].date.getMonth() + 1) + "/" + eventS[i].date.getFullYear(); //fix: getDay() restituisce il giorno della settimana (da 0 a 6) e non il giorno del mese
       evento.appendChild(b);
       //aggiunta pulsante descrizione a capo
       b = document.createElement("br");

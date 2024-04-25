@@ -596,21 +596,46 @@ function initializeSubjects() {
 
 function generateWeek() {
   let week = document.getElementById('week');
-  let days = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato', 'Domenica'];
+
+  // Cancella tutto il contenuto di week
+  week.innerHTML = '';
+
+  let days = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
   for (let i = 0; i < days.length; i++) {
     let day = document.createElement('div');
     day.className = 'day';
-    day.innerHTML = '<h2>' + days[i] + '</h2>';
-    for (let j = 0; j < 24; j++) {
-      let hour = document.createElement('div');
-      hour.className = 'hour';
-      hour.innerHTML = '<input type="text" class="subject" placeholder="Inserisci la materia">' +
-        '<input type="color" class="color">';
-      day.appendChild(hour);
+    
+    let heading = document.createElement('h2');
+    heading.textContent = days[i];
+    day.appendChild(heading);
+
+    let slotsContainer = document.createElement('div');
+    slotsContainer.className = 'slots-container';
+
+    for (let j = 0; j < 8; j++) {
+      let slot = document.createElement('div');
+      slot.className = 'slot';
+
+      let subjectInput = document.createElement('input');
+      subjectInput.type = 'text';
+      subjectInput.className = 'subject';
+      subjectInput.placeholder = 'Inserisci la materia';
+
+      let colorInput = document.createElement('input');
+      colorInput.type = 'color';
+      colorInput.className = 'color';
+
+      slot.appendChild(subjectInput);
+      slot.appendChild(colorInput);
+
+      slotsContainer.appendChild(slot);
     }
+
+    day.appendChild(slotsContainer);
     week.appendChild(day);
   }
-}
+} 
+
 
 function mostraForm() {
   document.getElementById("introContainer").style.display = "none";
@@ -780,12 +805,6 @@ function updateEventList() {
   /*const baseEventListTitle = document.getElementById('baseEventListTitle');
   baseEventListTitle.textContent = 'Eventi';*/
 }
-
-
-
-
-
-
 
 function prevMonth() {
   currentMonth -= 1;

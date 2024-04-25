@@ -1027,16 +1027,24 @@ input[type="text"] {
 
 
 .week-container {
+    margin-top: 15vh;
     display: flex;
     flex-wrap: nowrap; 
     overflow-x: auto; 
-    overflow-y: hidden; 
+    overflow-y: auto; 
     white-space: nowrap; 
-    margin-left: 7rem;
+    margin-left: 5rem;
     margin-right: 3rem;
   }
-  
+  .subject{
+    min-width: 80%;
+  }
   .weekday {
+    min-width: 10rem;
+    overflow-y: auto; 
+    background-color: #cacaca;
+    border-radius: 1rem;
+    align-items: center;
     flex: 1 0 14%; /* Larghezza fissa per ogni giorno */
     margin-right: 1%; /* Spazio tra i giorni */
     margin-bottom: 20px; /* Spazio tra le righe dei giorni */

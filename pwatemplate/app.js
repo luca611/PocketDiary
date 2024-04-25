@@ -454,7 +454,7 @@ function loadFromStorage() {
     // Caricamento degli eventi
     try {
       eventS = JSON.parse(localStorage.eventS);
-      for (let i = 0; i < events.length; i++) {
+      for (let i = 0; i < eventS.length; i++) {
         eventS[i] = new Event(eventS[i].name, eventS[i].date, eventS[i].desc);
         console.log(eventS[i]);
       }

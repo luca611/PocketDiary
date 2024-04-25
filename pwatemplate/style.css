@@ -1021,32 +1021,37 @@ input[type="text"] {
         margin: 0.3rem;
         background-color: #c2c2c2;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        display: inline-block; /* Add this property */
+        display: inline-block; 
     }
 }
 
 
-
-.hidden {
-    display: none;
-    z-index: -6;
-}
-
 .week-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    white-space: nowrap; 
+    margin-left: 7rem;
+    margin-right: 3rem;
   }
   
   .weekday {
     flex: 1 0 14%; /* Larghezza fissa per ogni giorno */
     margin-right: 1%; /* Spazio tra i giorni */
     margin-bottom: 20px; /* Spazio tra le righe dei giorni */
+    padding: 2rem;
   }
   
-  .slot {
+.slot {
     margin-bottom: 10px; /* Spazio tra gli slot delle lezioni */
   }
-  
+ 
+.hidden {
+    display: none;
+    z-index: -6;
+}
+
 
 
   

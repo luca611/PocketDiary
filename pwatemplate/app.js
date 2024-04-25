@@ -695,7 +695,7 @@ function generateCalendar(year, month) {
     dayDiv.appendChild(fullDateDiv);
 
     const eventsDiv = document.createElement('div');
-    eventsDiv.classList.add('events');
+    eventsDiv.classList.add('eventsCalendar');
     const dayKey = `${day.year}-${(day.month + 1).toString().padStart(2, '0')}-${day.day.toString().padStart(2, '0')}`;
 
     if (events[dayKey] && events[dayKey].length > 0) {
@@ -715,6 +715,7 @@ function generateCalendar(year, month) {
     dayDiv.appendChild(eventsDiv);
 
     calendarDiv.appendChild(dayDiv);
+    calendarDiv.classList.remove('fc', 'fc-media-screen', 'fc-direction-ltr', 'fc-theme-standard');
   });
 
 }

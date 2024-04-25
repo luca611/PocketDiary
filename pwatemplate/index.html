@@ -116,7 +116,7 @@
                 </div>
                 <h1 class="welcomingMessage">Welcome <b class="" id="displayUsername">{username}</b></h1>
                 <div class="azioniRapideMobile">
-                    <button class="elementoBarra" onclick="initializeSubjects()"><img src="resources/clock.svg" alt=""
+                    <button class="rapidoMob , bGreen" onclick="initializeSubjects()"><img src="resources/clock.svg" alt=""
                             class="imgRapido">
                         <b class="white">Schedule</b>
                     </button><br>
@@ -136,7 +136,7 @@
                     </div>
                 </div>
                 <div class="utilsDesktop">
-                    <div class="calendario bGreen" id="calendar"><!---->
+                    <div class="calendario bGreen" id="calendario"><!---->
 
                     </div>
                     <div class="motivational bGreen">
@@ -179,27 +179,27 @@
 
                     </div>
                 </div>
-
-                <script type="text/javascript" src="web.js"></script>
             </div>
 
             <div class="hidden slide" id="calendarDiv">
                 <div class="calendar-container">
-                    <div class="calendar" id="calendar"></div>
-
                     <div class="event-list" id="eventList">
                         <h2>Eventi</h2>
                         <ul id="eventsUl"></ul>
                     </div>
+                    <div class="navigation">
+                        <button onclick="goToToday()">Torna ad oggi</button>
+                        <button onclick="prevMonth()">Mese precedente</button>
+                        <button onclick="nextMonth()">Mese successivo</button>
+                        <!-- Aggiungi il pulsante per mostrare il form per aggiungere un evento -->
+                        <button onclick="showAddEventForm()">Aggiungi evento</button>
+                    </div>
+                    <div class="calendar" id="calendar"></div>
+
+                    
                 </div>
 
-                <div class="navigation">
-                    <button onclick="goToToday()">Torna ad oggi</button>
-                    <button onclick="prevMonth()">Mese precedente</button>
-                    <button onclick="nextMonth()">Mese successivo</button>
-                    <!-- Aggiungi il pulsante per mostrare il form per aggiungere un evento -->
-                    <button onclick="showAddEventForm()">Aggiungi evento</button>
-                </div>
+                
                 <div class="edit-event-form" id="editEventForm" style="display: none;">
                     <input type="date" id="editEventDate">
                     <input type="time" id="editEventTime">

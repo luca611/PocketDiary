@@ -93,6 +93,9 @@ body {
 }
 
 .blackScreen {
+    display: flex;
+    align-items: center;
+    text-align: center;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.41);
     height: 100%;
@@ -104,7 +107,6 @@ body {
 .popUPadd {
     display: flex;
     flex-direction: column;
-    top: 30%;
     left: 30%;
     position: absolute;
     width: 40%;
@@ -173,6 +175,19 @@ button:hover {
     filter: brightness(80%);
 }
 
+.buttonCal{
+    font-family: "itim";
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 0.4rem;
+    border: none;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.buttonCal:hover {
+    transform: scale(0.99);
+    filter: brightness(80%);
+}
 .setDesc {
     min-height: 5rem;
     border-color: rgba(163, 163, 163, 0.40);
@@ -812,6 +827,15 @@ input[type="text"] {
         background-color: white;
     }
 
+    .navigation{
+        position: absolute;
+        top: 8rem;
+        left: 1rem;
+        display: flex;
+        overflow-x: auto;
+        max-width: 90%;
+        padding-bottom: 0.2rem;
+    }
     .calendar-container{
         margin-left: 3vw;
         margin-right: 3vw;
@@ -867,6 +891,12 @@ input[type="text"] {
         position: fixed;
     }
 
+    .event-list{
+        margin-top: 13rem;
+    }
+    .calendar-container{
+        margin-bottom: 3rem;
+    }
     .aperta {
         z-index: 99;
         width: 60%;
@@ -932,6 +962,11 @@ input[type="text"] {
         font-size: large;
     }
 
+    .buttonCal{
+        min-width: 10rem;
+        border-radius: 2rem;
+        margin-right: 1rem;
+    }
 
     .azioniRapideMobile> :last-child {
         margin-right: 0.5rem;

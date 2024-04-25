@@ -639,6 +639,23 @@ button:hover {
     border: none;
 }
 
+.calendar{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+.eventsCalendar{
+    text-align: center;
+    border-radius: 1rem;
+    width: 10vw;
+    height: 10vh;
+    margin: 0.3rem;
+    background-color: #c2c2c2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: inline-block; /* Add this property */
+}
+
 
 @media (max-width: 60em) {
 
@@ -798,6 +815,17 @@ button:hover {
     .selected_m {
         border: solid rgb(222, 135, 135) 0.3rem;
     }
+
+    .eventsCalendar{
+        text-align: center;
+        border-radius: 1rem;
+        width: 40vw;
+        height: 40vh;
+        margin: 0.3rem;
+        background-color: #c2c2c2;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: inline-block; /* Add this property */
+    }
 }
 
 
@@ -937,22 +965,7 @@ input[type="text"] {
     font-weight: bold; /* Rendi il numero del voto in grassetto */
     margin-right: 10px; /* Aggiungi spazio a destra del numero del voto */
 }
-.calendar{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    height: 100%;
-}
-.eventsCalendar{
-    text-align: center;
-    border-radius: 1rem;
-    width: 10vw;
-    height: 10vh;
-    margin: 0.3rem;
-    background-color: #c2c2c2;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: inline-block; /* Add this property */
-}
+
 
 .hidden {
     display: none;

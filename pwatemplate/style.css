@@ -120,7 +120,6 @@ body {
 .popUPmod {
     display: flex;
     flex-direction: column;
-    top: 30%;
     left: 30%;
     position: absolute;
     width: 40%;
@@ -850,10 +849,15 @@ input[type="text"] {
     }
 
     .popUPadd {
+        left: 2%;
         width: 90%;
-        left: 2.5%;
     }
 
+    .popUPdesc{
+        left: 2%;
+        margin-bottom: 2%;
+        width: 90%;
+    }
     body {
         background-color: white;
     }
@@ -878,8 +882,8 @@ input[type="text"] {
 
     .descContainer {
 
-        min-height: 22rem;
-        max-height: 22rem;
+        min-height: 20rem;
+        max-height: 20rem;
     }
 
     .events {
@@ -889,6 +893,8 @@ input[type="text"] {
 
     .blackScreen {
         position: fixed;
+        display: flex;
+        align-items: center;
     }
 
     .event-list{
@@ -914,10 +920,12 @@ input[type="text"] {
     }
 
     .popUP {
-        width: 80%;
-        left: 5%;
+        width: 95%;   
     }
-
+    .popUPmod{
+        left: 2%;
+        width: 90%; 
+    }
     .bottScelta:hover {
         border: solid burlywood 0.3rem;
     }

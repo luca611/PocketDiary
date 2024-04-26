@@ -186,6 +186,8 @@ function set_theme() {
   funzione specifica per non dover aggiungere alla mainApp la classe hidden
  */
 function renderHomePage(){
+  document.getElementById("appContainer").classList.remove("mainAppNotVisible")
+  document.getElementById("appContainer").classList.add("mainAppVisible")
   document.getElementById("mainApp").classList.remove("mainAppNotVisible")
   document.getElementById("mainApp").classList.add("mainAppVisible")
 }
@@ -679,6 +681,7 @@ function inserisciVoto() {
   // Nascondiamo il modulo di inserimento del voto e mostriamo i voti salvati
   document.getElementById("formContainer").style.display = "none";
   document.getElementById("previousVotesContainer").style.display = "block";
+  document.getElementById("introContainer").style.display = "block";
 
 }
 

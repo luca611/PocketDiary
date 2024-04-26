@@ -40,12 +40,12 @@
             </div>
             <br>
             <p class="tip">You will still be able to change it later</p>
-            <button onclick="toSlide('home')" class="continue bGreen">continue</button>
+            <button onclick="renderHomePage(), toSlide('home')" class="continue bGreen">continue</button>
         </div>
     </div>
 
 
-    <div class="mainApp"><!--mainApp-->
+    <div class="mainApp mainAppNotVisible" id="mainApp" ><!--mainApp-->
         <div class="appContainer">
 
             <div class="hidden" id="scuro">
@@ -61,8 +61,8 @@
                     <button class="rapido" onclick="handleCalendarButtonClick()"><img src="resources/calendar.svg" alt=""
                             class="imgRapido"></button>
                     <button class="rapido" onclick="toSlide('marks')"><img src="resources/test.svg" alt="" class="imgRapido"></button>
-                    <button class="rapido , settings" onclick=""><img src="resources/settings.svg" alt=""
-                            class="imgRapido"></button>
+                    <!--<button class="rapido , settings" onclick=""><img src="resources/settings.svg" alt=""
+                            class="imgRapido"></button>-->
                 </div>
 
                 <div class="barraContenuto  , hidden" id="barraAperta">
@@ -82,8 +82,8 @@
                     <button class="elemntoBarra" onclick="toSlide('marks')"><img src="resources/test.svg" alt=""
                             class="imgRapido"> <b class="white">Marks</b></button><br>
                     <hr class="separaOpzioni">
-                    <button class="elemntoBarra , settingsContenuto" onclick=""><img src="resources/settings.svg" alt=""
-                            class="imgRapido"> <b class="white">Settings</b></button><br>
+                    <!--<button class="elemntoBarra , settingsContenuto" onclick=""><img src="resources/settings.svg" alt=""
+                            class="imgRapido"> <b class="white">Settings</b></button><br>-->
                 </div>
             </div>
             <div class="homepage slide" id="home">

@@ -69,11 +69,11 @@ body {
 }
 
 .mainAppNotVisible{
-    z-index: -1;
+    z-index: -99;
 }
 
 .mainAppVisible{
-    z-index: 0;
+    z-index: 1;
 }
 
 .white {
@@ -1042,14 +1042,14 @@ input[type="text"] {
     overflow-y: auto; 
     white-space: nowrap; 
     margin-left: 5rem;
-    margin-right: 3rem;
+    margin-right: 1rem;
   }
 
   .subjects{
     border-radius: 1rem;
   }
   .subject{
-    min-width: 80%;
+    min-width: 100%;
   }
   .weekday {
     min-width: 10rem;

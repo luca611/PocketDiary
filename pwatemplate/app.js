@@ -41,7 +41,7 @@ let lastSelectedDate = null;
 let minNameLength = 3;
 let maxNameLength = 20;
 let maxDescLength = 1000;
-let notAvailableChars = ["|", "!", "?", '"', "£", "$", "%", "&", "/", "*", "+", "-", "=", "^", "(", ")", "{", "}", "[", "]", "ç", "@", "°", "#", "§", ";", ",", ":", ".", ">", "<"];
+let notAvailableChars = ["-", "|", "!", "?", '"', "£", "$", "%", "&", "/", "*", "+", "=", "^", "(", ")", "{", "}", "[", "]", "ç", "@", "°", "#", "§", ";", ",", ":", ".", ">", "<"];
 
 function Event(name, date, desc) {
   this.name = name;
@@ -185,7 +185,7 @@ function set_theme() {
 /*
   funzione specifica per non dover aggiungere alla mainApp la classe hidden
  */
-function renderHomePage(){
+function renderHomePage() {
   document.getElementById("appContainer").classList.remove("mainAppNotVisible")
   document.getElementById("appContainer").classList.add("mainAppVisible")
   document.getElementById("mainApp").classList.remove("mainAppNotVisible")
@@ -245,10 +245,10 @@ function confirmEvent() {
   regenerateEventList();
 
   //debug
-  console.log("Evento confermato:");
+  /*console.log("Evento confermato:");
   console.log("Nome:", tempName);
   console.log("Data:", tempDate.toDateString());
-  console.log("Descrizione:", tempDesc);
+  console.log("Descrizione:", tempDesc);*/
 
   // Ripuliamo i campi del form
   document.getElementById("inputName").value = "";
@@ -645,11 +645,31 @@ function mostraForm() {
   document.getElementById("formContainer").style.display = "block";
 }
 
+function isValidDate(d) {
+  notAvailableDateChars = notAvailableChars.splice(0, 1)
+  notAvailableChars.push(["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"])
+  try {
+    notAvailableDateChars.forEach(function (e) {
+      if (d.includes(e)) {
+        console.log(e);
+        throw "carattere proibito trovato";
+      }
+    });
+  } catch (ex) {
+    return false;
+  }
+  return true;
+}
+
 function inserisciVoto() {
 
   var materia = document.getElementById("inputMateria").value;
   var data = document.getElementById("inputData").value;
   var voto = document.getElementById("inputVoto").value;
+  if (!isValidString(materia) || !isValidDate(data) || voto < 0 || voto > 10) {
+    console.log("Input non validi")
+    return;
+  }
 
   // Calcoliamo il numero del voto
   var voteNumber = document.querySelectorAll(".vote-container").length + 1;

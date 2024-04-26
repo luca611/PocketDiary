@@ -68,6 +68,14 @@ body {
     align-items: center;
 }
 
+.mainAppNotVisible{
+    z-index: -1;
+}
+
+.mainAppVisible{
+    z-index: 0;
+}
+
 .white {
     color: white;
     font-family: "itim";

@@ -183,6 +183,14 @@ function set_theme() {
 }
 
 /*
+  funzione specifica per non dover aggiungere alla mainApp la classe hidden
+ */
+function renderHomePage(){
+  document.getElementById("mainApp").classList.remove("mainAppNotVisible")
+  document.getElementById("mainApp").classList.add("mainAppVisible")
+}
+
+/*
   funzione eseguita la clic del +
   mette il popup in sovraimpressione alla homepage
 */
@@ -499,6 +507,7 @@ function loadFromStorage() {
     }
 
     console.log("Nome: " + name + "\nTema: " + theme);
+    renderHomePage()
     toSlide("home");
   } catch (ex) {
     toSlide("start");

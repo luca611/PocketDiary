@@ -95,7 +95,7 @@ function isValidString(n) {
   try {
     notAvailableChars.forEach(function (e) {
       if (n.includes(e)) {
-        console.log(e);
+        //console.log(e);
         throw "carattere proibito trovato";
       }
     });
@@ -665,7 +665,7 @@ function isValidDate(d) {
   try {
     notAvailableDateChars.forEach(function (e) {
       if (d.includes(e)) {
-        console.log(e);
+        //console.log(e);
         throw "carattere proibito trovato";
       }
     });
@@ -916,7 +916,7 @@ function addEvent() {
     // Nascondi il form dopo l'aggiunta di un nuovo evento
     document.getElementById('addEventForm').style.display = 'none';
   } catch (error) {
-    console.error('Errore durante il salvataggio degli eventi nel localStorage:', error);
+    //console.error('Errore durante il salvataggio degli eventi nel localStorage:', error);
   }
   set_theme();
   updateEventList();

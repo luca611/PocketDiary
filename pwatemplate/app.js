@@ -612,6 +612,7 @@ function generateWeek() {
   for (let i = 0; i < days.length; i++) {
     let weekday = document.createElement('div');
     weekday.className = 'weekday'; // Modificato il nome della classe
+    weekday.classList.add('bGreen')
     let heading = document.createElement('h2');
     heading.textContent = days[i];
     weekday.appendChild(heading);

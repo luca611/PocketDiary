@@ -141,7 +141,6 @@ body {
 .popUPdesc {
     display: flex;
     flex-direction: column;
-    top: 30%;
     left: 30%;
     position: absolute;
     width: 40%;

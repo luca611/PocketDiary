@@ -523,6 +523,7 @@ function loadFromStorage() {
     }
 
     console.log("Nome: " + name + "\nTema: " + theme);
+    updateHomepageEvent()
     renderHomePage()
     toSlide("home");
   } catch (ex) {

@@ -677,13 +677,13 @@ function isValidDate(d) {
 function inserisciVoto() {
 
   var materia = document.getElementById("inputMateria").value;
-  var data = document.getElementById("inputData").value;
+  var data = new Date(document.getElementById("inputData").value);
   var voto = document.getElementById("inputVoto").value;
-  if (materia== null || data== null || voto == null || !isValidString(materia) || !isValidDate(data) || voto < 0 || voto > 10) {
+  if (materia == null || data == null || voto == null || !isValidString(materia) || data.getTime() < new Date().setHours(0, 0, 0, 0) || voto < 0 || voto > 10) {
     console.log("Input non validi")
     return;
   }
-
+  
   // Calcoliamo il numero del voto
   var voteNumber = document.querySelectorAll(".vote-container").length + 1;
 
@@ -693,9 +693,9 @@ function inserisciVoto() {
 
   // Aggiungiamo le informazioni del voto
   var voteInfo = document.createElement("p");
-  voteInfo.textContent = "Voto #" + voteNumber + ": Materia: " + materia + ", Data: " + data + ", Voto: " + voto;
+  voteInfo.textContent =  " Materia: " + materia + "  Data: " + data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear() + "  Voto: " + voto;
   newVoteContainer.appendChild(voteInfo);
-
+  
   var previousVotesContainer = document.getElementById("previousVotesContainer");
 
   // Aggiungiamo il nuovo rettangolo del voto alla fine della lista
@@ -800,7 +800,7 @@ function generateCalendar(year, month) {
       });
     }
 
-    
+
 
     dayDiv.appendChild(eventsDiv);
 
@@ -1085,12 +1085,12 @@ function showEvents() {
   updateEventList();
 }
 
-function nascondiAggiunta(){
+function nascondiAggiunta() {
   document.getElementById("formContainer").style.display = "none";
   document.getElementById("previousVotesContainer").style.display = "block";
   document.getElementById("iniziaButton").style.display = "block";
 }
 
-function nascondiAggiuntaCalendario(){
+function nascondiAggiuntaCalendario() {
   document.getElementById('addEventForm').style.display = 'none';
 }

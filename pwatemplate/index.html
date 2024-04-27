@@ -89,7 +89,7 @@
             <div class="homepage slide" id="home">
                 <div class="blackScreen hidden" id="blackscreen">
                     <div class="hidden popUPadd" id="createEvent">
-                        <div class="inLabel bGreen" id="eventName">Insert event name</div>
+                        <div class="inLabel bGreen" id="eventName">Insert note name</div>
                         <input type="text" class="setName" id="inputName">
                         <div class="inLabel bGreen">Date</div><input type="date" class="setData" id="inputDate">
                         <div class="inLabel bGreen" id="Description">Description</div>
@@ -120,9 +120,9 @@
                             class="imgRapido">
                         <b class="white">Schedule</b>
                     </button><br>
-                    <button class="rapidoMob , bGreen" onclick=""><img src="resources/calendar.svg" alt=""
+                    <button class="rapidoMob , bGreen" onclick="handleCalendarButtonClick()"><img src="resources/calendar.svg" alt=""
                             class="imgRapido"> Calendar</button>
-                    <button class="rapidoMob , bGreen" onclick=""><img src="resources/test.svg" alt=""
+                    <button class="rapidoMob , bGreen" onclick="toSlide('marks')"><img src="resources/test.svg" alt=""
                             class="imgRapido">
                         Grades</button>
                 </div>
@@ -154,26 +154,36 @@
 
             <div class="hidden marks slide" id="marks">
                 <div class="container bGreen" id="formContainer" style="display:none;">
-                    <h1>Inserimento Voto</h1>
-                    <div class="form-group">
-                        <label for="inputMateria">Materia:</label>
+                    <div class="whiteSace">
+                        <div class="inLabelVoto bGreen">Adding a mark
+                        </div>
+                        <br>
+                        <div class="form-group inLabelVoto bGreen">
+                            <label for="inputMateria">subject:</label>
+                        </div>
+                        
                         <input type="text" id="inputMateria" placeholder="Inserisci la materia">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputData">Data:</label>
-                        <input type="text" id="inputData" placeholder="Inserisci la data (formato: YYYY-MM-DD)">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputVoto">Voto:</label>
+                        <div class="form-group inLabelVoto bGreen">
+                            <label for="inputData">date:</label>
+                        </div>
+                        
+                        <input class="setData" type="date" id="inputData" placeholder="Inserisci la data (formato: YYYY-MM-DD)">
+                        <div class="form-group inLabelVoto bGreen">
+                            <label for="inputVoto">mark:</label>
+                        </div>
+                        
                         <input type="text" id="inputVoto" placeholder="Inserisci il voto (da 1 a 10)">
+                        <br>
+                        <button class="bGreen bottoneVoto" id="inserisciButton">add</button>
+                        <button class="bGreen bottoneVoto" id="inserisciButton bGreen" onclick="nascondiAggiunta('marks')">cancel</button>
                     </div>
-                    <button id="inserisciButton">Inserisci</button>
                 </div>
 
-                <button class="aggvoto bGreen" id="iniziaButton">Nuovo voto</button>
+                <button class="aggvoto bGreen" id="iniziaButton">add mark</button>
+                <br>
                 <div class="container bGreen" id="previousVotesContainer">
 
-                    <p>Voti salvati precedentemente:</p>
+                    <p>preavious marks:</p>
                     <div id="votiInseritiContainer">
 
                     </div>
@@ -182,18 +192,38 @@
 
             <div class="hidden slide" id="calendarDiv">
                 <div class="calendar-container">
-                    <h2>Eventi</h2>
+                    <h2>Events</h2>
                     <div class="event-list" id="eventList">
-                        <h3>lista eventi:</h3>
+                        <h3>Events list:</h3>
                         <ul id="eventsUl"></ul>
                     </div>
                     <div class="navigation">
-                        <button onclick="goToToday()" class="buttonCal bGreen">Torna ad oggi</button>
-                        <button onclick="prevMonth()"class="buttonCal bGreen">Mese precedente</button>
-                        <button onclick="nextMonth()"class="buttonCal bGreen">Mese successivo</button>
+                        <button onclick="goToToday()" class="buttonCal bGreen">Go to today</button>
+                        <button onclick="prevMonth()"class="buttonCal bGreen">preavious month</button>
+                        <button onclick="nextMonth()"class="buttonCal bGreen">next month</button>
                         <!-- Aggiungi il pulsante per mostrare il form per aggiungere un evento -->
-                        <button onclick="showAddEventForm()"class="buttonCal bGreen">Aggiungi evento</button>
-                        <button onclick="showEvents()"class="buttonCal bGreen">Mostra eventi</button>
+                        <button onclick="showAddEventForm()"class="buttonCal bGreen">add event</button>
+                        <button onclick="showEvents()"class="buttonCal bGreen">show events</button>
+                    </div>
+                    <div class="container2 bGreen" id="addEventForm" style="display: none;">
+                        <div class="whiteSace">
+                            <div class="inLabelVoto bGreen">
+                                insert a date
+                            </div>
+                            <input  class="setData" type="date" id="eventDateCalendar">
+                            <div class="inLabelVoto bGreen">
+                                insert the time
+                            </div>
+                            <input  class="setData" type="time" id="eventTimeCalendar">
+                            <div class="inLabelVoto bGreen">
+                                insert the topic
+                            </div>
+                            <input type="text" id="eventNameCalendar" placeholder="Nome dell'evento">
+                            <input type="color" id="eventColorCalendar">
+                            <button class="bottoneVoto bGreen" onclick="addEvent()">Add event</button>
+                            <button class="bottoneVoto bGreen" id="cancelAddEventCalendar" onclick="nascondiAggiuntaCalendario()">cancel</button>
+                        </div>
+                        
                     </div>
                     <div class="calendar" id="calendar"></div>
 
@@ -201,22 +231,26 @@
                 </div>
 
                 
-                <div class="edit-event-form" id="editEventForm" style="display: none;">
-                    <input type="date" id="editEventDate">
-                    <input type="time" id="editEventTime">
+                <div class="container2 bGreen" id="editEventForm" style="display: none;">
+                    <div class="inLabelVoto bGreen">
+                        change the date
+                    </div>
+                    <input  class="setData" type="date" id="editEventDate">
+                    <div class="inLabelVoto bGreen">
+                        change the time
+                    </div>
+                    <input  class="setData" type="time" id="editEventTime">
+                    <div class="inLabelVoto bGreen">
+                        change the topic
+                    </div>
                     <input type="text" id="editEventName" placeholder="Nome dell'evento">
                     <input type="color" id="editEventColor">
-                    <button id="saveEditEventButton">Salva modifiche</button>
+                    <button class="bGreen" id="saveEditEventButton">save changes</button>
+                    <button class="bGreen" id="cancelEditEventButton">cancel changes</button>
                 </div>
 
 
-                <div class="add-event-form" id="addEventForm" style="display: none;">
-                    <input type="date" id="eventDateCalendar">
-                    <input type="time" id="eventTimeCalendar">
-                    <input type="text" id="eventNameCalendar" placeholder="Nome dell'evento">
-                    <input type="color" id="eventColorCalendar">
-                    <button onclick="addEvent()">Aggiungi evento</button>
-                </div>
+                
             </div>
 
             <div class="pulsanteBarra">

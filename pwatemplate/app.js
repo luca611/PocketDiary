@@ -95,7 +95,7 @@ function isValidString(n) {
   try {
     notAvailableChars.forEach(function (e) {
       if (n.includes(e)) {
-        console.log(e);
+        //console.log(e);
         throw "carattere proibito trovato";
       }
     });
@@ -665,7 +665,7 @@ function isValidDate(d) {
   try {
     notAvailableDateChars.forEach(function (e) {
       if (d.includes(e)) {
-        console.log(e);
+        //console.log(e);
         throw "carattere proibito trovato";
       }
     });
@@ -680,8 +680,8 @@ function inserisciVoto() {
   var materia = document.getElementById("inputMateria").value;
   var data = document.getElementById("inputData").value;
   var voto = document.getElementById("inputVoto").value;
-  if (materia.value == null || data.value == null || voto.value == null || !isValidString(materia) || !isValidDate(data) || voto < 0 || voto > 10) {
-    console.log("Input non validi")
+  if (materia == null || data == null || voto == null || !isValidString(materia) || !isValidDate(data) || voto < 0 || voto > 10) {
+    //console.log("Input non validi")
     return;
   }
 
@@ -919,7 +919,7 @@ function addEvent() {
     // Nascondi il form dopo l'aggiunta di un nuovo evento
     document.getElementById('addEventForm').style.display = 'none';
   } catch (error) {
-    console.error('Errore durante il salvataggio degli eventi nel localStorage:', error);
+    //console.error('Errore durante il salvataggio degli eventi nel localStorage:', error);
   }
   set_theme();
   updateEventList();

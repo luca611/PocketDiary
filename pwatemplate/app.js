@@ -694,7 +694,7 @@ function inserisciVoto() {
   var materia = document.getElementById("inputMateria").value;
   var data = document.getElementById("inputData").value;
   var voto = document.getElementById("inputVoto").value;
-  if (!isValidString(materia) || !isValidDate(data) || voto < 0 || voto > 10) {
+  if (materia.value == null || data.value == null || voto.value == null || !isValidString(materia) || !isValidDate(data) || voto < 0 || voto > 10) {
     console.log("Input non validi")
     return;
   }
@@ -1091,14 +1091,14 @@ function handleCalendarButtonClick() {
   toSlide('calendarDiv');
 }
 
-function showEvents(){
+function showEvents() {
   let d = document.getElementById("eventList");
-  if(!flagEvents){
+  if (!flagEvents) {
     d.classList.remove("hidden");
     flagEvents = true;
   } else {
-      d.classList.add("hidden");
-      flagEvents = false; 
+    d.classList.add("hidden");
+    flagEvents = false;
   }
   updateEventList();
 }

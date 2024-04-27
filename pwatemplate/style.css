@@ -521,7 +521,7 @@ button:hover {
     min-width: 9rem;
     height: 3rem;
     transition: transform 0.3s;
-    margin-bottom: 3rem
+    margin-bottom: 3rem;
 }
 
 .iconeRidotte {
@@ -783,12 +783,13 @@ body {
 }
 
 .container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
+    min-width: 50%;
+    margin: 0.2rem solid rgb(211, 211, 211);
+    padding: 0.4rem;
+    border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+    padding: 1rem;
 }
 
 .form-group {
@@ -801,10 +802,33 @@ label {
     margin-bottom: 5px;
 }
 
+.marks {
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+}
 
+.aggvoto {
+    display: fixed;
+    align-self: center;
+    min-width: 60%;
+    font-family: "itim";
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 0.4rem;
+    border: none;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
 
+.aggvoto:hover {
+    transform: scale(0.99);
+    filter: brightness(80%);
+}
 
 .vote-container {
+    background-color: white;
     margin-bottom: 20px; 
     padding: 10px; 
     border: 1px solid #ccc; 
@@ -1035,6 +1059,7 @@ label {
     white-space: nowrap; 
     margin-left: 5rem;
     margin-right: 1rem;
+    min-width: 90%;
   }
 
   .subjects{

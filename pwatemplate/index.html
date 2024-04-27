@@ -152,8 +152,8 @@
                 </div>
             </div>           
 
-            <div class="hidden slide" id="marks">
-                <div class="container" id="formContainer" style="display:none;">
+            <div class="hidden marks slide" id="marks">
+                <div class="container bGreen" id="formContainer" style="display:none;">
                     <h1>Inserimento Voto</h1>
                     <div class="form-group">
                         <label for="inputMateria">Materia:</label>
@@ -170,10 +170,8 @@
                     <button id="inserisciButton">Inserisci</button>
                 </div>
 
-                <div class="container" id="introContainer">
-                    <button id="iniziaButton">Nuovo voto</button>
-                </div>
-                <div class="container" id="previousVotesContainer">
+                <button class="aggvoto bGreen" id="iniziaButton">Nuovo voto</button>
+                <div class="container bGreen" id="previousVotesContainer">
 
                     <p>Voti salvati precedentemente:</p>
                     <div id="votiInseritiContainer">
@@ -184,8 +182,9 @@
 
             <div class="hidden slide" id="calendarDiv">
                 <div class="calendar-container">
+                    <h2>Eventi</h2>
                     <div class="event-list" id="eventList">
-                        <h2>Eventi</h2>
+                        <h3>lista eventi:</h3>
                         <ul id="eventsUl"></ul>
                     </div>
                     <div class="navigation">
@@ -194,6 +193,7 @@
                         <button onclick="nextMonth()"class="buttonCal bGreen">Mese successivo</button>
                         <!-- Aggiungi il pulsante per mostrare il form per aggiungere un evento -->
                         <button onclick="showAddEventForm()"class="buttonCal bGreen">Aggiungi evento</button>
+                        <button onclick="showEvents()"class="buttonCal bGreen">Mostra eventi</button>
                     </div>
                     <div class="calendar" id="calendar"></div>
 

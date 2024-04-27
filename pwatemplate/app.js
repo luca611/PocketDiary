@@ -38,6 +38,7 @@ let subjects = [];
 let currentYear, currentMonth;
 let events = {};
 let lastSelectedDate = null;
+let flagEvents = false;
 
 //costanti del sito
 let minNameLength = 3;
@@ -667,7 +668,7 @@ function generateWeek() {
 
 
 function mostraForm() {
-  document.getElementById("introContainer").style.display = "none";
+  document.getElementById("iniziaButton").style.display = "none";
   document.getElementById("previousVotesContainer").style.display = "none"; // Nascondi i voti salvati durante l'inserimento del voto
   document.getElementById("formContainer").style.display = "block";
 }
@@ -728,7 +729,7 @@ function inserisciVoto() {
   // Nascondiamo il modulo di inserimento del voto e mostriamo i voti salvati
   document.getElementById("formContainer").style.display = "none";
   document.getElementById("previousVotesContainer").style.display = "block";
-  document.getElementById("introContainer").style.display = "block";
+  document.getElementById("iniziaButton").style.display = "block";
 
 }
 
@@ -935,6 +936,7 @@ function addEvent() {
     console.error('Errore durante il salvataggio degli eventi nel localStorage:', error);
   }
   set_theme();
+  updateEventList();
 }
 
 
@@ -1087,4 +1089,16 @@ function deleteEventFromList(date, index) {
 function handleCalendarButtonClick() {
   initializeCalendar();
   toSlide('calendarDiv');
+}
+
+function showEvents(){
+  let d = document.getElementById("eventList");
+  if(!flagEvents){
+    d.classList.remove("hidden");
+    flagEvents = true;
+  } else {
+      d.classList.add("hidden");
+      flagEvents = false; 
+  }
+  updateEventList();
 }

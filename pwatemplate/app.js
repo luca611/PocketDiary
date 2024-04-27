@@ -41,7 +41,7 @@ let lastSelectedDate = null;
 let minNameLength = 3;
 let maxNameLength = 20;
 let maxDescLength = 1000;
-let notAvailableChars = ["-", "|", "!", "?", '"', "£", "$", "%", "&", "/", "*", "+", "=", "^", "(", ")", "{", "}", "[", "]", "ç", "@", "°", "#", "§", ";", ",", ":", ".", ">", "<"];
+let notAvailableChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "-", "|", "!", "?", '"', "£", "$", "%", "&", "/", "*", "+", "=", "^", "(", ")", "{", "}", "[", "]", "ç", "@", "°", "#", "§", ";", ",", ":", ".", ">", "<"];
 
 function Event(name, date, desc) {
   this.name = name;
@@ -193,6 +193,18 @@ function renderHomePage() {
 }
 
 /*
+  verifica se gli eventi sono ancora ne futuro ed elimina quelli passati
+*/
+function updateHomepageEvent() {
+  for (i = 0; i < eventS.length; i++) {
+    if (eventS[i].date.getTime() < new Date().setHours(0, 0, 0, 0)) {
+      eventS.splice(i, 1)
+    }
+  }
+  save()
+}
+
+/*
   funzione eseguita la clic del +
   mette il popup in sovraimpressione alla homepage
 */
@@ -209,6 +221,8 @@ function openEventCreation() {
   document.getElementById("createEvent").classList.remove("hidden");
   document.getElementById("eventView").style.zIndex = "-2"; //non è il modo piu' etico che ci sia ma fa il suo lavoro per ora
 }
+
+
 
 /*
   aggiunge un nuovo evento all'elenco prendendo i valori inseriti nel popUp

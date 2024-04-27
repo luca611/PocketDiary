@@ -37,6 +37,7 @@ var votes = [];        // Array per salvare i voti
 let currentYear, currentMonth;
 let events = {};
 let lastSelectedDate = null;
+let flagEvents = false;
 
 //costanti del sito
 let minNameLength = 3;
@@ -926,6 +927,7 @@ function addEvent() {
     console.error('Errore durante il salvataggio degli eventi nel localStorage:', error);
   }
   set_theme();
+  updateEventList();
 }
 
 
@@ -1078,4 +1080,16 @@ function deleteEventFromList(date, index) {
 function handleCalendarButtonClick() {
   initializeCalendar();
   toSlide('calendarDiv');
+}
+
+function showEvents(){
+  let d = document.getElementById("eventList");
+  if(!flagEvents){
+    d.classList.remove("hidden");
+    flagEvents = true;
+  } else {
+      d.classList.add("hidden");
+      flagEvents = false; 
+  }
+  updateEventList();
 }

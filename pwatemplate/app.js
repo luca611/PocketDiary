@@ -615,19 +615,6 @@ function toSlide(id) {
   }
 }
 
-//il codice per le materie
-function initializeSubjects() {
-  //console.log("Inizializzazione materie");
-
-  // Carica le materie dal local storage
-  //loadFromStorage();
-
-  // Genera i giorni della settimana e gli slot orari
-
-  set_theme();
-  
-}
-
 function generateWeek() {
   let week = document.getElementById('week');
 

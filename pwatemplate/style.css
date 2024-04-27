@@ -75,6 +75,22 @@ body {
 .mainAppVisible{
     z-index: 1;
 }
+.aggvoto {
+    display: fixed;
+    align-self: center;
+    min-width: 60%;
+    font-family: "itim";
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 0.4rem;
+    border: none;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.aggvoto:hover {
+    transform: scale(0.99);
+    filter: brightness(80%);
+}
 
 .white {
     color: white;
@@ -217,6 +233,14 @@ button:hover {
 }
 
 .inLabel {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.inLabelVoto {
+    min-width: 90%;
     border-radius: 0.5rem;
     padding: 0.5rem;
     margin-top: 0.5rem;
@@ -667,6 +691,7 @@ button:hover {
     height: 100%;
 }
 .eventsCalendar{
+    overflow-x: auto;
     text-align: center;
     border-radius: 1rem;
     width: 10vw;
@@ -782,18 +807,49 @@ body {
     background-color: #f0f0f0;
 }
 
+.whiteSace {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    border-radius: 2rem;
+    background-color: white;
+}
+
 .container {
-    min-width: 50%;
+    min-width: 40%;
     margin: 0.2rem solid rgb(211, 211, 211);
-    padding: 0.4rem;
-    border-radius: 1rem;
+    padding: 1rem;
+    border-radius: 2rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
+    padding: 1rem;
+}
+
+.container2 {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    min-width: 40%;
+    margin: 0.2rem solid rgb(211, 211, 211);
+    padding: 1rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 1rem;
 }
 
 .form-group {
-    margin-bottom: 20px;
+}
+
+.bottoneVoto{
+    min-width: 90%;
+}
+
+.add-event-form{
+    position: absolute;
+    top: 30%;
+    left: 20%;
 }
 
 label {
@@ -810,22 +866,7 @@ label {
     padding: 3rem;
 }
 
-.aggvoto {
-    display: fixed;
-    align-self: center;
-    min-width: 60%;
-    font-family: "itim";
-    padding: 1rem;
-    border-radius: 1rem;
-    margin-bottom: 0.4rem;
-    border: none;
-    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
-}
 
-.aggvoto:hover {
-    transform: scale(0.99);
-    filter: brightness(80%);
-}
 
 .vote-container {
     background-color: white;
@@ -848,6 +889,17 @@ label {
 
     .html {
         background-color: white;
+    }
+
+    .container {
+        min-width: 90%;
+    }
+
+    .container2 {
+        position: absolute;
+        top: 30%;
+        left: -2.5%;
+        min-width: 100%;
     }
 
     .navigation{

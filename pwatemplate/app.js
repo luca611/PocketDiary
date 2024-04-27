@@ -801,10 +801,7 @@ function generateCalendar(year, month) {
       });
     }
 
-    dayDiv.addEventListener('click', (event) => {
-      const clickedDate = event.currentTarget.dataset.date;
-      showEventsForDate(clickedDate);
-    });
+    
 
     dayDiv.appendChild(eventsDiv);
 
@@ -991,7 +988,7 @@ function showAllEventsForDate(date) {
   // Ripristina il titolo predefinito della lista degli eventi
   const eventList = document.getElementById('eventsUl');
   eventList.innerHTML = '';
-  document.getElementById('eventList').getElementsByTagName('h2')[0].textContent = 'Eventi'; // Modifica il testo del titolo
+  //document.getElementById('eventList').getElementsByTagName('h2')[0].textContent = 'Eventi'; // Modifica il testo del titolo
 
   // Mostra tutti gli eventi per la data specificata
   const sortedEvents = Object.entries(events)
@@ -1087,4 +1084,14 @@ function showEvents() {
     flagEvents = false;
   }
   updateEventList();
+}
+
+function nascondiAggiunta(){
+  document.getElementById("formContainer").style.display = "none";
+  document.getElementById("previousVotesContainer").style.display = "block";
+  document.getElementById("iniziaButton").style.display = "block";
+}
+
+function nascondiAggiuntaCalendario(){
+  document.getElementById('addEventForm').style.display = 'none';
 }

@@ -807,7 +807,7 @@ function generateCalendar(year, month) {
     calendarDiv.appendChild(dayDiv);
     calendarDiv.classList.remove('fc', 'fc-media-screen', 'fc-direction-ltr', 'fc-theme-standard');
   });
-
+  set_theme();
 }
 
 function loadEvents() {

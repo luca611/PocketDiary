@@ -290,6 +290,7 @@ function cancelEvent() {
   });
   document.getElementById("blackscreen").classList.add("hidden");
   document.getElementById("createEvent").classList.add("hidden");
+  document.getElementById("eventView").classList.add("hidden");
 }
 
 /*

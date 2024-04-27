@@ -159,31 +159,31 @@
                         </div>
                         <br>
                         <div class="form-group inLabelVoto bGreen">
-                            <label for="inputMateria">subject:</label>
+                            <label for="inputMateria">Subject:</label>
                         </div>
                         
-                        <input type="text" id="inputMateria" placeholder="Inserisci la materia">
+                        <input type="text" id="inputMateria" placeholder="Insert subject">
                         <div class="form-group inLabelVoto bGreen">
-                            <label for="inputData">date:</label>
+                            <label for="inputData">Date:</label>
                         </div>
                         
-                        <input class="setData" type="date" id="inputData" placeholder="Inserisci la data (formato: YYYY-MM-DD)">
+                        <input class="setData" type="date" id="inputData" placeholder="Insert dare(YYYY-MM-DD)">
                         <div class="form-group inLabelVoto bGreen">
-                            <label for="inputVoto">mark:</label>
+                            <label for="inputVoto">Mark:</label>
                         </div>
                         
-                        <input type="text" id="inputVoto" placeholder="Inserisci il voto (da 1 a 10)">
+                        <input type="text" id="inputVoto" placeholder="Insert mark">
                         <br>
                         <button class="bGreen bottoneVoto" id="inserisciButton">add</button>
                         <button class="bGreen bottoneVoto" id="inserisciButton bGreen" onclick="nascondiAggiunta('marks')">cancel</button>
                     </div>
                 </div>
 
-                <button class="aggvoto bGreen" id="iniziaButton">add mark</button>
+                <button class="aggvoto bGreen" id="iniziaButton">Add mark</button>
                 <br>
                 <div class="container bGreen" id="previousVotesContainer">
 
-                    <p>preavious marks:</p>
+                    <p>Preavious marks:</p>
                     <div id="votiInseritiContainer">
 
                     </div>
@@ -199,26 +199,26 @@
                     </div>
                     <div class="navigation">
                         <button onclick="goToToday()" class="buttonCal bGreen">Go to today</button>
-                        <button onclick="prevMonth()"class="buttonCal bGreen">preavious month</button>
-                        <button onclick="nextMonth()"class="buttonCal bGreen">next month</button>
+                        <button onclick="prevMonth()"class="buttonCal bGreen">Preavious month</button>
+                        <button onclick="nextMonth()"class="buttonCal bGreen">Next month</button>
                         <!-- Aggiungi il pulsante per mostrare il form per aggiungere un evento -->
-                        <button onclick="showAddEventForm()"class="buttonCal bGreen">add event</button>
-                        <button onclick="showEvents()"class="buttonCal bGreen">show events</button>
+                        <button onclick="showAddEventForm()"class="buttonCal bGreen">Add event</button>
+                        <button onclick="showEvents()"class="buttonCal bGreen">Show events</button>
                     </div>
                     <div class="container2 bGreen" id="addEventForm" style="display: none;">
                         <div class="whiteSace">
                             <div class="inLabelVoto bGreen">
-                                insert a date
+                                Insert date
                             </div>
                             <input  class="setData" type="date" id="eventDateCalendar">
                             <div class="inLabelVoto bGreen">
-                                insert the time
+                                Insert time
                             </div>
                             <input  class="setData" type="time" id="eventTimeCalendar">
                             <div class="inLabelVoto bGreen">
-                                insert the topic
+                                Insert topic
                             </div>
-                            <input type="text" id="eventNameCalendar" placeholder="Nome dell'evento">
+                            <input type="text" id="eventNameCalendar" placeholder="Event name">
                             <input type="color" id="eventColorCalendar">
                             <button class="bottoneVoto bGreen" onclick="addEvent()">Add event</button>
                             <button class="bottoneVoto bGreen" id="cancelAddEventCalendar" onclick="nascondiAggiuntaCalendario()">cancel</button>
@@ -233,20 +233,20 @@
                 
                 <div class="container2 bGreen" id="editEventForm" style="display: none;">
                     <div class="inLabelVoto bGreen">
-                        change the date
+                        Change the date
                     </div>
                     <input  class="setData" type="date" id="editEventDate">
                     <div class="inLabelVoto bGreen">
-                        change the time
+                        Change the time
                     </div>
                     <input  class="setData" type="time" id="editEventTime">
                     <div class="inLabelVoto bGreen">
-                        change the topic
+                        Change the topic
                     </div>
-                    <input type="text" id="editEventName" placeholder="Nome dell'evento">
+                    <input type="text" id="editEventName" placeholder="Event name">
                     <input type="color" id="editEventColor">
-                    <button class="bGreen" id="saveEditEventButton">save changes</button>
-                    <button class="bGreen" id="cancelEditEventButton">cancel changes</button>
+                    <button class="bGreen" id="saveEditEventButton">Save changes</button>
+                    <button class="bGreen" id="cancelEditEventButton">Cancel changes</button>
                 </div>
 
 

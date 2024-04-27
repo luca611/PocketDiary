@@ -620,8 +620,7 @@ function generateWeek() {
 
   // Cancella tutto il contenuto di week
   week.innerHTML = '';
-
-  let days = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
+  let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   for (let i = 0; i < days.length; i++) {
     let weekday = document.createElement('div');
     weekday.className = 'weekday'; // Modificato il nome della classe
@@ -640,7 +639,7 @@ function generateWeek() {
       let subjectInput = document.createElement('input');
       subjectInput.type = 'text';
       subjectInput.className = 'subject';
-      subjectInput.placeholder = 'Inserisci la materia';
+      subjectInput.placeholder = 'Insert subject';
 
       slot.appendChild(subjectInput); // Rimuovo l'elemento colorInput
 

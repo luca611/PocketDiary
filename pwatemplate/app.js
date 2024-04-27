@@ -1,3 +1,4 @@
+
 const cacheName = "pwaname"; //PWA id here
 //Register PWA service worker
 if ("serviceWorker" in navigator) {
@@ -41,7 +42,7 @@ let lastSelectedDate = null;
 let minNameLength = 3;
 let maxNameLength = 20;
 let maxDescLength = 1000;
-let notAvailableChars = ["|", "!", "?", '"', "£", "$", "%", "&", "/", "*", "+", "-", "=", "^", "(", ")", "{", "}", "[", "]", "ç", "@", "°", "#", "§", ";", ",", ":", ".", ">", "<"];
+let notAvailableChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "-", "|", "!", "?", '"', "£", "$", "%", "&", "/", "*", "+", "=", "^", "(", ")", "{", "}", "[", "]", "ç", "@", "°", "#", "§", ";", ",", ":", ".", ">", "<"];
 
 function Event(name, date, desc) {
   this.name = name;
@@ -185,11 +186,23 @@ function set_theme() {
 /*
   funzione specifica per non dover aggiungere alla mainApp la classe hidden
  */
-function renderHomePage(){
+function renderHomePage() {
   document.getElementById("appContainer").classList.remove("mainAppNotVisible")
   document.getElementById("appContainer").classList.add("mainAppVisible")
   document.getElementById("mainApp").classList.remove("mainAppNotVisible")
   document.getElementById("mainApp").classList.add("mainAppVisible")
+}
+
+/*
+  verifica se gli eventi sono ancora ne futuro ed elimina quelli passati
+*/
+function updateHomepageEvent() {
+  for (i = 0; i < eventS.length; i++) {
+    if (eventS[i].date.getTime() < new Date().setHours(0, 0, 0, 0)) {
+      eventS.splice(i, 1)
+    }
+  }
+  save()
 }
 
 /*
@@ -209,6 +222,8 @@ function openEventCreation() {
   document.getElementById("createEvent").classList.remove("hidden");
   document.getElementById("eventView").style.zIndex = "-2"; //non è il modo piu' etico che ci sia ma fa il suo lavoro per ora
 }
+
+
 
 /*
   aggiunge un nuovo evento all'elenco prendendo i valori inseriti nel popUp
@@ -245,10 +260,10 @@ function confirmEvent() {
   regenerateEventList();
 
   //debug
-  console.log("Evento confermato:");
+  /*console.log("Evento confermato:");
   console.log("Nome:", tempName);
   console.log("Data:", tempDate.toDateString());
-  console.log("Descrizione:", tempDesc);
+  console.log("Descrizione:", tempDesc);*/
 
   // Ripuliamo i campi del form
   document.getElementById("inputName").value = "";
@@ -276,6 +291,7 @@ function cancelEvent() {
   });
   document.getElementById("blackscreen").classList.add("hidden");
   document.getElementById("createEvent").classList.add("hidden");
+  document.getElementById("eventView").classList.add("hidden");
 }
 
 /*
@@ -509,6 +525,7 @@ function loadFromStorage() {
     }
 
     console.log("Nome: " + name + "\nTema: " + theme);
+    updateHomepageEvent()
     renderHomePage()
     toSlide("home");
   } catch (ex) {
@@ -598,7 +615,7 @@ function initializeSubjects() {
     }
     inputs[i].addEventListener('change', save);
   }
-
+  set_theme();
   toSlide('subjects');
 }
 
@@ -612,7 +629,7 @@ function generateWeek() {
   for (let i = 0; i < days.length; i++) {
     let weekday = document.createElement('div');
     weekday.className = 'weekday'; // Modificato il nome della classe
-    weekday.classList.add('bGreen')
+    weekday.classList.add('bGreen'); // Aggiunto il tema
     let heading = document.createElement('h2');
     heading.textContent = days[i];
     weekday.appendChild(heading);
@@ -646,11 +663,31 @@ function mostraForm() {
   document.getElementById("formContainer").style.display = "block";
 }
 
+function isValidDate(d) {
+  notAvailableDateChars = notAvailableChars.splice(0, 1)
+  notAvailableChars.push(["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"])
+  try {
+    notAvailableDateChars.forEach(function (e) {
+      if (d.includes(e)) {
+        console.log(e);
+        throw "carattere proibito trovato";
+      }
+    });
+  } catch (ex) {
+    return false;
+  }
+  return true;
+}
+
 function inserisciVoto() {
 
   var materia = document.getElementById("inputMateria").value;
   var data = document.getElementById("inputData").value;
   var voto = document.getElementById("inputVoto").value;
+  if (!isValidString(materia) || !isValidDate(data) || voto < 0 || voto > 10) {
+    console.log("Input non validi")
+    return;
+  }
 
   // Calcoliamo il numero del voto
   var voteNumber = document.querySelectorAll(".vote-container").length + 1;
@@ -701,6 +738,7 @@ function initializeCalendar() {
   currentMonth = currentDate.getMonth();
   loadEvents();
   generateCalendar(currentYear, currentMonth);
+  set_theme();
   updateEventList();
 }
 
@@ -754,6 +792,8 @@ function generateCalendar(year, month) {
 
     const eventsDiv = document.createElement('div');
     eventsDiv.classList.add('eventsCalendar');
+    
+    eventsDiv.classList.add('bGreen'); // Aggiunto il tema
     const dayKey = `${day.year}-${(day.month + 1).toString().padStart(2, '0')}-${day.day.toString().padStart(2, '0')}`;
 
     if (events[dayKey] && events[dayKey].length > 0) {
@@ -885,6 +925,7 @@ function addEvent() {
   } catch (error) {
     console.error('Errore durante il salvataggio degli eventi nel localStorage:', error);
   }
+  set_theme();
 }
 
 

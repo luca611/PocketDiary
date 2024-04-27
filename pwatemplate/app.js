@@ -925,6 +925,7 @@ function addEvent() {
   } catch (error) {
     console.error('Errore durante il salvataggio degli eventi nel localStorage:', error);
   }
+  set_theme();
 }
 
 

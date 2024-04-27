@@ -680,7 +680,7 @@ function inserisciVoto() {
   var materia = document.getElementById("inputMateria").value;
   var data = document.getElementById("inputData").value;
   var voto = document.getElementById("inputVoto").value;
-  if (materia.value == null || data.value == null || voto.value == null || !isValidString(materia) || !isValidDate(data) || voto < 0 || voto > 10) {
+  if (materia== null || data== null || voto == null || !isValidString(materia) || !isValidDate(data) || voto < 0 || voto > 10) {
     console.log("Input non validi")
     return;
   }

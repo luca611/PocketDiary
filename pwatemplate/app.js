@@ -1,3 +1,4 @@
+
 const cacheName = "pwaname"; //PWA id here
 //Register PWA service worker
 if ("serviceWorker" in navigator) {
@@ -614,7 +615,7 @@ function initializeSubjects() {
     }
     inputs[i].addEventListener('change', save);
   }
-
+  set_theme();
   toSlide('subjects');
 }
 
@@ -628,6 +629,7 @@ function generateWeek() {
   for (let i = 0; i < days.length; i++) {
     let weekday = document.createElement('div');
     weekday.className = 'weekday'; // Modificato il nome della classe
+    weekday.classList.add('bGreen'); // Aggiunto il tema
     let heading = document.createElement('h2');
     heading.textContent = days[i];
     weekday.appendChild(heading);
@@ -736,6 +738,7 @@ function initializeCalendar() {
   currentMonth = currentDate.getMonth();
   loadEvents();
   generateCalendar(currentYear, currentMonth);
+  set_theme();
   updateEventList();
 }
 
@@ -789,6 +792,8 @@ function generateCalendar(year, month) {
 
     const eventsDiv = document.createElement('div');
     eventsDiv.classList.add('eventsCalendar');
+    
+    eventsDiv.classList.add('bGreen'); // Aggiunto il tema
     const dayKey = `${day.year}-${(day.month + 1).toString().padStart(2, '0')}-${day.day.toString().padStart(2, '0')}`;
 
     if (events[dayKey] && events[dayKey].length > 0) {

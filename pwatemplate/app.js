@@ -34,6 +34,7 @@ let theme = "bGreen";   //tema scelto, preimpostato a verde, chiamato come la cl
 let eventS = [];        //elenco degli eventi
 let modifying = -1;     //indice dell'evento che l'utente sta modificando
 var votes = [];        // Array per salvare i voti
+let subjects = [];
 let currentYear, currentMonth;
 let events = {};
 let lastSelectedDate = null;
@@ -512,7 +513,7 @@ function loadFromStorage() {
       eventS = JSON.parse(localStorage.eventS);
       for (let i = 0; i < eventS.length; i++) {
         eventS[i] = new Event(eventS[i].name, eventS[i].date, eventS[i].desc);
-        console.log(eventS[i]);
+        //console.log(eventS[i]);
       }
     } catch (ex) {
       eventS = [];
@@ -520,12 +521,24 @@ function loadFromStorage() {
 
     // Caricamento delle materie
     try {
-      subjects = JSON.parse(localStorage.subjects);
+      let s = JSON.parse(localStorage.subjects);
+      for (let i = 0; i < s.length; i++) {
+        subjects[i] = s[i];
+      }
     } catch (ex) {
       subjects = [];
     }
+    generateWeek();
+    let inputs = document.querySelectorAll('.subject, .color');
+    for (let i = 0; i < inputs.length; i++) {
+      if (subjects[i]) {
+        inputs[i].value = subjects[i];
+        //console.log("s"+i)
+      }
+      inputs[i].addEventListener('change', save);
+    }
 
-    console.log("Nome: " + name + "\nTema: " + theme);
+    //console.log("Nome: " + name + "\nTema: " + theme);
     updateHomepageEvent()
     renderHomePage()
     toSlide("home");
@@ -558,11 +571,15 @@ function save() {
     localStorage.votes = JSON.stringify(votes); // Salviamo l'array dei voti
 
     // Salvataggio delle materie
-    let subjects = [];
+    //console.log("ciao")
+    subjects = [];
     let inputs = document.querySelectorAll('.subject, .color');
+    //console.log("Nnnnnnn")
     for (let i = 0; i < inputs.length; i++) {
-      subjects[i] = inputs[i].value;
+      subjects.push(inputs[i].value);
+      //console.log("aaaaa")
     }
+    //console.log("addio")
     localStorage.subjects = JSON.stringify(subjects);
 
   } catch (ex) {
@@ -596,28 +613,6 @@ function toSlide(id) {
   } else {
     //console.error("Elemento con ID", id, " non trovato.");
   }
-}
-
-//il codice per le materie
-function initializeSubjects() {
-  console.log("Inizializzazione materie");
-
-  // Carica le materie dal local storage
-  loadFromStorage();
-
-  // Genera i giorni della settimana e gli slot orari
-  generateWeek();
-
-  // Aggiungi un event listener a ogni input
-  let inputs = document.querySelectorAll('.subject, .color');
-  for (let i = 0; i < inputs.length; i++) {
-    if (subjects[i]) {
-      inputs[i].value = subjects[i];
-    }
-    inputs[i].addEventListener('change', save);
-  }
-  set_theme();
-  toSlide('subjects');
 }
 
 function generateWeek() {
@@ -685,7 +680,7 @@ function inserisciVoto() {
   var materia = document.getElementById("inputMateria").value;
   var data = document.getElementById("inputData").value;
   var voto = document.getElementById("inputVoto").value;
-  if (!isValidString(materia) || !isValidDate(data) || voto < 0 || voto > 10) {
+  if (materia.value == null || data.value == null || voto.value == null || !isValidString(materia) || !isValidDate(data) || voto < 0 || voto > 10) {
     console.log("Input non validi")
     return;
   }
@@ -725,7 +720,7 @@ function inserisciVoto() {
 }
 
 window.onload = function () {
-  loadFromStorage(); // Carica i voti salvati solo all'avvio della pagina
+  //loadFromStorage(); // Carica i voti salvati solo all'avvio della pagina
   document.getElementById("iniziaButton").addEventListener("click", mostraForm);
   document.getElementById("inserisciButton").addEventListener("click", function () {
     inserisciVoto();
@@ -793,7 +788,7 @@ function generateCalendar(year, month) {
 
     const eventsDiv = document.createElement('div');
     eventsDiv.classList.add('eventsCalendar');
-    
+
     eventsDiv.classList.add('bGreen'); // Aggiunto il tema
     const dayKey = `${day.year}-${(day.month + 1).toString().padStart(2, '0')}-${day.day.toString().padStart(2, '0')}`;
 
@@ -1079,14 +1074,14 @@ function handleCalendarButtonClick() {
   toSlide('calendarDiv');
 }
 
-function showEvents(){
+function showEvents() {
   let d = document.getElementById("eventList");
-  if(!flagEvents){
+  if (!flagEvents) {
     d.classList.remove("hidden");
     flagEvents = true;
   } else {
-      d.classList.add("hidden");
-      flagEvents = false; 
+    d.classList.add("hidden");
+    flagEvents = false;
   }
   updateEventList();
 }

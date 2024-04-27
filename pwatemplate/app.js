@@ -528,6 +528,15 @@ function loadFromStorage() {
     } catch (ex) {
       subjects = [];
     }
+    generateWeek();
+    let inputs = document.querySelectorAll('.subject, .color');
+    for (let i = 0; i < inputs.length; i++) {
+      if (subjects[i]) {
+        inputs[i].value = subjects[i];
+        //console.log("s"+i)
+      }
+      inputs[i].addEventListener('change', save);
+    }
 
     //console.log("Nome: " + name + "\nTema: " + theme);
     updateHomepageEvent()
@@ -614,19 +623,9 @@ function initializeSubjects() {
   //loadFromStorage();
 
   // Genera i giorni della settimana e gli slot orari
-  generateWeek();
 
-  // Aggiungi un event listener a ogni input
-  let inputs = document.querySelectorAll('.subject, .color');
-  for (let i = 0; i < inputs.length; i++) {
-    if (subjects[i]) {
-      inputs[i].value = subjects[i];
-      //console.log("s"+i)
-    }
-    inputs[i].addEventListener('change', save);
-  }
   set_theme();
-  toSlide('subjects');
+  
 }
 
 function generateWeek() {
